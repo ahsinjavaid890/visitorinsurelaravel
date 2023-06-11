@@ -1,55 +1,110 @@
 @extends('frontend.layouts.main')
 @section('content')
-<div class="contact-box-wrap-blogs mt-100">
+<!-- Slider Start -->
+<section class="banner-blogs">
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
-                <div class="block-box user-single-blog">
-                    <div class="blog-thumbnail">
-                        <img style="width: 100%;height: 400px;" src="{{ url('public/images') }}/{{ $data->image }}" alt="Blog">
-                    </div>
-                    <div class="blog-content-wrap">
-                        <div class="blog-entry-header">
-                            <h2 class="entry-title">{{ $data->title }}</h2>
-                            <div class="row align-items-center">
-                                <div class="col-lg-8">
-                                    <ul class="entry-meta">
-                                        <li><i class="icofont-calendar"></i>{{ $data->dated }}</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="blog-content">
-                            {!! $data->content !!}
-                        </div>
-                    </div>
-                </div>
+            <div class="col-lg-6 col-md-12">
             </div>
-            <div class="col-md-3">
-                <div class="box-widget fl-wrap">
-                   <div class="box-widget-content">
-                       <div class="search-widget fl-wrap">
-                           <form action="blogs.php?" class="d-flex">
-                               <input name="se" id="se12" type="text" class="search form-control" placeholder="Search..." value="">
-                           </form>
-                       </div>
-                      <div style="background-color: #2b3481;"  class="single-widget p-3 mt-3 rounded">
-                            <h3 class="text-white">Useful Products<br><hr class="hr-footer"></h3>
-
-                            <ul>
-                                @foreach(DB::table('blogcategories')->get() as $r)
-                                <li>
-                                    <a href="{{ url('category') }}/{{ $r->url }}">
-                                            {{ $r->name }}
-                                        </a>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                   </div>
+            <div class="col-lg-6 col-md-12 headline_text">
+                <div class="block">
+                    <div class="divider mb-3"></div>
+                    
+                    <h1 class="mb-4 mt-3 ">
+                        <span class="main_title blue_text">
+                            {{ $data->title }}
+                        </span>
+                    </h1>
+                    
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
+<section class=" blog-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-12 mb-5">
+                        <div class="single-blog-item">
+                            <img src="images/blog/blog-1.jpg" alt="" class="img-fluid">
+
+                            <div class="blog-item-content mt-5">
+                                <div class="blog-item-meta mb-3">
+                                    <span class="text-black text-capitalize mr-3"><i class="icofont-calendar mr-2"></i> Posted: {{ Cmf::date_format($data->created_at) }}</span>
+                                    
+                                    <img src="{{ url('public/images') }}/{{ $data->image }}" class="img-fluid blog_image"><br>
+                                </div> 
+
+                                {!! $data->content !!}
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact-form-wrap mb-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <form id="contact-form" class="contact__form " method="post" action="?action=post">
+                    
+
+                    <div class="row">
+
+
+                        <div class="col-lg-12">
+                            <h1 class="mb-5 mt-3 text-left"><span class="second_title">
+                                <span class="blue_text">Write a  </span>
+                                <span class="green_text">comment</span>     
+                            </span></h1>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input name="fname" id="name" type="text" class="form-control" placeholder="Your Frist Name" required>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input name="lname" id="lname" type="text" class="form-control" placeholder="Your Last Address" required>
+                            </div>
+                        </div>
+                         <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input name="email" id="email" type="email" class="form-control" placeholder="Your Email Address" required>
+                            </div>
+                        </div>
+                         <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input name="phone" id="phone" type="text" class="form-control" placeholder="Your Phone Number">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group-2 mb-4">
+                        <label>Your Message</label>
+                        <textarea name="message" id="message" class="form-control" rows="6" placeholder="Your Message" required></textarea>
+                    </div>
+
+                    <div class="text-center">
+                        <input class="btn btn-main btn-round-full" name="submit" type="submit" value="Submit Comment"></input>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
 @endsection

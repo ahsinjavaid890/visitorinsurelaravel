@@ -39,6 +39,10 @@ class SiteController extends Controller
             echo $r;
         }
     }
+    public function becomeapartner()
+    {
+        return view('frontend.companypages.becomeapartner');
+    }
     public function savecompareplans($rand,$plan_id,$product_id,$coverage_ammount,$deductibles,$price)
     {
         $check = DB::table('compare_plans')->where('comparenumber' , $rand)->where('plan_id' , $plan_id)->where('product_id' , $product_id)->where('coverage_ammount' , $coverage_ammount)->where('deductibles' , $deductibles)->where('price' , $price);

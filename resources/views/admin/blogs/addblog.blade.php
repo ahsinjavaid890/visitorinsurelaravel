@@ -37,11 +37,9 @@
                     <table id="example" class="table table-bordered table-head-custom table-checkable" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Blog ID</th>
                                 <th>Blog Image</th>
                                 
                                 <th>Blog Tittle</th>
-                                <th>Category Name</th>
                                 <th>Created At</th>
                                 <th>Updated At</th>
                                 <th>Actions</th>
@@ -50,18 +48,14 @@
                         <tbody>
                             @foreach($data as $r)
                             <tr>
-                                <td>{{ $r->id }}</td>
                                 <td>
                                     <a target="_blank" href="{{ url('public/images') }}/{{ $r->image }}">
-                                        <img width="120" height="120" src="{{ url('public/images') }}/{{ $r->image }}">
+                                        <img width="120" class="img-thumbnail" height="120" src="{{ url('public/images') }}/{{ $r->image }}">
                                     </a>
                                 </td>
                                 
                                 <td>
                                     {{ $r->title }}
-                                </td>
-                                <td>
-                                    {{ DB::table('blogcategories')->where('id' , $r->category_id)->first()->name }}
                                 </td>
                                 <td>
                                     {{ $r->created_at }}
@@ -180,27 +174,22 @@
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
-            <form enctype="multipart/form-data" method="POST" action="{{ url('admin/faq/addnewfaq') }}">
+            <form enctype="multipart/form-data" method="POST" action="{{ url('admin/blogs/addnewblog') }}">
                 @csrf
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="lable-control">Select Category</label>
-                                <select required class="form-control" name="category_id">
-                                    <option value="">Select Category</option>
-                                    @foreach($categories as $r)
-                                    <option value="{{ $r->id }}">{{ $r->name }}</option>
-                                    @endforeach
-                                </select>
+                                <label class="lable-control">Blog Image</label>
+                                <input name="image" type="file" id="emailfield" class="form-control  form-control-solid font-size-lg pl-5 min-h-50px">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="lable-control">Enter Question</label>
-                                <input name="question" required type="text" id="emailfield" class="form-control  form-control-solid font-size-lg pl-5 min-h-50px">
+                                <label class="lable-control">Blog tittle</label>
+                                <input name="title" required type="text" id="emailfield" class="form-control  form-control-solid font-size-lg pl-5 min-h-50px">
                             </div>
                         </div>
                     </div>
@@ -208,7 +197,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="lable-control">Enter Answer</label>
-                                <textarea rows="10" class="summernote" name="answer"></textarea>
+                                <textarea rows="10" class="summernote" name="content"></textarea>
                             </div>
                         </div>
                     </div>

@@ -11,6 +11,7 @@ use App\Models\wp_dh_companies;
 use App\Models\wp_dh_life_plans_benefits;
 use App\Models\help_articles;
 use App\Models\blogs;
+use App\Models\testimonials;
 use App\Models\blogcategories;
 use App\Models\company_info_pages;
 use App\Models\wp_dh_insurance_plans_benefits;
@@ -804,9 +805,32 @@ class AdminController extends Controller
         $data = DB::table('wp_dh_companies')->get();
         return view('admin.companies.all')->with(array('data'=>$data));
     }
-
-
-
+    public function testimonials()
+    {
+        $data = testimonials::all();
+        return view('admin.testimonials.all')->with(array('data'=>$data));
+    }
+    public function addtestimonials(Request $request)
+    {
+        $add = new testimonials;
+        $add->name = $request->name;
+        $add->image = Cmf::sendimagetodirectory($request->image);
+        $add->testimonial = $request->testimonial;
+        $add->save();
+        return redirect()->back()->with('message', 'Testimonial Added Successfully');
+    }
+    public function updatetestimonials(Request $request)
+    {
+        $add = testimonials::find($request->id);
+        $add->name = $request->name;
+        if($request->image)
+        {
+            $add->image = Cmf::sendimagetodirectory($request->image);
+        }
+        $add->testimonial = $request->testimonial;
+        $add->save();
+        return redirect()->back()->with('message', 'Testimonial Updated Successfully');
+    }
     public function blogcategories()
     {
         $data = DB::table('blogcategories')->get();
@@ -867,6 +891,19 @@ class AdminController extends Controller
         }
         $add->save();
         return redirect()->back()->with('message', 'Blog Updated Successfully');        
+    }
+    public function addnewblog(Request $request)
+    {
+        $add = new blogs();
+        $add->title = $request->title;
+        $add->url = Cmf::shorten_url($request->title);
+        $add->content = $request->content;
+        if($request->image)
+        {
+            $add->image = Cmf::sendimagetodirectory($request->image);
+        }
+        $add->save();
+        return redirect()->back()->with('message', 'Blog Updated Successfully');
     }
     public function deleteblog($id)
     {

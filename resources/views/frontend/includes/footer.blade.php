@@ -1,155 +1,89 @@
-<style type="text/css">
-    .single-widget-li ul li::before {
-      content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
-      color: #1bbc9b; /* Change the color */
-      font-weight: bold; /* If you want it to be bold */
-      display: inline-block; /* Needed to add space between the bullet and the text */
-      width: 1em; /* Also needed for space (tweak if needed) */
-    }
-</style>
-<footer class="footer-top-area footer-top-area-five" style="padding-top:20px;">
-<div class="container-homepage">
-    <div class="row">
-        <div class="col-lg-3 col-md-6">
-            <div class="single-widget">
-                <a href="index.php">
-                        <img src="{{ url('public/images') }}/{{ Cmf::get_store_value('footer_logo') }}" alt="Logo">
-                    </a>
-                    <p class="text-white">Life Insurance Insurance has been a trusted name in insurance for more than 10 years. Today, we proudly serve insurance provincewide.</p>
+<footer class="footer section gray-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mr-auto col-sm-12">
+                <div class="widget mb-5 mb-lg-0">
+                    <div class="logo mb-4">
+                        <img src="{{ url('public/front/visitorinsure/images/logo.png') }}" alt="" class="img-fluid">
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <ul class="list-unstyled footer-menu lh-35">
+                            <li><a href="{{ url('') }}">Home</a></li>
+                            <li><a href="{{ url('blogs') }}">Blog</a></li>
+                            <li><a href="{{ url('claim') }}">Claims </a></li>
+                            <li><a href="{{ url('privacypolicy') }}">Privacy Policy</a></li>
+                            <li><a href="{{ url('become-a-partner') }}">Become a Partner</a></li>
+                            <li><a href="{{ url('contactus') }}">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
-        </div>
+            <div class="col-lg-2 col-md-12 col-sm-12">
+                <div class="widget widget_links mb-5 mb-lg-0">
+                    <h4 class="text-capitalize mb-3">Insurance</h4>
+                    <div class="mb-4"><img src="images/divider.png" class="divider_line"></div>
 
-        <div class="col-lg-3 col-md-6">
-            <div class="single-widget single-widget-li">
-                <h3 style="border-bottom:4px solid #1bbc9b;width: 160px;" class="text-white">Get Insurance</h3>
-
-                <ul>
-                    <li>
-                        <a href="{{ url('life-insurance')}}">
-                                Insurance
+                    <ul class="list-unstyled footer-menu lh-35">
+                        <li><a target="_blank" href="{{ url('') }}">
+                                <img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon1.png') }}"> SuperVisa
                             </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('claim')}}">
-                                Claim Insurance
-                            </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('resp')}}">
-                                RESP Insurance
-                            </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('rrsp')}}">
-                                RRSP Insurance
-                            </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('nonmedical')}}">
-                                Non Medical Insurance
-                            </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('health-insurance')}}">
-                                Health Insurance
-                            </a>
-                    </li>
-                </ul>
+                        </li>
+                        <li><a target="_blank" href="{{ url('') }}"><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon2.png') }}"> Student</a></li>
+                        <li><a target="_blank" href="{{ url('') }}"><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon3.png') }}"> Travellers</a></li>
+                        <li><a target="_blank" href="{{ url('') }}"><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon4.png') }}"> Baggage </a></li>
+                        <li><a target="_blank" href="{{ url('') }}"><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon5.png') }}"> Multi Trip</a></li>
+                        <li><a target="_blank" href="{{ url('') }}"><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon6.png') }}"> Single Trip</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="single-widget single-widget-li">
-                <h3 style="border-bottom:4px solid #1bbc9b;width: 160px;" class="text-white">Useful Links</h3>
-
-                <ul>
-                    <li>
-                        <a href="{{ url('index')}}">
-                                Home
-                            </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                                About Life Advice
-                            </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('faq')}}">
-                                FAQ
-                            </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('blogs')}}">
-                                Blogs
-                            </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('privacypolicy')}}">
-                                Privacy Policy
-                            </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('terms-and-condition')}}">
-                                Terms & Condition
-                            </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('contactus') }}">
-                                Contact Us
-                            </a>
-                    </li>
-                </ul>
+            <div class="col-lg-2 col-md-12 col-sm-12">
+                <div class="widget widget_links mb-5 mb-lg-0">
+                    <h4 class="text-capitalize mb-3">Useful Links</h4>
+                    <div class="mb-4"><img src="images/divider.png" class="divider_line"></div>
+                    
+                    <ul class="list-unstyled footer-menu lh-35">
+                        <li><a href="#"><img class="icon" src="images/footer/icon7.png"> Facebook</a></li>
+                        <li><a href="#"><img class="icon" src="images/footer/icon8.png"> Twitter</a></li>
+                        <li><a href="#"><img class="icon" src="images/footer/icon9.png"> LinkedIn </a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="single-widget contacts">
-                <h3 style="border-bottom:4px solid #1bbc9b;width: 200px;" class="text-white">Contact Details</h3>
-
-                <ul >
-
-                    <li>
-                        <i class="flaticon-maps-and-flags"></i>
-                       <p><span>Address:</span> {{ Cmf::get_store_value('site_address') }}</p> 
-                    </li>
-                    <li class="pl-0">
-                        <a href="tel:+18555008999">
-                                <i class="flaticon-call"></i>
-                                <p><span>Phone:</span> 
-                               {{ Cmf::get_store_value('site_phonenumber') }}</p>
-                                
-                            </a>
-                    </li>
-
-                    <li class="pl-0">
-                        <a href="/cdn-cgi/l/email-protection#98f0fdf4f4f7d8ebedeafdece1b6fbf7f5">
-                                <i class="flaticon-email"></i>
-                                <p><span>Email:</span><span class="__cf_email__" data-cfemail="cea6aba2a2a18ebdbbbcabbab7e0ada1a3"> {{ Cmf::get_store_value('site_email') }}</span></p>
-                            </a>
-                    </li>
-                </ul>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <div class="widget widget_links mb-5 mb-lg-0">
+                    <h4 class="text-capitalize mb-3">Contact Us</h4>
+                    <div class="mb-4"><img src="images/divider.png" class="divider_line"></div>
+                    
+                    <ul class="list-unstyled footer-menu lh-35">
+                        <li><img class="icon" src="images/footer/icon10.png"> 
+                            Direct: 519-404-5041<br>
+                            <span class="footer_new_line_text_space">Tolfree: 1855-500-5041</span></li>
+                        <li><img class="icon" src="images/footer/icon12.png"> 912 Isaiah Place, Kitchener ON <br><span class="footer_new_line_text_space">N2E 0B6, Canada</span></li>
+                        <li><img class="icon" src="images/footer/icon11.png"> Fax: 1855-222-7444</li>
+                        <li><img class="icon" src="images/footer/icon13.png"> info@visitorguard.ca</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div style=" border-top: 1px solid #1bbc9b; padding-top: 20px; padding-bottom: 20px;" class="container-homepage">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="footer-icon">
-                <ul class="d-flex" style="color: #06346e">
-                    <li><a href="#"><i class="fa fa-twitter mr-2 favicon"></i></a></li>
-                    <li><a href="#"><i class="fa fa-instagram mr-2 favicon"></i></a></li>
-                    <li><a href="#"><i class="fa fa-facebook mr-2 favicon"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-6 text-right">
-            <p>Copyright © All Rights Reserved.</p>
-        </div>
-    </div>
-    
-</div>
 </footer>
-<div class="go-top go-top-five">
- <i class='bx bx-chevrons-up'></i>
- <i class='bx bx-chevrons-up'></i>
-</div>
+<div class="container-line-white"></div>
+<footer class="footer gray-bg pt-2 pb-2">
+    <div class="container">
+        <div class="footer-btm">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-12">
+                    <div class="copyright">
+                        VisitorGuard.ca &copy; 2015 - <?php echo date("Y")?>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <a class="backtop js-scroll-trigger" href="#top">
+                        <span class="arrow_up"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

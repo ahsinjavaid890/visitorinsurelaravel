@@ -45,7 +45,7 @@ Route::get('/requests', [HomeController::class, 'requests'])->name('requests');
 
 
 
-Route::get('/security-settings', [SiteController::class, 'securitysettings']);
+Route::get('/become-a-partner', [SiteController::class, 'becomeapartner']);
 Route::get('/policydetail/{id}', [HomeController::class, 'policydetail']);
 Route::POST('changerequest', [HomeController::class, 'changerequest']);
 Route::POST('refundrequests', [HomeController::class, 'refundrequests']);
@@ -173,9 +173,14 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::post('/updatblogcategory','AdminController@updatblogcategory');
         Route::get('/deleteblogcategory/{id}','AdminController@deleteblogcategory');
         Route::get('/allblogs','AdminController@allblogs');
-        Route::post('/addnewfaq','AdminController@addnewfaq');
+        Route::post('/addnewblog','AdminController@addnewblog');
         Route::post('/updateblog','AdminController@updateblog');
         Route::get('/deleteblog/{id}','AdminController@deleteblog');
+    });
+    Route::name('testimonials.')->prefix('testimonials')->group(function(){
+        Route::get('/','AdminController@testimonials');
+        Route::post('/add','AdminController@addtestimonials');
+        Route::post('/update','AdminController@updatetestimonials');
     });
     Route::name('website.')->prefix('website')->group(function(){
         Route::get('/settings','SettingsController@appearance');

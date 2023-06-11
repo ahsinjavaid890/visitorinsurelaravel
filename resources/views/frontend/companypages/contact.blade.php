@@ -2,82 +2,123 @@
 @include('frontend.companypages.includes.mettatittle')
 @section('content')
 
-<style type="text/css">
-    
-.cnctmain {
-    background-image: url('{{ asset('public/front/img/images/lifeadvice-trans.png') }}');
-    background-repeat: no-repeat,no-repeat;
-    background-position: left top, bottom right;
-    padding-bottom: 100px !important;
-    padding-top: 100px;
-}
-</style>
-@include('frontend.companypages.includes.main')
-        <div class="container-fluid pt-5 pl-0 pr-0">
 
-        <div class="row pb-2 d-none contactus align-items-center">
-            <h1 class="text-center">Got questions about insurance?</h1>
-
-            <div class="col-md-6 py-3 text-center offset-md-3">
-                <h5>Get answers to your questions from our Insurance Experts. We will also assist you all the way with your insurance application.</h5>
-                <p>Speak with our Advisors anytime</p>
+<!-- Slider Start -->
+<section class="banner-contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
             </div>
-
+            <div class="col-lg-6 col-md-12 headline_text">
+                <div class="block">
+                    <div class="divider mb-3"></div>
+                    <h1 class="mb-4 mt-3 "><span class="main_title blue_text">Get in Touch With Us</span></h1>
+                    
+                    <p class="mb-4 pr-5 heading_tagline">We Would Love to Hear From You.</p>
+                </div>
+            </div>
         </div>
+    </div>
+</section>
 
-        <div class="container-fluid pb-5 cnctmain">
-            <div class="container">
-                <div class="row  row-eq-height">
 
-                    <div class="col-md-5 contactadd align-items-center">
-                        <h2 class="contact-heading"><span>Contact</span> Address</h2>
-                        <p>Get answers to your questions from our Insurance Experts. We will also assist you all the way with your insurance application.</p>
-                        <p>Speak with our Advisors anytime</p>
 
-                        <div class="col-md-12 add">
-                            <h5><i class="fa fa-map-marker"></i>   Address </h5><p> {{ Cmf::get_store_value('site_address') }} </p>
+<section class="contact-info pb-0 pt-5">
+    <div class="container">
+         <div class="row">
+            <div class="col-lg-4 col-sm-6 col-md-6 right-green-seperator">
+                <div class="contact-block mb-4 mb-lg-0">
+                    <img class="contact-info-phone" src="{{ url('public/front/visitorinsure/images/contact-phone.png') }}">
+                    <div class="contact-info-text">
+                        Telephone: +1855-500-5041<br>
+                        Fax: +1855-222-7444
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-md-6 right-green-seperator">
+                <div class="contact-block mb-4 mb-lg-0">
+                    <img class="contact-info-email" src="{{ url('public/front/visitorinsure/images/contact-email.png') }}">
+                    <div class="contact-info-text">
+                        info@visitorguard.ca
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-md-6">
+                <div class="contact-block mb-4 mb-lg-0">
+                    <img class="contact-info-address" src="{{ url('public/front/visitorinsure/images/contact-address.png') }}">
+                    <div class="contact-info-text">
+                        912 Isaiah Pl, Kitchener, ON N2E<br>0B6, Canada
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<h1 class="mb-5 mt-3 text-left"><span class="title_h3">
+    <span class="blue_text">We have received your contact inquiry we will get </span>
+    <span class="green_text">back to you as soon as possible.</span>        
+</span></h1>
+<section class="contact-form-wrap section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <form id="contact-form" class="contact__form " method="post" action="?action=post">
+                    
+
+                    <div class="row">
+
+
+                        <div class="col-lg-12">
+                            <h1 class="mb-5 mt-3 text-left"><span class="second_title">
+                                <span class="blue_text">Contact </span>
+                                <span class="green_text">Us</span>      
+                            </span></h1>
                         </div>
-            
-                        <div class="col-md-12 add">
-                            <h5><i class="fa fa-phone"></i> Phone  </h5>
-                            <p>{{ Cmf::get_store_value('site_phonenumber') }}</p></div> 
 
-                            <div class="col-md-12 add">
-                                <h5><i class="fa fa-envelope"></i> Email </h5>
-                                <p><span class="__cf_email__" data-cfemail="cea6aba2a2a18ebdbbbcabbab7e0ada1a3"> {{ Cmf::get_store_value('site_email') }}</span></p>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input name="fname" id="name" type="text" class="form-control" placeholder="Your Frist Name" required>
                             </div>
                         </div>
-            
-                        <div class="col-md-7 contactform" id="contact-result">
-                            <div id="result"></div>
-                            @include('alerts.index')
-                            <h2 class="contact-heading"><span>Send a</span> Message</h2>
-                            <h5><span>Please fill the form below and submit... We will contact you.</span></h5>
-                            <form method="post" action="{{ url('contactus') }}" id="contact-form" enctype="multipart/form-data">
-                                 @csrf
-                                <div class="row">
-                                    <p class="col-6"><label class="">Your Name *</label><br><span><input type="text" name="fname" class="form-control"></span></p>
-                                    <p class="col-6"><label class="">Your Last Name</label><br><span><input type="text" name="lname" class="form-control"></span></p>
-                                    <p class="col-6"><label class="">Your Email *</label><br><span><input type="text" name="email" class="form-control"></span></p>
-                                    <p class="col-6"><label class="">Your Contact No *</label><br><span><input type="text" name="mobile" class="form-control"></span></p>
-                                    <p class="col-12"><label class="">Your Subject</label><br><span><input type="text" name="subject" class="form-control"></span></p>
-                                    <p class="col-12"><label class="">Your Message</label><br><span><textarea name="description" rows="2" class="form-control" required></textarea></span></p>
-                                    <p class="col-12">
-                                        <input type="submit" class="btn-lg save-btn mr-4" name="submit" value="Submit">
-                                    </p>
-                                </div>
-                            </form>
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input name="lname" id="lname" type="text" class="form-control" placeholder="Your Last Address" required>
+                            </div>
+                        </div>
+                         <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input name="email" id="email" type="email" class="form-control" placeholder="Your Email Address" required>
+                            </div>
+                        </div>
+                         <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input name="phone" id="phone" type="text" class="form-control" placeholder="Your Phone Number">
+                            </div>
                         </div>
                     </div>
-                    <div class="vector-contact">
-                        <img src="{{ asset('public/front/img/images/men-head.png') }}">
+
+                    <div class="form-group-2 mb-4">
+                        <label>Your Message</label>
+                        <textarea name="message" id="message" class="form-control" rows="6" placeholder="Your Message" required></textarea>
                     </div>
-                </div>
+
+                    <div class="text-center">
+                        <input class="btn btn-main btn-block" name="submit" type="submit" value="Send Messege"></input>
+                        <p class="mt-3 font-weight-bold">Or Use</p>
+                        
+                        <a class="contact-social-icon" target="_blank" href="https://www.facebook.com/visitorguard.ca"><img src="{{ url('public/front/visitorinsure/images/messenger.png') }}"></a> &nbsp; <a target="_blank" class="contact-social-icon" href="https://wa.me/+18555005041"><img src="{{ url('public/front/visitorinsure/images/whatsapp.png') }}"></a>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2898.7253269219955!2d-80.5233042829182!3d43.40367014419104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882bf5f33283b73d%3A0x11d11e5af5f01ae3!2s912%20Isaiah%20Pl%2C%20Kitchener%2C%20ON%20N2E%200B6%2C%20Canada!5e0!3m2!1sen!2s!4v1646568219267!5m2!1sen!2s" width="100%" height="700" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
-            <div>
-                <div class="row">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2898.706305242645!2d-80.52393728446313!3d43.40406767913069!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882bf5f33283b73d%3A0x11d11e5af5f01ae3!2s912+Isaiah+Pl%2C+Kitchener%2C+ON+N2E+0B6%2C+Canada!5e0!3m2!1sen!2sin!4v1559567604280!5m2!1sen!2sin" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-                </div>
-            </div>
+    </div>
+</section>
 @endsection

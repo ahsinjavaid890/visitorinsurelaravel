@@ -1,66 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zxx">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
-	<link rel="stylesheet" href="{{ asset('public/front/css/bootstrap.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('public/front/css/owl.theme.default.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('public/front/css/owl.carousel.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('public/front/css/magnific-popup.css') }}">
-	<link rel="stylesheet" href="{{ asset('public/front/css/animate.css') }}">
-	<link rel="stylesheet" href="{{ asset('public/front/css/boxicons.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('public/front/css/flaticon.css') }}">
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.4.1/slick.css">
-	<link rel="stylesheet" href="{{ asset('public/front/css/meanmenu.css') }}">
-	<link rel="stylesheet" href="{{ asset('public/front/css/nice-select.css') }}">
-	<link rel="stylesheet" href="{{ asset('public/front/css/odometer.css') }}">
-	<link rel="stylesheet" href="{{ asset('public/front/css/style.css') }}">
-	<link rel="stylesheet" href="{{ asset('public/front/css/time.css') }}">
-	<link rel="stylesheet" href="{{ asset('public/front/css/responsive.css') }}">
-	<script src="{{ asset('public/front/js/jquery-3.5.1.slim.min.js') }}"></script>
-	<meta name="csrf-token" content="{{ csrf_token() }}">
+	@yield('tittle')
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="content-language" content="en-ca">
+	<meta charset="utf-8">
+	<meta name="theme-color" content="#13eca1">
+	<link rel="alternate" href="{{ url('') }}" hreflang="x-default" />
+	<link rel="shortcut icon" type="image/x-icon" href="{{ url('public/images') }}/{{ Cmf::get_store_value('favicon') }}" />
+  <link rel="stylesheet" href="{{ url('public/front/visitorinsure/plugins/bootstrap/css/bootstrap.min.css') }}">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 	<link rel="icon" type="image/png" href="{{ url('public/images') }}/{{ Cmf::get_store_value('favicon') }}">    
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  	@yield('tittle')
-  	<style type="text/css">
-  		/*#loading {
-				  position: fixed;
-				  display: block;
-				  width: 100%;
-				  height: 100%;
-				  top: 0;
-				  left: 0;
-				  text-align: center;
-				  opacity: 1;
-				  background-color: #dddd;
-				  z-index: 99;
-				}
-				.loading-div{
-					position: absolute;
-			    left: 35%;
-			    top: 50%;
-			    z-index: 100;
-			    background-color: #3a5371;
-			    padding: 10px;
-			    border-radius: 15px;
-				}
-				.loading-image{
-					margin-bottom: 15px;
-			    background-color: white;
-			    border-radius: 10px;
-			    padding: 10px;
-				}*/
-  	</style>
+  <link rel="stylesheet" href="{{ url('public/front/visitorinsure/plugins/slick-carousel/slick/slick_all.min.css') }}">
+  <link rel="stylesheet" href="{{ url('public/front/visitorinsure/css/style.min.css') }}">
 </head>
-	<body class="body-five">
-		<!-- <div id="loading">
-			<div class="loading-div">
-				<img id="loading-image" src="{{ url('public/images/118135255.png') }}" alt="Loading..." />
-				<h1>Finding the best plans for you</h1>
-			</div>
-		  
-		</div> -->
+<body id="top">
 		@include('frontend.includes.header')
 			@yield('content')
 		@include('frontend.includes.footer')
@@ -82,6 +39,26 @@
 		<div class="compare_header_top">
 
 		</div>
-	</body>
+	   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap 4.3.2 -->
+    <!-- Slick Slider -->
+    <script src="{{ url('public/front/visitorinsure/plugins/slick-carousel/slick/slick.min.js') }}"></script>
+
+
+    <script>
+    !function(s){"use strict";s(window).on("scroll",function(){s(window).scrollTop()>70?s(".backtop").addClass("reveal"):s(".backtop").removeClass("reveal")}),s(".portfolio-single-slider").slick({infinite:!0,arrows:!1,autoplay:!0,autoplaySpeed:2e3}),s(".clients-logo").slick({infinite:!0,arrows:!1,autoplay:!0,slidesToShow:5,slidesToScroll:1,autoplaySpeed:4e3,responsive:[{breakpoint:1024,settings:{slidesToShow:4,slidesToScroll:1,infinite:!0}},{breakpoint:900,settings:{slidesToShow:3,slidesToScroll:1}},{breakpoint:600,settings:{slidesToShow:3,slidesToScroll:1}},{breakpoint:480,settings:{slidesToShow:2,slidesToScroll:1}}]}),s(".insurance-plans").slick({infinite:!0,arrows:!0,autoplay:!1,slidesToShow:4,slidesToScroll:1,prevArrow:"<img class='a-left control-c prev slick-prev' src='{{ url('public/front/visitorinsure/images/arrow.png') }}'>",nextArrow:"<img class='a-right control-c next slick-next' src='{{ url('public/front/visitorinsure/images/arrow.png') }}'>",autoplaySpeed:4e3,responsive:[{breakpoint:1024,settings:{slidesToShow:3,slidesToScroll:1,infinite:!0}},{breakpoint:900,settings:{slidesToShow:2,slidesToScroll:1}},{breakpoint:600,settings:{slidesToShow:2,slidesToScroll:1}},{breakpoint:480,settings:{slidesToShow:1,slidesToScroll:1}}]}),s(".testimonials-plans").slick({infinite:!0,arrows:!0,autoplay:!1,slidesToShow:3,slidesToScroll:1,prevArrow:"<img class='a-left control-c prev slick-prev' src='{{ url('public/front/visitorinsure/images/arrow.png') }}'>",nextArrow:"<img class='a-right control-c next slick-next' src='{{ url('public/front/visitorinsure/images/arrow.png') }}'>",autoplaySpeed:4e3,responsive:[{breakpoint:1024,settings:{slidesToShow:2,slidesToScroll:1,infinite:!0}},{breakpoint:900,settings:{slidesToShow:2,slidesToScroll:1}},{breakpoint:600,settings:{slidesToShow:2,slidesToScroll:1}},{breakpoint:480,settings:{slidesToShow:1,slidesToScroll:1}}]}),s(".testimonial-wrap").slick({slidesToShow:1,slidesToScroll:1,infinite:!0,dots:!0,arrows:!1,autoplay:!0,vertical:!0,verticalSwiping:!0,autoplaySpeed:6e3,responsive:[{breakpoint:1024,settings:{slidesToShow:1,slidesToScroll:1,infinite:!0,dots:!0}},{breakpoint:900,settings:{slidesToShow:1,slidesToScroll:1}},{breakpoint:600,settings:{slidesToShow:1,slidesToScroll:1}},{breakpoint:480,settings:{slidesToShow:1,slidesToScroll:1}}]}),s(".testimonial-wrap-2").slick({slidesToShow:2,slidesToScroll:2,infinite:!0,dots:!0,arrows:!1,autoplay:!0,autoplaySpeed:6e3,responsive:[{breakpoint:1024,settings:{slidesToShow:2,slidesToScroll:2,infinite:!0,dots:!0}},{breakpoint:900,settings:{slidesToShow:1,slidesToScroll:1}},{breakpoint:600,settings:{slidesToShow:1,slidesToScroll:1}},{breakpoint:480,settings:{slidesToShow:1,slidesToScroll:1}}]})}(jQuery),slide_index=1;const files=["slide01.png","slide02.png","slide03.png","slide04.png","slide05.png","slide06.png","slide07.png","slide08.png"];function slide_changing(){$("#custom_slide").attr("src","public/front/visitorinsure/images/"+files[slide_index]),slide_index++,slide_index>7&&(slide_index=0),setTimeout(slide_changing,1e3)}setTimeout(slide_changing,1e3),$("#show_more_faq").click(function(){$(".faqs_section_part2").slideDown(500),$("#show_more_faq").hide(),$("#show_less_faq").show()}),$("#show_less_faq").click(function(){$(".faqs_section_part2").slideUp(500),$("#show_less_faq").hide(),$("#show_more_faq").show()});
+    </script>
+
+        
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-194126682-1');
+    </script>
+    <script id="cookieinfo" src="https://cookieinfoscript.com/js/cookieinfo.min.js"></script>           
+  </body>
 </html>
 @yield('script')
