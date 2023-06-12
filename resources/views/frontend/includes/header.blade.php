@@ -25,7 +25,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Our Plans <i class="icofont-thin-down"></i></a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown02">
-                        <li><a target="_blank" class="dropdown-item" href="{{ url('super-visa-insurance') }}">Super Visa Insurance</a></li>
+                        <li><a target="_blank" class="dropdown-item" href="{{ url('product/super-visa-insurance') }}">Super Visa Insurance</a></li>
                         <li><a target="_blank" class="dropdown-item" href="">Visitor Insurance</a></li>
                         <li><a target="_blank" class="dropdown-item" href="">Student Insurance</a></li>
                         <li><a target="_blank" class="dropdown-item" href="">Single Trip Insurance</a></li>
@@ -49,7 +49,7 @@
                 @endif
             </ul>
           </div>
-             <a class="d-lg-none" href="tel:8555005041">
+             <a class="d-lg-none mobilephoneimage" href="tel:8555005041">
                 <img class="call-btn-header" src="{{ url('public/front/visitorinsure/images/contact-phone-white.png') }}" >
               </a>
           </div>

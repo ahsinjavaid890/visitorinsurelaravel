@@ -921,7 +921,14 @@ class AdminController extends Controller
             $claimform = Cmf::sendimagetodirectory($request->claimform);
             $update = array('claimform' => $claimform,'comp_name' => $request->name);
         }else{
-            $update = array('comp_name' => $request->name);
+
+            if($request->logo)
+            {
+                $comp_logo = Cmf::sendimagetodirectory($request->logo);
+                $update = array('comp_logo' => $comp_logo,'comp_name' => $request->name);
+            }else{
+                $update = array('comp_name' => $request->name);
+            }
         }
         DB::table('wp_dh_companies')->where('comp_id' , $request->id)->update($update);
         return redirect()->back()->with('message', 'Company Updated Successfully');

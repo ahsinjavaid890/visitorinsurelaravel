@@ -15,9 +15,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
 <script type="text/javascript" src="{{ url('public/front/tabs/js/selecttwo.js')}}"></script>
 <style type="text/css">
-	.tabshead{
-		margin-top: 67px;
-	}
 	.wrapper-dropdown{
 		top: 22px !important;
 		width: 94% !important;
@@ -38,7 +35,7 @@
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/css/tab_style.css') }}">
 <section class="tabshead">
 	<div class="container">
-		<div class="row tabs" style="padding-top: 20px;">
+		<div class="row tabs">
 			<div class="col-md-4 col-xs-4 text-center information_qoutes">
 				<button class="btn">
 					<i class="fa fa-user"></i> Information

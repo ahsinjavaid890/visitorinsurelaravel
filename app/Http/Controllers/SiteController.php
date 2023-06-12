@@ -454,24 +454,20 @@ class SiteController extends Controller
     } 
     public function contacts(Request $request)
     {
-        $this->validate($request, [
-            'fname' => 'required',
-            'lname' => 'required',
-            'email' => 'required',
-            'mobile' => 'required',
-            'subject' => 'required',
-            'description' => 'required',
-        ]);
-
+        $subject = 'New Contact Us Request | '.$request->first_name;
+        Mail::send('email.contactusrequest', ['request' => $request], function($message) use($request , $subject){
+              $message->to('admin@visitorinsure.ca');
+              $message->subject($subject);
+        });
         $insert = new contactus_messages();
-        $insert->fname = $request->fname;
+        $insert->fname = $request->first_name;
         $insert->lname = $request->lname;
         $insert->email = $request->email;
-        $insert->mobile = $request->mobile;
-        $insert->subject = $request->subject; 
-        $insert->description = $request->description;
+        $insert->mobile = $request->phone;
+        $insert->subject = $subject; 
+        $insert->description = $request->message;
         $insert->save();
-        return redirect()->back()->with('message', 'Your Query Submited Successfully We Will Contact You With In 24 Hours');
+        return redirect()->back()->with('message', 'Your Query Submited Successfully We Will Contact You as soon as Possible');
     }
     public function privacypolicy()
     {

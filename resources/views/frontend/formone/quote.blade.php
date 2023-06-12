@@ -2,9 +2,6 @@
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/css/tab_style.css') }}">
 <style type="text/css">
-	.tabshead{
-		margin-top: 67px;
-	}
 	.wrapper-dropdown{
 		top: 22px !important;
 		width: 94% !important;

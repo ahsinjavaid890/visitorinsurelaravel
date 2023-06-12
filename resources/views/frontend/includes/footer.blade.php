@@ -21,7 +21,7 @@
             <div class="col-lg-2 col-md-12 col-sm-12">
                 <div class="widget widget_links mb-5 mb-lg-0">
                     <h4 class="text-capitalize mb-3">Insurance</h4>
-                    <div class="mb-4"><img src="images/divider.png" class="divider_line"></div>
+                    <div class="mb-4"><img src="{{ url('public/front/visitorinsure/images/divider.png') }}" class="divider_line"></div>
 
                     <ul class="list-unstyled footer-menu lh-35">
                         <li><a target="_blank" href="{{ url('') }}">
@@ -39,27 +39,27 @@
             <div class="col-lg-2 col-md-12 col-sm-12">
                 <div class="widget widget_links mb-5 mb-lg-0">
                     <h4 class="text-capitalize mb-3">Useful Links</h4>
-                    <div class="mb-4"><img src="images/divider.png" class="divider_line"></div>
+                    <div class="mb-4"><img src="{{ url('public/front/visitorinsure/images/divider.png') }}" class="divider_line"></div>
                     
                     <ul class="list-unstyled footer-menu lh-35">
-                        <li><a href="#"><img class="icon" src="images/footer/icon7.png"> Facebook</a></li>
-                        <li><a href="#"><img class="icon" src="images/footer/icon8.png"> Twitter</a></li>
-                        <li><a href="#"><img class="icon" src="images/footer/icon9.png"> LinkedIn </a></li>
+                        <li><a href="#"><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon7.png') }}"> Facebook</a></li>
+                        <li><a href="#"><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon8.png') }}"> Twitter</a></li>
+                        <li><a href="#"><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon9.png') }}"> LinkedIn </a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-4 col-md-12 col-sm-12">
                 <div class="widget widget_links mb-5 mb-lg-0">
                     <h4 class="text-capitalize mb-3">Contact Us</h4>
-                    <div class="mb-4"><img src="images/divider.png" class="divider_line"></div>
+                    <div class="mb-4"><img src="{{ url('public/front/visitorinsure/images/divider.png') }}" class="divider_line"></div>
                     
                     <ul class="list-unstyled footer-menu lh-35">
-                        <li><img class="icon" src="images/footer/icon10.png"> 
+                        <li><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon10.png') }}"> 
                             Direct: 519-404-5041<br>
                             <span class="footer_new_line_text_space">Tolfree: 1855-500-5041</span></li>
-                        <li><img class="icon" src="images/footer/icon12.png"> 912 Isaiah Place, Kitchener ON <br><span class="footer_new_line_text_space">N2E 0B6, Canada</span></li>
-                        <li><img class="icon" src="images/footer/icon11.png"> Fax: 1855-222-7444</li>
-                        <li><img class="icon" src="images/footer/icon13.png"> info@visitorguard.ca</li>
+                        <li><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon12.png') }}"> 912 Isaiah Place, Kitchener ON <br><span class="footer_new_line_text_space">N2E 0B6, Canada</span></li>
+                        <li><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon11.png') }}"> Fax: 1855-222-7444</li>
+                        <li><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon13.png') }}"> info@visitorguard.ca</li>
                     </ul>
                 </div>
             </div>

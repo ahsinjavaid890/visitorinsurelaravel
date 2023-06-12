@@ -28,7 +28,7 @@ $bg = $bgs[$k];
    <div class="container">
       <div class="row birthdate">
          <div class="col-md-2 hidden-xs"></div>
-         <div class="col-md-8 visa-insurance new-visa" style="padding-top: 10px;padding-bottom: 20px;background:rgba(0,0,0,0.7);padding-left: 10px;padding-right: 0;">
+         <div class="col-md-8 visa-insurance new-visa" style="background:rgba(0,0,0,0.7);">
             <div class="clearfix"></div>
             <div class="col-md-12 text-center" style="padding: 20px 0;">
                <h1 class="title-form" style="font-weight:bold;margin: 0px;color: #FFF;font-size: 38px;"><strong>{{ $data->pro_name }}</strong></h1>
@@ -72,19 +72,19 @@ $bg = $bgs[$k];
                            @for($i=1;$i<=$number_of_travel;$i++)
                            <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
                               <div class="row">
-                                 <div style="padding-left: 2px;margin-bottom: -14px" class="col-md-6 padding-right-zero-on-mobile">
+                                 <div class="col-md-6">
                                     <label style="font-size: 16px;" for="year{{$i}}" class="text-white">Birth date of the <?php echo $ordinal_words[$i];?> Traveller</label>
                                        <div class="custom-form-control mb-2">
                                           <input id="dateofbirthfull{{ $i }}" class="form-control" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                        </div>
                                     </div>
-                                    <div style="padding-right: 0px;" class="col-md-6 padding-left-zero-on-mobile">
+                                    <div  class="col-md-6">
                                        <div class="custom-form-control">
                                           <label style="font-size: 16px;" for="year{{$i}}" class="text-white">Pre Existing of the <?php echo $ordinal_words[$i];?> Traveller</label>
                                           <select name="pre_existing[]" class="form-control" style="    padding: 5px 12px !important;">
                                              <option value="">Select Pre Existing Condition</option>
                                              <option value="yes">Yes</option>
-                                             <option value="no">No</option>
+                                             <option selected value="no">No</option>
                                            </select>
                                        </div>
                                     </div>
@@ -364,7 +364,7 @@ $bg = $bgs[$k];
                                     <select required class="form-input" name="fplan" id=""      style="    padding: 5px 12px !important;">
                                        <option value="">--- Please Choose ---</option>
                                          <option value="yes" onclick="changefamilyyes()">Yes</option>
-                                         <option value="no"  onclick="changefamilyno()">No</option>
+                                         <option selected value="no"  onclick="changefamilyno()">No</option>
                                     </select>
                                  </div>
                               </div>
@@ -408,13 +408,14 @@ $bg = $bgs[$k];
                         @endif
                          @endif
                         @endfor 
-                  </div>
-      
-                     
-                  <div class="col-md-12" style="clear: both;">
+                        <div class="col-md-12" style="clear: both;">
                      <span id="family_error" style="display: none; text-align: right;padding: 20px; color:yellow;"><i class="fa fa-warning"></i> </span>
                      <button type="submit" name="GET QUOTES" id="GET_QUOTES" class="btn btn-danger" style="border: 1px solid rgb(27, 188, 155);padding: 10px 30px;;margin-top: 20px;display: block;border-radius: 4px !important;"><i class="fa fa-list"></i> Get a Quote </button>
                   </div>
+                  </div>
+      
+                     
+                  
                
             </form>
          </div>

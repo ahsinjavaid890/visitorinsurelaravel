@@ -439,7 +439,7 @@ if($show == '1' && $total_price > 0){
         Add To Compare</label>
 </div>
 <div class="col-md-2 text-center" style="padding-top: 0px;">
-<img style="width:auto;" src="{{ url('public/images') }}/<?php echo $comp_logo; ?>"/>
+<img style="width:100%;" src="{{ url('public/images') }}/<?php echo $comp_logo; ?>"/>
 </div>
 <!-- <div class="col-md-3 hidden-xs text-center">
 <strong>Plan</strong>

@@ -16,6 +16,8 @@
 	<link rel="icon" type="image/png" href="{{ url('public/images') }}/{{ Cmf::get_store_value('favicon') }}">    
   <link rel="stylesheet" href="{{ url('public/front/visitorinsure/plugins/slick-carousel/slick/slick_all.min.css') }}">
   <link rel="stylesheet" href="{{ url('public/front/visitorinsure/css/style.min.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body id="top">
 		@include('frontend.includes.header')
@@ -40,7 +42,7 @@
 
 		</div>
 	   
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
     <!-- Bootstrap 4.3.2 -->
     <!-- Slick Slider -->
     <script src="{{ url('public/front/visitorinsure/plugins/slick-carousel/slick/slick.min.js') }}"></script>
