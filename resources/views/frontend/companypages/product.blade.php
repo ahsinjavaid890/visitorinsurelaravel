@@ -1,5 +1,7 @@
 @extends('frontend.layouts.main')
-@include('frontend.companypages.includes.mettatittle')
+@section('tittle')
+<title>Our Products</title>
+@endsection
 @section('content')
 <section class="banner-products">
    <div class="container">

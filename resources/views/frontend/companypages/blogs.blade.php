@@ -1,5 +1,7 @@
 @extends('frontend.layouts.main')
-@include('frontend.companypages.includes.mettatittle')
+@section('tittle')
+<title>Blogs</title>
+@endsection
 @section('content')
 <!-- Slider Start -->
 <section class="banner-blogs">

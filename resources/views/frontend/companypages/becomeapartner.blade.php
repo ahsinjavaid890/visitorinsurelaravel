@@ -1,4 +1,7 @@
 @extends('frontend.layouts.main')
+@section('tittle')
+<title>Become a Partner</title>
+@endsection
 @section('content')
 <!-- Slider Start -->
 <section class="banner-privacy">

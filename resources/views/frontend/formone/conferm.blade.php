@@ -39,9 +39,8 @@ svg {
 						    <path class="tick" d="M6.5 13.5L10 17 l8.808621-8.308621"/>
 						  </g>
 						</svg>
-
 						<h2 style="margin-top:20px;">Your Quote Submited Successfully</h2>
-            <a style="margin-top:20px;" href="{{ url('login') }}">Login To See Your Policy Details</a>
+                        <a style="margin-top:20px;" href="{{ url('login') }}">Login To See Your Policy Details</a>
                      </div>
                  </div>
              </div>

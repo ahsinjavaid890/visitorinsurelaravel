@@ -1,5 +1,7 @@
 @extends('frontend.layouts.main')
-@include('frontend.companypages.includes.mettatittle')
+@section('tittle')
+<title>Contact US</title>
+@endsection
 @section('content')
 
 

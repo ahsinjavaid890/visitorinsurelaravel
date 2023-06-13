@@ -1,5 +1,4 @@
 @extends('frontend.layouts.main')
-@include('frontend.companypages.includes.mettatittle')
 @section('content')
 
 

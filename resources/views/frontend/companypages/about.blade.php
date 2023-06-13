@@ -1,10 +1,7 @@
 @extends('frontend.layouts.main')
-@php
-    $url = request()->segment(count(request()->segments()));
-    $page = DB::table('travelpages')->where('url' , $url)->get()->first();
-    $secondsection = DB::table('section_three_elements')->where('type' , 'sectiontwoquestion')->where('page' , $url)->get();
-@endphp
-@include('frontend.companypages.includes.mettatittle')
+@section('tittle')
+<title>About Us</title>
+@endsection
 @section('content')
 <link rel="stylesheet" href="{{ url('public/front/css/aboutus.css') }}">
 <section class="about_us_banner" style="background-image: url('{{ url('public/front/images/about/about_us_main.png') }}'); background-repeat: no-repeat; background-size: cover;">
