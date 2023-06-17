@@ -1,4 +1,8 @@
 @extends('frontend.layouts.main')
+
+@section('tittle')
+<title>{{ $data->pro_name }}</title>
+@endsection
 @section('content')
 <style type="text/css">
 	.btn{
