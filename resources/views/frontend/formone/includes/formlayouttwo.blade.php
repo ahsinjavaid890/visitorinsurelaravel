@@ -224,7 +224,7 @@ $bg = $bgs[$k];
                
 
                @php
-                  $sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
+                  $sum = $sum_insured;
                   $min = min($sum);
 
                   $firstsuminsured = $min->sum_insured;
@@ -235,7 +235,7 @@ $bg = $bgs[$k];
                <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
                <script>
                   @php
-                  $sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
+                  $sum = $sum_insured;
                   @endphp
                   var SliderValues = [0,<?php
                    $s = 0;
