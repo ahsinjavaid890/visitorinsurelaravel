@@ -281,20 +281,23 @@ class SiteController extends Controller
             $newuser->status = 'active';
             $newuser->save();
         }
-        $subject = 'Your Life Advice Policy Confirmation | '.$reffrence_number;
+        $subject = 'Thank you for Applying for '.$request->producttype.' | '.$reffrence_number;
         Mail::send('email.purchasepolicy', ['request' => $request,'sale' => $newsale,'policy_number' => $reffrence_number], function($message) use($request , $subject){
               $message->to($request->email);
               $message->subject($subject);
         });
-        Mail::send('email.review', ['request' => $request,'sale' => $newsale], function($message) use($request , $subject){
-              $message->to($request->email);
-              $message->subject('Tell Us How We Did?');
-        });
-        $subject = 'New Sale | Reffrence Number =  '.$reffrence_number;
-        Mail::send('email.purchasepolicy', ['request' => $request,'sale' => $newsale,'policy_number' => $reffrence_number], function($message) use($request , $subject){
-              $message->to('admin@lifeadvice.ca');
-              $message->subject($subject);
-        });
+        // Mail::send('email.review', ['request' => $request,'sale' => $newsale], function($message) use($request , $subject){
+        //       $message->to($request->email);
+        //       $message->subject('Tell Us How We Did?');
+        // });
+        // $subject = 'New Sale | Reffrence Number =  '.$reffrence_number;
+        // Mail::send('email.purchasepolicy', ['request' => $request,'sale' => $newsale,'policy_number' => $reffrence_number], function($message) use($request , $subject){
+        //       $message->to('admin@lifeadvice.ca');
+        //       $message->subject($subject);
+        // });
+
+        exit;
+
         return view('frontend.formone.conferm')->with(array('request'=>$request));
     }
     public function applyplan(Request $request)
@@ -327,8 +330,11 @@ class SiteController extends Controller
     public function quotes(Request $request)
     {
         $quoteNumber = rand();
-        $data = wp_dh_products::where('pro_id' , $request->product_id)->first();
-        $fields = unserialize($data->pro_fields);
+        $getproducturl = wp_dh_products::where('pro_id' , $request->product_id)->first();
+        $fields = unserialize($getproducturl->pro_fields);
+
+        $data = wp_dh_products::where('url' , $getproducturl->url)->where('website' , 'lifeadvice')->first();
+
         $plan = DB::table('wp_dh_insurance_plans' , $data->pro_id)->first();
         $ded = DB::table('wp_dh_insurance_plans_deductibles')->where('plan_id', $plan->id)->groupby('deductible1')->get();
         $query = "CAST(`sum_insured` AS DECIMAL)";
