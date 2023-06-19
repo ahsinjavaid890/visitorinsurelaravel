@@ -19,7 +19,7 @@
     .customized-login-card{
         margin: auto;
         max-width: 648px;
-        width: 90vw;
+        width: 40vw;
         min-width: 0;
         word-wrap: break-word;
         background: #fff;
@@ -39,7 +39,7 @@
     }
     .sign-in--header{
         z-index: 0;
-        margin-bottom: 1.5rem;
+        margin-bottom: .5rem;
     }
     .heading-4{
         text-align: center;
@@ -87,113 +87,156 @@
     hr{
         border-top: 3px solid rgba(0, 0, 0, .1) !important;
     }
+    .custom-form-control label {
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+
+    .ah-custom-tabs {
+        background-color: #ddd;
+        border: none;
+        border-radius: 58px;
+        padding: 4px 5px 5px;
+        margin-bottom: 30px;
+    }
+    .ah-custom-tabs .nav-link.active {
+        border-radius: 50px;
+        border: none !important;
+        background-color: #2b3481;
+        color: white !important;
+    }
+    .ah-custom-tabs .nav-item {
+        width: 50%;
+        text-align: center;
+    }
+    .ah-custom-tabs .nav-item .nav-link {
+        border: none;
+        color: black;
+    }
 </style>
 
-<section class="chooses-blogs chooses-blogs-responsive choose-us-area-five pb-70" style="background-color:#f4f7fa;">
+<section class="chooses-blogs chooses-blogs-responsive choose-us-area-five pt-5" style="background-color:#fff;overflow: hidden">
 <div class="container-homepage container-blog">
-    <div class="row justify-content-center mt-5">
+    <div class="row justify-content-center pb-5">
         <div class="col-md-6">
-            <div  class="sign-in--header">
-                <h1  class="heading-4">Sign in to your account</h1>
-                <p  class="subheader text-secondary-color"> Sign in with your Policy ID and Date of Birth below and get easy, 24/7 access to manage your policy details, documents, and more! </p>
-            </div>
-            <div class="customized-login-card">
-                <div class="card-body">
-                    <form method="POST" action="{{ url('customlogin') }}">
-                        @csrf
-                    <div class="row">
-                        <div class="col-md-6 nopad">
-                            <div class="custom-form-control positionrelative">
-                                <label class="selectlabeldateofbirth">Policy Reffrence ID</label>
-                                <input 
-                                @if(session()->has('reffrence_id'))
-                                    value="{{ session()->get('reffrence_id') }}"
-                                @else
 
-                                 value="{{ old('reffrence_id') }}" @endif class="input" type="text" placeholder="Policy Reffrence ID" name="reffrence_id">
-                                @error('reffrence_id')
-                                <span class="invalid-feedback" role="alert">
+            <div class="customized-login-card">
+                <div  class="sign-in--header">
+                    <h1  class="heading-4">Sign in to your account</h1>
+                    <p  class="subheader text-secondary-color"> Sign in with your Policy ID and Date of Birth below and get easy, 24/7 access to manage your policy details, documents, and more! </p>
+                </div>
+                <div class="card-body">
+                    <ul class="nav nav-tabs ah-custom-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Reffrence ID</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Secure Login</a>
+                        </li>
+                    </ul><!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                            <form method="POST" action="{{ url('customlogin') }}">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <a style="color: #1b8fe4; font-weight: 600;font-size: .875rem;line-height: 1.5rem;" data-toggle="modal" data-target="#whereismypolicyid" href="javascript:void(0)">Where's my Policy Reffrence ID?</a>
+                                    </div>
+                                    <div class="col-md-12 nopad mt-3">
+                                        <div class="custom-form-control positionrelative">
+                                            <label class="">Policy Reffrence ID</label>
+                                            <input
+                                                @if(session()->has('reffrence_id'))
+                                                    value="{{ session()->get('reffrence_id') }}"
+                                                @else
+
+                                                    value="{{ old('reffrence_id') }}" @endif class="input" type="text" placeholder="" name="reffrence_id">
+                                            @error('reffrence_id')
+                                            <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                                @enderror
+                                            @enderror
 
-                                @if(session()->has('policynumberwrong'))
-                                <span class="invalid-feedback" role="alert">
+                                            @if(session()->has('policynumberwrong'))
+                                                <span class="invalid-feedback" role="alert">
                                     <strong>{{ session()->get('policynumberwrong') }}</strong>
                                 </span>
 
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-md-6 nopad">
-                            <div class="custom-form-control positionrelative">
-                                <label class="selectlabeldateofbirth">Date of Birth</label>
-                                <input @if(session()->has('date_of_birth'))
-                                    value="{{ session()->get('date_of_birth') }}"
-                                @else
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 nopad mt-3">
+                                        <div class="custom-form-control positionrelative">
+                                            <label class="">Date of Birth</label>
+                                            <input @if(session()->has('date_of_birth'))
+                                                       value="{{ session()->get('date_of_birth') }}"
+                                                   @else
 
-                                 value="{{ old('date_of_birth') }}" @endif id="dateofbirthfull" class="input" type="text" placeholder="MM/DD/YYYY" name="date_of_birth">
-                                @error('date_of_birth')
-                                <span class="invalid-feedback" role="alert">
+                                                       value="{{ old('date_of_birth') }}" @endif id="dateofbirthfull" class="input" type="text" placeholder="MM/DD/YYYY" name="date_of_birth">
+                                            @error('date_of_birth')
+                                            <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                                @enderror
+                                            @enderror
 
-                                @if(session()->has('dateofbirthwrongwrong'))
-                                <span class="invalid-feedback" role="alert">
+                                            @if(session()->has('dateofbirthwrongwrong'))
+                                                <span class="invalid-feedback" role="alert">
                                     <strong>{{ session()->get('dateofbirthwrongwrong') }}</strong>
                                 </span>
 
-                                @endif
-                                
-                            </div>
+                                            @endif
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 mt-3">
+                                        <div  style=" font-size: .875rem; line-height: 1.5rem; color: #67778f; font-weight: 600; "><strong>Note:</strong> If you previously created an account with your Email Address, you can now simply login with your Policy ID and Date of Birth. </div>
+                                    </div>
+                                    <div class="col-md-12 mt-3">
+                                        <button class="loginsigninbutton w-100">Sign In</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <div class="col-md-12 mt-3">
-                            <a style="color: #1b8fe4; font-weight: 600;font-size: .875rem;line-height: 1.5rem;" data-toggle="modal" data-target="#whereismypolicyid" href="javascript:void(0)">Where's my Policy Reffrence ID?</a>
-                        </div>
-                        <div class="col-md-9 mt-3">
-                            <div  style=" font-size: .875rem; line-height: 1.5rem; color: #67778f; font-weight: 600; "><strong>Note:</strong> If you previously created an account with your Email Address, you can now simply login with your Policy ID and Date of Birth. </div>
-                        </div>
-                        <div class="col-md-3 mt-3">
-                            <button class="loginsigninbutton">Sign In</button>
-                        </div>
-                    </div> 
-                    </form>
-                    <div class="mt-5 mb-3">
-                        <hr>
-                    </div>
-                    <form method="POST" action="{{ url('sendsecurelink') }}">
-                        @csrf
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label style="color: #2b3481; font-size: 16px; line-height: 24px; font-weight: 800;">Don’t remember your Policy ID?</label>
-                            <div style=" color: #67778f; font-size: 14px; line-height: 24px; font-weight: 600; ">Enter the email you provided when you purchased the policy and we will send you a one-time-use Secure Link to sign in.</div>
-                        </div>
-                        <div class="col-md-5"></div>
-                        <div class="col-md-7 mt-4">
-                            <div class="custom-form-control positionrelative">
-                                <label class="selectlabeldateofbirth">Email Address</label>
-                                <input class="input" type="text" value="{{ old('email') }}" placeholder="Email Address" name="email" data-placeholder="First Name">
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
+                        <div class="tab-pane" id="tabs-2" role="tabpanel">
+                            <form method="POST" action="{{ url('sendsecurelink') }}">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label style="color: #2b3481; font-size: 16px; line-height: 24px; font-weight: 800;">Don’t remember your Policy ID?</label>
+                                        <div style=" color: #67778f; font-size: 14px; line-height: 24px; font-weight: 600; ">Enter the email you provided when you purchased the policy and we will send you a one-time-use Secure Link to sign in.</div>
+                                    </div>
+                                    <div class="col-md-12 mt-4 mb-2">
+                                        <div class="custom-form-control positionrelative">
+                                            <label class="">Email Address</label>
+                                            <input class="input" type="text" value="{{ old('email') }}" placeholder="" name="email" data-placeholder="First Name">
+                                            @error('email')
+                                            <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-7 mt-4">
-                            @if(session()->has('message'))
-                            <div style=" color: #67778f; font-size: 12px; line-height: 20px; font-weight: 600; display: flex; " class="secure-sent">
-                                <img style=" margin-right: 14px; " src="https://assets.visitorscoverage.com/production/app/img/icons/input-indicator-success.svg">
-                                <p style=" color: #67778f; font-size: 12px; line-height: 20px; font-weight: 600; display: flex;">{{ session()->get('message') }}</p>
-                            </div> 
-                            @endif
-                        </div>
-                        <div class="col-md-5 mt-4 text-right">
-                            <button class="loginsigninbutton"> Send Secure Link </button>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-2">
+                                        @if(session()->has('message'))
+                                            <div style=" color: #67778f; font-size: 12px; line-height: 20px; font-weight: 600; display: flex; " class="secure-sent">
+                                                <img style=" margin-right: 14px; " src="https://assets.visitorscoverage.com/production/app/img/icons/input-indicator-success.svg">
+                                                <p style=" color: #67778f; font-size: 12px; line-height: 20px; font-weight: 600; display: flex;">{{ session()->get('message') }}</p>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="col-md-12 mb-2 text-right">
+                                        <button class="loginsigninbutton w-100"> Send Secure Link </button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    </form>
+
+{{--                    <div class="mt-5 mb-5">--}}
+{{--                        <hr>--}}
+{{--                    </div>--}}
+
                 </div>
            </div>
         </div>
@@ -215,7 +258,7 @@
     border: 1px solid #c2cad7;
     box-shadow: 0 4px 16px rgba(87,106,134,.15);
     border-radius: 8px;" class="main-image">
-             <img style="box-shadow: 0 4px 16px rgba(87,106,134,.15); border-radius: 8px; " src="{{ url('public/images/policyreffrenceid.png') }}"> 
+             <img style="box-shadow: 0 4px 16px rgba(87,106,134,.15); border-radius: 8px; " src="{{ url('public/images/policyreffrenceid.png') }}">
          </div>
       </div>
     </div>
