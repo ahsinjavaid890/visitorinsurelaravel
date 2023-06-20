@@ -25,12 +25,12 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Our Plans <i class="icofont-thin-down"></i></a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown02">
-                        <li><a target="_blank" class="dropdown-item" href="{{ url('product/super-visa-insurance') }}">Super Visa Insurance</a></li>
-                        <li><a target="_blank" class="dropdown-item" href="">Visitor Insurance</a></li>
-                        <li><a target="_blank" class="dropdown-item" href="">Student Insurance</a></li>
-                        <li><a target="_blank" class="dropdown-item" href="">Single Trip Insurance</a></li>
-                        <li><a target="_blank" class="dropdown-item" href="">Multi Trip Insurance</a></li>
-                        <li><a target="_blank" class="dropdown-item" href="">Baggages Insurance</a></li>
+                        <li><a class="dropdown-item" href="{{ url('product/super-visa-insurance') }}">Super Visa Insurance</a></li>
+                        <li><a class="dropdown-item" href="{{ url('product/visitor-insurance') }}">Visitor Insurance</a></li>
+                        <li><a class="dropdown-item" href="{{ url('product/student-insurance') }}">Student Insurance</a></li>
+                        <li><a class="dropdown-item" href="{{ url('product/single-trip-insurance') }}">Single Trip Insurance</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0)">Multi Trip Insurance</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0)">Baggages Insurance</a></li>
                     </ul>
                 </li>
                <li class="nav-item @if($url == 'contactus') active @endif"><a class="nav-link" href="{{ url('contactus') }}">Contact Us</a></li>

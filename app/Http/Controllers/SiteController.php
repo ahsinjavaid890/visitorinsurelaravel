@@ -286,18 +286,15 @@ class SiteController extends Controller
               $message->to($request->email);
               $message->subject($subject);
         });
-        // Mail::send('email.review', ['request' => $request,'sale' => $newsale], function($message) use($request , $subject){
-        //       $message->to($request->email);
-        //       $message->subject('Tell Us How We Did?');
-        // });
-        // $subject = 'New Sale | Reffrence Number =  '.$reffrence_number;
-        // Mail::send('email.purchasepolicy', ['request' => $request,'sale' => $newsale,'policy_number' => $reffrence_number], function($message) use($request , $subject){
-        //       $message->to('admin@lifeadvice.ca');
-        //       $message->subject($subject);
-        // });
-
-        exit;
-
+        Mail::send('email.review', ['request' => $request,'sale' => $newsale], function($message) use($request , $subject){
+              $message->to($request->email);
+              $message->subject('Tell Us How We Did?');
+        });
+        $subject = 'New Sale | Reffrence Number =  '.$reffrence_number;
+        Mail::send('email.purchasepolicy', ['request' => $request,'sale' => $newsale,'policy_number' => $reffrence_number], function($message) use($request , $subject){
+              $message->to('admin@lifeadvice.ca');
+              $message->subject($subject);
+        });
         return view('frontend.formone.conferm')->with(array('request'=>$request));
     }
     public function applyplan(Request $request)
