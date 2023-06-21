@@ -10,7 +10,10 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 class LoginController extends Controller
 {
     //
-
+    public function agentlogin()
+    {
+        return view('admin/auth/login');
+    }
     public function login(){
         if(Auth::check())
         {
@@ -25,12 +28,18 @@ class LoginController extends Controller
         $data = $request->all();
         $this->validator($request);
         if(auth()->attempt(['email'=>$data['email'],'password'=>$data['password']],$request->filled('remember'))){
-            if(Auth::user()->type == 'admin')
+            if(Auth::user()->type == 'agent')
             {
-                return redirect()->route('admin.dashboard')->with('success','You are Login as Admin!');
+                if(Auth::user()->website == 'visitorinsure')
+                {
+                    return redirect()->route('admin.dashboard')->with('success','You are Login as Admin!');   
+                }else{
+                    Auth::logout();
+                    return back()->with('error','You Have No Access for this Portal');
+                }
             }else{
                 Auth::logout();
-                return back()->with('error','You have not Access For Admin');
+                return back()->with('error','You have not Access For Agent Portal');
             }
         }
         return $this->loginFailed();

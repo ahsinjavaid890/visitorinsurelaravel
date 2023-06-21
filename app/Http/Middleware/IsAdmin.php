@@ -18,7 +18,7 @@ class IsAdmin
     {
         if(Auth::check())
         {
-            if(Auth::user()->type == 'admin')
+            if(Auth::user()->type == 'agent')
             {
                 return $next($request);
             }else{

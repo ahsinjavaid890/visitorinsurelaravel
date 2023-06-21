@@ -200,7 +200,7 @@ class AdminController extends Controller
 
     public function allproducts()
     {
-        $data = DB::table('wp_dh_products')->where('status' , 1)->orderby('pro_name' , 'desc')->get();
+        $data = DB::table('wp_dh_products')->where('website' , 'visitorinsure')->where('status' , 1)->orderby('pro_name' , 'desc')->get();
         return view('admin.products.index')->with(array('data'=>$data));
     }
     public function allplans()
@@ -706,7 +706,7 @@ class AdminController extends Controller
     }
     public function allsale()
     {
-        $data = DB::table('sales')->orderby('id' , 'DESC')->paginate(10);
+        $data = DB::table('sales')->where('website' , 'visitorinsure')->orderby('id' , 'DESC')->paginate(10);
         return view('admin.sales.allsale')->with(array('data'=>$data));
     }
     public function editsale($id)

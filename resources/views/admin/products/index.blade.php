@@ -19,14 +19,12 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table id="example" class="table table-separate table-head-custom table-checkable" style="width:100%">
+                    <table id="example" class="table table-bordered table-head-custom table-checkable" style="width:100%">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Product Name</th>
                                 <th>Supervisa</th>
-                                <th>Created By</th>
-                                <th>Last Updated By</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -45,15 +43,8 @@
                                         <i class="fa fa-times text-danger"></i> No                                        
                                         @endif
                                     </td>
-                                    <td>
-                                       Administrator
-                                    </td>
-                                    <td>
-                                        Administrator
-                                    </td>
                                    <td>
                                        <a class="btn btn-primary btn-sm" href="{{ url('admin/products/edit') }}/{{ $r->pro_id }}"><i class="fa fa-edit"></i>Edit</a>
-                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/products/delete') }}/{{ $r->pro_id }}"><i class="fa fa-trash"></i>Delete</a>
                                    </td>
                                 </tr>
 

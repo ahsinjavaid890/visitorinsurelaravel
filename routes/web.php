@@ -151,7 +151,7 @@ Route::get('/carrier-profile/reviews', function () {
 
 
 
-
+Route::get('agentlogin',[LoginController::class, 'agentlogin']);
 
 // Hiring Maps
 Route::name('admin.')->prefix('admin')->group(function(){

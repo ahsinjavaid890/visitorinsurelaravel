@@ -1,13 +1,7 @@
 @extends('frontend.layouts.main')
-@include('frontend.companypages.includes.mettatittle')
-@php
-    $url = request()->segment(count(request()->segments()));
-    $page = DB::table('travelpages')->where('url' , $url)->get()->first();
-    $secondsection = DB::table('section_three_elements')->where('type' , 'sectiontwoquestion')->where('page' , $url)->get(); 
-@endphp 
+
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/faq.css')}}">
 @section('content')
-@include('frontend.companypages.includes.mainblog')
    <section class="first-section-of-page">
       <div id="faq" class="container py-5">
          <div class="row faq">

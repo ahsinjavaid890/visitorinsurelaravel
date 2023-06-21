@@ -253,11 +253,7 @@
       <div class="modal-body">
          <h1 style="text-align: center; font-size: 2rem; line-height: 2.5rem; color: #2b3481; ">Where's my Policy Reffrence ID?</h1>
 
-         <div class="mt-5" style="max-width: 70%;
-    margin: auto;
-    border: 1px solid #c2cad7;
-    box-shadow: 0 4px 16px rgba(87,106,134,.15);
-    border-radius: 8px;" class="main-image">
+         <div class="mt-5" style="max-width: 70%;margin: auto;border: 1px solid #c2cad7;box-shadow: 0 4px 16px rgba(87,106,134,.15);border-radius: 8px;" class="main-image">
              <img style="box-shadow: 0 4px 16px rgba(87,106,134,.15); border-radius: 8px; " src="{{ url('public/images/policyreffrenceid.png') }}">
          </div>
       </div>
