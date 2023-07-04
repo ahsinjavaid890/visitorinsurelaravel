@@ -83,9 +83,8 @@ color: #FFF;
 
 .footer{background:#222; padding:30px 0px; color:#fff;}
 .footer h4{color:#fff; font-size:20px; position:relative; font-weight:900; margin-bottom:20px; line-height:28px;}
-.footer h4:after{position:relative; content:'_______'; line-height:4px; font-size:30px; letter-spacing:-2px; width:100%; display:block; color:#1BBC9B; left:0px; bottom:10px;}
 .footer ul{padding-left:14px;}
-.footer li{list-style:square; color:#1BBC9B;}
+/*.footer li{list-style:square; color:#1BBC9B;}*/
 .footer li a{color:#ccc; text-decoration:none;}
 .footer li a:hover{color:#fff;}
 .footer p { margin-bottom: 10px !important; }
