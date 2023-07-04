@@ -20,19 +20,18 @@
               <li class="nav-item @if($url) @else active @endif">
                 <a class="nav-link" href="{{ url('') }}">Home</a>
               </li>
-               <li class="nav-item @if($url == 'product') active @endif"><a class="nav-link" href="{{ url('product') }}">Our Products</a></li>
+               
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Our Plans <i class="icofont-thin-down"></i></a>
+                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Travel Insurance<i class="icofont-thin-down"></i></a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown02">
-                        <li><a class="dropdown-item" href="{{ url('product/super-visa-insurance') }}">Super Visa Insurance</a></li>
-                        <li><a class="dropdown-item" href="{{ url('product/visitor-insurance') }}">Visitor Insurance</a></li>
-                        <li><a class="dropdown-item" href="{{ url('product/student-insurance') }}">Student Insurance</a></li>
-                        <li><a class="dropdown-item" href="{{ url('product/single-trip-insurance') }}">Single Trip Insurance</a></li>
-                        <li><a class="dropdown-item" href="javascript:void(0)">Multi Trip Insurance</a></li>
-                        <li><a class="dropdown-item" href="javascript:void(0)">Baggages Insurance</a></li>
+                        <li><a class="dropdown-item" href="{{ url('super-visa-insurance') }}">Super Visa Insurance</a></li>
+                        <li><a class="dropdown-item" href="{{ url('visitor-insurance') }}">Visitor Insurance</a></li>
+                        <li><a class="dropdown-item" href="{{ url('student-insurance') }}">Student Insurance</a></li>
+                        <li><a class="dropdown-item" href="{{ url('single-trip-insurance') }}">Single Trip Insurance</a></li>
                     </ul>
                 </li>
+                <li class="nav-item @if($url == 'product') active @endif"><a class="nav-link" href="{{ url('product') }}">Products</a></li>
                <li class="nav-item @if($url == 'contactus') active @endif"><a class="nav-link" href="{{ url('contactus') }}">Contact Us</a></li>
                <li class="nav-item ">
                     <a class="nav-link" href="tel:8555005041"> 

@@ -471,8 +471,46 @@ header .header-bottom .search #searchform:before {
   display: none;
 }
 footer {
-  background-color: #404041 !important;
+  background-color: #252428 !important;
   color: #fff;
+  padding-top: 80px;
+  padding-bottom: 10px;
+}
+.widget .footer-menu a {
+    color: #fff;
+}
+.footer-menu li{
+    line-height: 35px;
+    font-family: Raleway,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    color: white;
+    font-weight: 400;
+}
+.container-line-white {
+    border-top: 1px solid #fff;
+}
+.footer-btm {
+    border-top: 1px solid rgba(0,0,0,.06);
+}
+.footer .copyright {
+    text-align: center;
+    font-weight: 600;
+    color: #fff!important;
+}
+.widget_links .icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+}
+.widget h4 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+}
+.divider_line {
+    width: 90px;
+    height: 3px;
 }
 footer a {
   color: #fff !important;

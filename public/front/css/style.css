@@ -8449,10 +8449,31 @@ section {
 .health-inssurance-hero-banners {
     /*padding: 40px 50px 40px 15px;*/
     background-color: #2b3481;
-    margin-top: 70px;
+/*    margin-top: 70px;*/
     color: white;
 }
 
+.dropdown .dropdown-menu {
+    background: #fff;
+    min-width: 240px;
+    top: 90%;
+    left: 0;
+    right: 0px;
+    transition: all .3s ease-out 0s;
+    border: 0;
+    border-top: 2px solid #8cc53f;
+    border-radius: 0;
+}
+.dropdown .dropdown-item {
+    padding: 13px 20px;
+    border-bottom: 1px solid #eee;
+    background: 0 0;
+    font-weight: 400;
+    color: #555;
+}
+.dropdown .dropdown-item:hover {
+    color: #8cc53f;
+}
 .benefits-heading h2 {
     max-width: 50%;
     margin: auto;
@@ -12171,10 +12192,17 @@ ul.tabs li.current {
 }
 
 
-@media (min-width: 1400px) {
+@media (min-width: 1600px) {
     .container {
-        max-width: 1300px;
+        max-width: 1440px;
     }
+}
+.navbar-brand {
+    margin-top: 10px;
+}
+
+#navbarmain {
+    padding: 20px 0;
 }
 
 .search-widget input.search {

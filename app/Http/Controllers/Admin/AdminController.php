@@ -11,7 +11,6 @@ use App\Models\wp_dh_companies;
 use App\Models\wp_dh_life_plans_benefits;
 use App\Models\help_articles;
 use App\Models\blogs;
-use App\Models\testimonials;
 use App\Models\blogcategories;
 use App\Models\company_info_pages;
 use App\Models\wp_dh_insurance_plans_benefits;
@@ -29,10 +28,16 @@ use Illuminate\Support\Facades\Hash;
 use Mail;
 use Auth;
 use DB;
+use Redirect;
 class AdminController extends Controller
 {
     public function dashboard(){
         return view('admin/dashboard/index');
+    }
+    public function changewebsite($id)
+    {
+        DB::table('select_websites')->where('id' , 1)->update(array('name' => $id));
+        return redirect()->back()->with('message', 'Website Change Successfully');
     }
     public function editproduct($id)
     {
@@ -51,7 +56,7 @@ class AdminController extends Controller
         $pro_travel_destination = $request->destinationtype;
         $pro_url = $request->pro_url;
         $redirect_from_url = $request->redirect_from_url;
-
+        $quotation_form_on_stylish_page = $request->quotation_form_on_stylish_page;
         $prod_fields = serialize($request->prod);
         $sort_orders = array();
         $i = 1;
@@ -71,11 +76,9 @@ class AdminController extends Controller
             $vector = Cmf::sendimagetodirectory($request->vector);
             DB::statement("UPDATE `wp_dh_products` SET `vector`='$vector',`description`='$request->description',`category_id`='$category_id',`pro_name`='$pro_name',`pro_parent`='$pro_parent',`pro_supervisa`='$pro_supervisa',`pro_life`='$pro_life',`pro_fields`='$prod_fields',`pro_sort`='$sort_orders',`pro_travel_destination`='$pro_travel_destination',`pro_url`='$pro_url', `redirect_from_url`='$redirect_from_url' WHERE `pro_id`='$request->id'");
         }else{
-            DB::statement("UPDATE `wp_dh_products` SET `description`='$request->description',`category_id`='$category_id',`pro_name`='$pro_name',`pro_parent`='$pro_parent',`pro_supervisa`='$pro_supervisa',`pro_life`='$pro_life',`pro_fields`='$prod_fields',`pro_sort`='$sort_orders',`pro_travel_destination`='$pro_travel_destination',`pro_url`='$pro_url', `redirect_from_url`='$redirect_from_url' WHERE `pro_id`='$request->id'");
+            DB::statement("UPDATE `wp_dh_products` SET `stylish_form_layout`='$request->stylish_form_layout',`quotation_form_on_stylish_page`='$request->quotation_form_on_stylish_page',`description`='$request->description',`category_id`='$category_id',`pro_name`='$pro_name',`pro_parent`='$pro_parent',`pro_supervisa`='$pro_supervisa',`pro_life`='$pro_life',`pro_fields`='$prod_fields',`pro_sort`='$sort_orders',`pro_travel_destination`='$pro_travel_destination',`pro_url`='$pro_url', `redirect_from_url`='$redirect_from_url' WHERE `pro_id`='$request->id'");
         }
 
-
-        
         return redirect()->back()->with('message', 'Product Updated Successfully');
     }
 
@@ -155,6 +158,11 @@ class AdminController extends Controller
         $data = DB::table('users')->where('id' , $id)->first();
         return view('admin.users.edituser')->with(array('data'=>$data));
     }
+    public function deleteuser($id)
+    {
+        DB::table('users')->where('id' , $id)->delete();
+        return redirect()->back()->with('message', 'User Deleted Successfully');   
+    }
     public function memberdocument()
     {
         return view('admin.document.member-document');
@@ -200,7 +208,7 @@ class AdminController extends Controller
 
     public function allproducts()
     {
-        $data = DB::table('wp_dh_products')->where('website' , 'visitorinsure')->where('status' , 1)->orderby('pro_name' , 'desc')->get();
+        $data = DB::table('wp_dh_products')->where('website' , Cmf::getwebsite()->smallname)->where('status' , 1)->orderby('pro_name' , 'desc')->get();
         return view('admin.products.index')->with(array('data'=>$data));
     }
     public function allplans()
@@ -272,6 +280,9 @@ class AdminController extends Controller
         $updateplan->last_updated_by = Auth::user()->id;
         $updateplan->save();
         
+
+
+        wp_dh_insurance_plans_deductibles::where('plan_id' , $updateplan->id)->delete();
         for($i=0;$i<count($request->ideductHash);$i++){
             $deduct = $request->ideductHash[$i];
             $ideductPer = $request->ideductPer[$i];
@@ -282,6 +293,8 @@ class AdminController extends Controller
             $add_deductibles->created_by = Auth::user()->id;
             $add_deductibles->save();
         }
+
+
         $rateBase = $request->irateCalculation;
         if($rateBase == '3')
         {
@@ -307,6 +320,7 @@ class AdminController extends Controller
               }
              }
         } else {
+            DB::table('wp_dh_insurance_plans_rates')->where('plan_id' , $updateplan->id)->delete();
             for($i=0;$i<count($request->iratesMin);$i++){
                 $irateMin = $request->iratesMin[$i];
                 $irateMax = $request->iratesMax[$i];
@@ -316,11 +330,11 @@ class AdminController extends Controller
                 $cuser = Auth::user()->id;
                 $time = time();
                 $insertRates = "INSERT INTO wp_dh_insurance_plans_rates(plan_id, minage,maxage,sum_insured,rate_with_pre_existing,rate_without_pre_existing,created_on, created_by ) VALUES('$updateplan->id','$irateMin','$irateMax','$irateSum','$irateRate','$iratesRatewithout', '$time', '$cuser')";
-                
                 DB::statement($insertRates);
             }
         }
-        return redirect()->back()->with('message', 'Plan Added Successfully');
+        $redirecturl = url('admin/plans/editplan/').'/'.$updateplan->id;
+        return Redirect::to($redirecturl);
     }
     public function planupdate(Request $request)
     {
@@ -601,64 +615,49 @@ class AdminController extends Controller
 
     public function updateusers(Request $request)
     {
-        
-
         $update = User::find($request->id);
-        $update->name = $request->fname.' '.$request->lname;
-        $update->email = $request->email;
-        $update->phone = $request->phone;
-        $update->dob = $request->dob; 
-        $update->about_me = $request->about_me;
-        $update->username = $request->username;
-        $update->password = Hash::make($request->password);
-        if($request->logo)
-        {
-            $update->logo = Cmf::sendimagetodirectory($request->logo);
-        }
-        $update->address = $request->address;
-        $update->province = $request->province;
-        $update->city = $request->city;
-        $update->country = $request->country;
-        $update->postal = $request->postal;
-        $update->user_type = $request->user_type;
-        $update->parent_id = $request->parent_id;
-        $update->status = $request->status;
-        $update->mg_capability = $request->mg_capability;
-        $update->fiscal_year = $request->fiscal_year;
-        $update->save();
-        return redirect()->back()->with('message', 'User Updated Successfully');
-    }
-    public function addnewusers(Request $request)
-    {
-        
+        $update->name = $request->name;
+        if($request->insurancedocument){
 
-        $update = new User;
-        $update->name = $request->fname.' '.$request->lname;
+            $update->insurancedocument = Cmf::sendimagetodirectory($request->insurancedocument);
+        }
         $update->email = $request->email;
         $update->phone = $request->phone;
-        $update->dob = $request->dob; 
         $update->about_me = $request->about_me;
-        $update->username = $request->username;
         if($request->password){
 
             $update->password = Hash::make($request->password);
         }
-        if($request->logo)
-        {
-            $update->logo = Cmf::sendimagetodirectory($request->logo);
+        $update->address = $request->address;
+        $update->province = $request->province;
+        $update->city = $request->city;
+        $update->country = $request->country;
+        $update->postal = $request->postal;
+        $update->status = $request->status;
+        $update->save();
+        return redirect()->back()->with('message', 'Agent Updated Successfully');
+    }
+    public function addnewusers(Request $request)
+    {
+        $update = new User;
+        $update->website = $request->website;
+        $update->name = $request->name;
+        $update->email = $request->email;
+        $update->phone = $request->phone;
+        $update->about_me = $request->about_me;
+        if($request->password){
+
+            $update->password = Hash::make($request->password);
         }
         $update->address = $request->address;
         $update->province = $request->province;
         $update->city = $request->city;
         $update->country = $request->country;
         $update->postal = $request->postal;
-        $update->user_type = $request->user_type;
-        $update->parent_id = $request->parent_id;
-        $update->status = $request->status;
-        $update->mg_capability = $request->mg_capability;
-        $update->fiscal_year = $request->fiscal_year;
+        $update->status = 'active';
+        $update->type = 'agent';
         $update->save();
-        return redirect()->back()->with('message', 'User Updated Successfully');
+        return redirect()->back()->with('message', 'Agent Added Successfully');
     }
     public function updateuserprofile(Request $request)
     {
@@ -706,7 +705,7 @@ class AdminController extends Controller
     }
     public function allsale()
     {
-        $data = DB::table('sales')->where('website' , 'visitorinsure')->orderby('id' , 'DESC')->paginate(10);
+        $data = DB::table('sales')->orderby('id' , 'DESC')->paginate(10);
         return view('admin.sales.allsale')->with(array('data'=>$data));
     }
     public function editsale($id)
@@ -805,35 +804,12 @@ class AdminController extends Controller
         $data = DB::table('wp_dh_companies')->get();
         return view('admin.companies.all')->with(array('data'=>$data));
     }
-    public function testimonials()
-    {
-        $data = testimonials::all();
-        return view('admin.testimonials.all')->with(array('data'=>$data));
-    }
-    public function addtestimonials(Request $request)
-    {
-        $add = new testimonials;
-        $add->name = $request->name;
-        $add->image = Cmf::sendimagetodirectory($request->image);
-        $add->testimonial = $request->testimonial;
-        $add->save();
-        return redirect()->back()->with('message', 'Testimonial Added Successfully');
-    }
-    public function updatetestimonials(Request $request)
-    {
-        $add = testimonials::find($request->id);
-        $add->name = $request->name;
-        if($request->image)
-        {
-            $add->image = Cmf::sendimagetodirectory($request->image);
-        }
-        $add->testimonial = $request->testimonial;
-        $add->save();
-        return redirect()->back()->with('message', 'Testimonial Updated Successfully');
-    }
+
+
+
     public function blogcategories()
     {
-        $data = DB::table('blogcategories')->get();
+        $data = DB::table('blogcategories')->where('website' , 'lifeadvice')->get();
         return view('admin.blogs.categories')->with(array('data'=>$data));
     }
     public function deleteblogcategory($id)
@@ -892,19 +868,6 @@ class AdminController extends Controller
         $add->save();
         return redirect()->back()->with('message', 'Blog Updated Successfully');        
     }
-    public function addnewblog(Request $request)
-    {
-        $add = new blogs();
-        $add->title = $request->title;
-        $add->url = Cmf::shorten_url($request->title);
-        $add->content = $request->content;
-        if($request->image)
-        {
-            $add->image = Cmf::sendimagetodirectory($request->image);
-        }
-        $add->save();
-        return redirect()->back()->with('message', 'Blog Updated Successfully');
-    }
     public function deleteblog($id)
     {
         blogs::where('id' , $id)->delete();
@@ -921,14 +884,7 @@ class AdminController extends Controller
             $claimform = Cmf::sendimagetodirectory($request->claimform);
             $update = array('claimform' => $claimform,'comp_name' => $request->name);
         }else{
-
-            if($request->logo)
-            {
-                $comp_logo = Cmf::sendimagetodirectory($request->logo);
-                $update = array('comp_logo' => $comp_logo,'comp_name' => $request->name);
-            }else{
-                $update = array('comp_name' => $request->name);
-            }
+            $update = array('comp_name' => $request->name);
         }
         DB::table('wp_dh_companies')->where('comp_id' , $request->id)->update($update);
         return redirect()->back()->with('message', 'Company Updated Successfully');

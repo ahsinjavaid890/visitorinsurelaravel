@@ -17,6 +17,10 @@ class Cmf
     {
         return 'visitorinsure';
     }
+    public function directoryurl()
+    {
+        return 'https://lifeadvice.ca/public/images';
+    }
     public static function sendimagetodirectory($imagename)
     {
         $file = $imagename;

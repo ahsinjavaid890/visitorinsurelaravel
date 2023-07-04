@@ -478,18 +478,10 @@
       </span></h1>
       <div class="row">
          <div class="col-lg-12 col-md-12">
-
             <div class="container my-4">
-
-
               <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
-
-
-
-               
                <p class="faq_category faqs_section_part2">Super Visa Insurance</p>
-               
-               @foreach(DB::table('frequesntlyaskquestions')->where('category_id' , 4)->get() as $r)
+               @foreach(DB::table('frequesntlyaskquestions')->where('website' , 'visitorinsure')->where('category_id' , 4)->get() as $r)
                <div class="card mb-3  faqs_section_part2">
                  <div class="card-header" role="tab" id="supervisafaq">
                   <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#supervisafaq{{ $r->id }}" aria-expanded="false"
@@ -507,17 +499,11 @@
                  </div>
                </div>
                @endforeach
-
               </div>
             </div>
-
-
          </div>
       </div>
    </div>
-   
-
-   
 </section>
 
 

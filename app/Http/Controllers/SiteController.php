@@ -209,6 +209,7 @@ class SiteController extends Controller
         $reffrence_number = $policytype.$policy_number_temp;
 
         $newsale = new sales();
+        $newsale->website = 'visitorinsure';
         $newsale->reffrence_number = $reffrence_number;
         $newsale->sponsersname = $request->sponsersname;
         $newsale->sponsersemail = $request->sponsersemail;
@@ -352,13 +353,14 @@ class SiteController extends Controller
     public function supervisa()
     {
 
-        $data = wp_dh_products::where('url' , 'super-visa-insurance')->first();
+        $data = wp_dh_products::where('url' , 'super-visa-insurance')->where('website' , 'visitorinsure')->first();
         if($data)
         {
             $fields = unserialize($data->pro_fields);
-            $wp_dh_insurance_plans = wp_dh_insurance_plans::select('wp_dh_insurance_plans.id')->where('product' , $data->pro_id)->get();
+            $dataforfield = wp_dh_products::where('url' , 'super-visa-insurance')->where('website' , 'lifeadvice')->first();
+            $wp_dh_insurance_plans = wp_dh_insurance_plans::select('wp_dh_insurance_plans.id')->where('product' , $dataforfield->pro_id)->get();
             $sum_insured = wp_dh_insurance_plans_rates::select('wp_dh_insurance_plans_rates.sum_insured')->whereIn('plan_id' , $wp_dh_insurance_plans)->groupby('sum_insured')->get();
-            return view('frontend.companypages.supervisa')->with(array('data'=>$data,'fields'=>$fields,'sum_insured'=>$sum_insured));
+            return view('frontend.companypages.supervisa')->with(array('data'=>$dataforfield,'fields'=>$fields,'sum_insured'=>$sum_insured));
         }
         else
         {

@@ -25,6 +25,27 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   	@yield('tittle')
   <input type="hidden" id="app_url" value="{{ url('') }}" name="">
+  <style type="text/css">
+  	#navbarmain .nav-link {
+    font-weight: 600;
+    padding: 10px 20px;
+    color: #005798;
+    font-family: Raleway,sans-serif;
+    font-size: 22px;
+    transition: all .25s ease;
+}
+.navbar-nav .active a, .navbar-nav .nav-link:hover a {
+    color: #005798!important;
+}
+@media (min-width: 992px)
+{
+	.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}
+}
+
+  </style>
 </head>
 	<body class="body-five">
 		@include('frontend.includes.header')
