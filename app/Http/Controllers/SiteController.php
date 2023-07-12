@@ -499,7 +499,7 @@ class SiteController extends Controller
             return redirect()->route('user.dashboard');
         } else {
 
-            $temp = DB::table('site_settings')->where('smallname', 'visitorinsure')->first()->email_template;
+            $temp = DB::table('site_settings')->where('smallname', 'visitorinsure')->first()->userpanel_temp;
 
             if ( $temp == "1") {
             
@@ -508,6 +508,9 @@ class SiteController extends Controller
             } elseif($temp == "2"){
                 
                 return view('auth.template2.login');
+            } elseif($temp == "3"){
+                
+                return view('auth.template3.login');
             }
         }
     }

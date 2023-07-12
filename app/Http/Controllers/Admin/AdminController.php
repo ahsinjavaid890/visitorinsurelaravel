@@ -25,10 +25,10 @@ use App\Models\product_categories;
 use App\Models\plan_benifits_categories;
 use App\Models\sales;
 use Illuminate\Support\Facades\Hash;
-use Mail;
-use Auth;
-use DB;
-use Redirect;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 class AdminController extends Controller
 {
     public function dashboard(){
@@ -705,7 +705,7 @@ class AdminController extends Controller
     }
     public function allsale()
     {
-        $data = DB::table('sales')->orderby('id' , 'DESC')->paginate(10);
+        $data = DB::table('sales')->where('website','visitorinsure')->orderby('id' , 'DESC')->paginate(10);
         return view('admin.sales.allsale')->with(array('data'=>$data));
     }
     public function editsale($id)

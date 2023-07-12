@@ -10,7 +10,7 @@
             <div class="d-flex flex-column flex-root">
         <!--begin::Login-->
             <div class="d-flex flex-center bgi-size-cover bgi-no-repeat flex-row-fluid">
-                <div style="background-color: #005798; padding: 10px; margin-bottom: 30px; border-radius: 15px;" class="login-form text-center text-white p-7 position-relative overflow-hidden">
+                <div style="background-color: #005798; padding: 30px; margin-bottom: 30px; border-radius: 15px;" class="login-form text-center text-white p-7 position-relative overflow-hidden">
                     <!--begin::Login Header-->
                     <div class="d-flex flex-center mb-15">
                         <a href="{{ url('') }}">
@@ -21,7 +21,7 @@
                     <!--begin::Login Sign in form-->
                     <div class="login-signin">
                         <div class="mb-20">
-                            <h3 class="font-weight-normal text-white">Agent Login</h3>
+                            <h3 class="font-weight-normal text-white mb-2" > <span style="padding-bottom:5px; border-bottom: 4px solid #8cc53f">Agent Login</span></h3>
                             <p class="adminlogintext">Enter your details to login to your account</p>
                         </div>
                         @if(Session::get('error'))
@@ -31,7 +31,7 @@
                         <form class="user"  action="{{route('admin.login_process')}}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <input style="min-height: 58px" class="form-control @error('email') is-invalid @enderror rounded-pill" type="text" placeholder="Email" name="email" autocomplete="off" />
+                                <input style="min-height: 58px;border:2px solid #8cc53f" class="form-control @error('email') is-invalid @enderror rounded-pill" type="text" placeholder="Email" name="email" autocomplete="off" />
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -39,7 +39,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input style="min-height: 58px" class="@error('password') is-invalid @enderror form-control rounded-pill" type="password" placeholder="Password" name="password" />
+                                <input style="min-height: 58px;border:2px solid #8cc53f" class="@error('password') is-invalid @enderror form-control rounded-pill" type="password" placeholder="Password" name="password" />
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -58,7 +58,7 @@
                             </div>
                             <div class="form-group text-center mt-10">
 
-                                <button type="submit" class="btn btn-pill btn-primary opacity-90 px-15 py-3">Sign In</button>
+                                <button type="submit" style="border-radius: 20px;color:white;background-color:#8cc53f" class="btn btn-pill opacity-90">Sign In</button>
                             </div>
                         </form>
                     </div>
