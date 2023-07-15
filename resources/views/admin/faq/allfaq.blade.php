@@ -48,6 +48,7 @@
                             <tr>
                                 <td>
                                     {{ $r->question }}
+
                                 </td>
                                 <td>
                                     {{ DB::table('frequesntlyaskquest_categories')->where('id' , $r->category_id)->first()->name }}
@@ -102,6 +103,7 @@
                                                             <label class="lable-control">Select Category</label>
                                                             <select class="form-control" name="category_id">
                                                                 <option value="">Select Category</option>
+                                                               
                                                                 @foreach($categories as $c)
                                                                 <option @if($c->id == $r->category_id) selected @endif value="{{ $c->id }}">{{ $c->name }}</option>
                                                                 @endforeach

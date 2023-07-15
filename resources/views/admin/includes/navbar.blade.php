@@ -1,8 +1,8 @@
 <!--begin::Header Mobile-->
-    <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
+    <div style="background-color: #001424" id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
         <!--begin::Logo-->
         <a href="{{url('admin/dashboard')}}">
-            <img alt="Logo" src="{{ url('public/images') }}/{{ Cmf::get_store_value('footer_logo') }}" />
+            <img width="100px" style="border-radius: 10px" alt="Logo" src="{{ url('public/images') }}/supervisalogo.jpeg" />
         </a>
         <!--end::Logo-->
         <!--begin::Toolbar-->
@@ -13,9 +13,9 @@
             </button>
             <!--end::Aside Mobile Toggle-->
             <!--begin::Header Menu Mobile Toggle-->
-            <button class="btn p-0 burger-icon ml-4" id="kt_header_mobile_toggle">
+            {{-- <button class="btn p-0 burger-icon ml-4" id="kt_header_mobile_toggle">
                 <span></span>
-            </button>
+            </button> --}}
             <!--end::Header Menu Mobile Toggle-->
             <!--begin::Topbar Mobile Toggle-->
             <button class="btn btn-hover-text-primary p-0 ml-2" id="kt_header_mobile_topbar_toggle">

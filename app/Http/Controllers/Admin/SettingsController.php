@@ -18,7 +18,7 @@ class SettingsController extends Controller
         $settings = Settings::where('smallname' , 'visitorinsure')->first();
         return view('admin.website.settings',compact("settings"));
     }
-    public function settingsupdate(Request $request)
+    public function appearance_update(Request $request)
     {
         $settings = Settings::where('smallname' , 'visitorinsure')->first();
         $upadate = Settings::find($settings->id);

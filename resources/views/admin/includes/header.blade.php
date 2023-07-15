@@ -1,16 +1,16 @@
 
 <div id="kt_header" class="header bg-white header-fixed">
     <!--begin::Container-->
-    <div class="container-fluid d-flex align-items-stretch justify-content-between">
+    <div style="background-color: #012947" class="container-fluid d-flex align-items-stretch justify-content-between">
         <!--begin::Left-->
         <div class="d-flex align-items-stretch mr-2">
             <!--begin::Page Title-->
-            <h3 class="d-none text-dark d-lg-flex align-items-center mr-10 mb-0">
+            <h3 class="d-none text-white d-lg-flex align-items-center mr-10 mb-0">
                 Dashboard
             </h3>
             <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                 <li class="breadcrumb-item">
-                    <a href="dashboard.html" class="text-muted">
+                    <a href="{{url('admin/dashboard')}}" class="text-muted">
                         <i class="flaticon2-shelter icon-1x"></i>&nbsp;
                         Dashboard
                     </a>
@@ -165,8 +165,8 @@
                 <div class="topbar-item" data-toggle="dropdown" data-offset="0px,0px">
                     <div style="border:1px solid;" class="btn btn-icon w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
                         <div class="d-flex flex-column text-right pr-3">
-                            <span class="text-muted font-weight-bold font-size-base d-none d-md-inline">{{ Auth::user()->name }}</span>
-                            <span class="text-dark-75 font-weight-bolder font-size-base d-none d-md-inline">{{ Auth::user()->type }}</span>
+                            <span class="text-white font-weight-bold font-size-base d-none d-md-inline">{{ Auth::user()->name }}</span>
+                            <span class="text-muted-75 font-weight-bolder font-size-base d-none d-md-inline">{{ Auth::user()->type }}</span>
                         </div>
                         <!-- High Priority -->
                         <span class="symbol symbol-35 symbol-danger">

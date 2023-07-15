@@ -102,7 +102,7 @@ class Cmf
     }
     public static function get_store_value($value)
     {
-        return DB::table('site_settings')->where('id' , 1)->get()->first()->$value;
+        return DB::table('site_settings')->where('smallname' , 'visitorguard')->get()->first()->$value;
     }
     public static function travelpages()
     {

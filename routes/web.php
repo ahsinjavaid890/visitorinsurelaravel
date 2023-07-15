@@ -173,7 +173,7 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::post('/updatblogcategory','AdminController@updatblogcategory');
         Route::get('/deleteblogcategory/{id}','AdminController@deleteblogcategory');
         Route::get('/allblogs','AdminController@allblogs');
-        Route::post('/addnewblog','AdminController@addnewblog');
+        Route::post('/addnewblog','AdminController@createblog');
         Route::post('/updateblog','AdminController@updateblog');
         Route::get('/deleteblog/{id}','AdminController@deleteblog');
     });
@@ -181,6 +181,7 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/','AdminController@testimonials');
         Route::post('/add','AdminController@addtestimonials');
         Route::post('/update','AdminController@updatetestimonials');
+        Route::get('/delete/{id}','AdminController@deletetestimonials');
     });
     Route::name('website.')->prefix('website')->group(function(){
         Route::get('/settings','SettingsController@appearance');

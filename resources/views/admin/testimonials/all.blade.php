@@ -81,7 +81,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                                            <a href="{{ url('admin/blogs/deleteblog') }}/{{ $r->id }}" class="btn btn-danger font-weight-bold">Yes, Delete it</a>
+                                            <a href="{{ url('admin/testimonials/delete') }}/{{ $r->id }}" class="btn btn-danger font-weight-bold">Yes, Delete it</a>
                                         </div>
                                     </div>
                                 </div>

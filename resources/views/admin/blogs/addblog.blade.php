@@ -167,7 +167,7 @@
             <div class="modal-header">
                 <div class="row">
                     <div class="col-md-12">
-                        <h5 class="modal-title" id="exampleModalLabel">Add New FAQ</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Add New Blog</h5>
                     </div>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -178,6 +178,17 @@
                 @csrf
                 <div class="modal-body">
                     <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="lable-control">Select Category</label>
+                                <select class="form-control" name="category_id">
+                                    <option value="">Select Category</option>
+                                    @foreach($categories as $c)
+                                    <option value="{{ $c->id }}">{{ $c->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="lable-control">Blog Image</label>

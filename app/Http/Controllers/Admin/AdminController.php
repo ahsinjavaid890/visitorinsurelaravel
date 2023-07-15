@@ -24,6 +24,7 @@ use App\Models\wp_dh_insurance_plans_deductibles;
 use App\Models\product_categories;
 use App\Models\plan_benifits_categories;
 use App\Models\sales;
+use App\Models\testimonials;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
@@ -192,7 +193,7 @@ class AdminController extends Controller
     }
     public function messages()
     {   
-        $data = DB::table('contactus_messages')->orderby('created_at' , 'desc')->paginate(10);
+        $data = DB::table('contactus_messages')->where('website','visitorinsure')->orderby('created_at' , 'desc')->paginate(10);
         return view('admin/contact/messages')->with(array('data'=>$data));
     }
     public function viewmessage($id)
@@ -206,9 +207,42 @@ class AdminController extends Controller
         return redirect()->back()->with('message', 'Message Deleted Successfully');
     }
 
+    //testimonials
+
+    public function testimonials(){
+        $data = testimonials::all();
+        return view('admin.testimonials.all')->with(array('data'=>$data));
+    }
+
+    public function addtestimonials(Request $request){
+        $add = new testimonials();
+        $add->name = $request->name;
+        $add->image = Cmf::sendimagetodirectory($request->image);
+        $add->testimonial = $request->testimonial;
+        $add->save();
+        return redirect()->back()->with('message', 'Testimonial Added Successfully');
+    }
+    public function updatetestimonials(Request $request){
+        $add = testimonials::find($request->id);
+        $add->name = $request->name;
+        $add->testimonial = $request->testimonial;
+        if($request->image)
+        {
+            $add->image = Cmf::sendimagetodirectory($request->image);
+        }
+        $add->save();
+        return redirect()->back()->with('message', 'Testimonial Updated Successfully');
+    }
+
+    public function deletetestimonials($id)
+    {
+        DB::table('testimonials')->where('id' , $id)->delete();
+        return redirect()->back()->with('message', 'Testimonial Deleted Successfully');
+    }
+
     public function allproducts()
     {
-        $data = DB::table('wp_dh_products')->where('website' , Cmf::getwebsite()->smallname)->where('status' , 1)->orderby('pro_name' , 'desc')->get();
+        $data = DB::table('wp_dh_products')->where('website' , 'visitorinsure')->where('status' , 1)->orderby('pro_name' , 'desc')->get();
         return view('admin.products.index')->with(array('data'=>$data));
     }
     public function allplans()
@@ -710,13 +744,15 @@ class AdminController extends Controller
     }
     public function editsale($id)
     {
-        $data = DB::table('sales')->where('sales_id' , $id)->first();
-        return view('admin.sales.editsale')->with(array('data'=>$data));
+        $data = DB::table('sales')->where('id', $id)->first();
+        $company = DB::table('wp_dh_companies')->where('comp_id', $data->comp_id)->first();
+        return view('admin.sales.editsale')->with(array('data'=>$data,'company' => $company));
     }
     public function editsales(Request $request)
     {
-        $update = array('fname' => $request->fname, 'lname' => $request->lname, 'email' => $request->email, 'phone' => $request->phone, 'dob' => $request->dob, 'address' => $request->address, 'address_2' => $request->address_2, 'province' => $request->province, 'city' => $request->city, 'postcode' => $request->postcode, 'country' => $request->country, 'home_address' => $request->home_address, 'home_address_2' => $request->home_address_2, 'home_province' => $request->home_province, 'home_city' => $request->home_city, 'home_zip' => $request->home_zip, 'home_country' => $request->home_country);
-        DB::table('sales')->where('sales_id' , $request->id)->update($update);
+        $update = array('sponsersname' => $request->sponsersname, 'sponsersemail' => $request->sponsersemail, 'email' => $request->email, 'phonenumber' => $request->phonenumber, 'address' => $request->address, 'appartment' => $request->appartment, 'postalcode' => $request->postalcode, 'country' => $request->country, 'province' => $request->province,  'city' => $request->city);
+
+        DB::table('sales')->where('id', $request->id)->update($update);
         return redirect()->back()->with('message', 'Sales Updated Successfully');
     }
 
@@ -809,7 +845,7 @@ class AdminController extends Controller
 
     public function blogcategories()
     {
-        $data = DB::table('blogcategories')->where('website' , 'lifeadvice')->get();
+        $data = DB::table('blogcategories')->where('website' , 'visitorinsure')->get();
         return view('admin.blogs.categories')->with(array('data'=>$data));
     }
     public function deleteblogcategory($id)
@@ -820,14 +856,15 @@ class AdminController extends Controller
     }
     public function allblogs()
     {
-        $data = DB::table('blogs')->get();
-        $categories = blogcategories::all();
+        $data = DB::table('blogs')->where('website','visitorinsure')->get();
+        $categories = blogcategories::where('website' , 'visitorinsure')->get();
         return view('admin.blogs.addblog')->with(array('data'=>$data,'categories'=>$categories));
     }
     public function addnewblogcategory(Request $request)
     {
         $saveblog = new blogcategories;
         $saveblog->name = $request->name;
+        $saveblog->website = 'visitorinsure';
         $saveblog->status = 1;
         $saveblog->url = Cmf::shorten_url($request->name);
         $saveblog->save();
@@ -851,6 +888,7 @@ class AdminController extends Controller
         $add->url = Cmf::shorten_url($request->title);
         $add->content = $request->content;
         $add->image = Cmf::sendimagetodirectory($request->image);
+        $add->website = 'visitorinsure';
         $add->save();
         return redirect()->back()->with('message', 'Blog Added Successfully');        
     }
