@@ -19,11 +19,12 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table id="example" class="table table-bordered table-head-custom table-checkable" style="width:100%">
+                    <table class="table table-bordered " style="width:100%">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                       
                                 <th>Product Name</th>
+                                <th>Category</th>
                                 <th>Supervisa</th>
                                 <th>Action</th>
                             </tr>
@@ -31,10 +32,15 @@
                         <tbody>
                             @foreach($data as $r)
                                 <tr>
-                                    <td>{{ $r->pro_id }}</td>
+                                   
                                     
                                     <td>
                                         {{ $r->pro_name }}
+                                    </td>
+                                    <td>
+                                        @if($r->category_id)
+                                        {!! strip_tags(DB::table('product_categories')->where('id' , $r->category_id)->first()->name) !!}
+                                        @endif
                                     </td>
                                     <td>
                                         @if($r->pro_supervisa == 1)
@@ -43,6 +49,7 @@
                                         <i class="fa fa-times text-danger"></i> No                                        
                                         @endif
                                     </td>
+
                                    <td>
                                        <a class="btn btn-primary btn-sm" href="{{ url('admin/products/edit') }}/{{ $r->pro_id }}"><i class="fa fa-edit"></i>Edit</a>
                                    </td>

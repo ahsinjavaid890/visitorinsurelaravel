@@ -34,8 +34,12 @@
                 <li class="nav-item @if($url == 'product') active @endif"><a class="nav-link" href="{{ url('product') }}">Products</a></li>
                <li class="nav-item @if($url == 'contactus') active @endif"><a class="nav-link" href="{{ url('contactus') }}">Contact Us</a></li>
                <li class="nav-item ">
+                {{-- <img class="call-btn-header-full" src="{{ url('public/front/visitorinsure/images/contact-phone-white.png') }}" >  --}}
                     <a class="nav-link" href="tel:8555005041"> 
-                    <img class="call-btn-header-full" src="{{ url('public/front/visitorinsure/images/contact-phone-white.png') }}" > Call Us</a>
+                      
+                    
+                    
+                    Call Us</a>
                 </li>
                 @if(Auth::check()) 
                     @if(Auth::user()->user_type == 'admin')
@@ -48,9 +52,9 @@
                 @endif
             </ul>
           </div>
-             <a class="d-lg-none mobilephoneimage" href="tel:8555005041">
+             {{-- <a class="d-lg-none mobilephoneimage" href="tel:8555005041">
                 <img class="call-btn-header" src="{{ url('public/front/visitorinsure/images/contact-phone-white.png') }}" >
-              </a>
+              </a> --}}
           </div>
     </nav>
 </header>

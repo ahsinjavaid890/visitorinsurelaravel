@@ -7,7 +7,7 @@
         body {
             background-color: rgb(246 248 251);
         }
-
+        
         .card {
             background: #fff;
             border: 1px solid #cfd9e8;

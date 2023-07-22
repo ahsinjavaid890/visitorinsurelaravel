@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table id="example" class="table table-bordered table-head-custom table-checkable" style="width:100%">
+                    <table  class="table table-bordered" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Category Icon</th>

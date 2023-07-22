@@ -75,9 +75,9 @@ class AdminController extends Controller
         if($request->vector)
         {
             $vector = Cmf::sendimagetodirectory($request->vector);
-            DB::statement("UPDATE `wp_dh_products` SET `vector`='$vector',`description`='$request->description',`category_id`='$category_id',`pro_name`='$pro_name',`pro_parent`='$pro_parent',`pro_supervisa`='$pro_supervisa',`pro_life`='$pro_life',`pro_fields`='$prod_fields',`pro_sort`='$sort_orders',`pro_travel_destination`='$pro_travel_destination',`pro_url`='$pro_url', `redirect_from_url`='$redirect_from_url' WHERE `pro_id`='$request->id'");
+            DB::statement("UPDATE `wp_dh_products` SET `stylish_price_layout`='$request->stylish_price_layout', `vector`='$vector',`description`='$request->description',`category_id`='$category_id',`pro_name`='$pro_name',`pro_parent`='$pro_parent',`pro_supervisa`='$pro_supervisa',`pro_life`='$pro_life',`pro_fields`='$prod_fields',`pro_sort`='$sort_orders',`pro_travel_destination`='$pro_travel_destination',`pro_url`='$pro_url', `redirect_from_url`='$redirect_from_url' WHERE `pro_id`='$request->id'");
         }else{
-            DB::statement("UPDATE `wp_dh_products` SET `stylish_form_layout`='$request->stylish_form_layout',`quotation_form_on_stylish_page`='$request->quotation_form_on_stylish_page',`description`='$request->description',`category_id`='$category_id',`pro_name`='$pro_name',`pro_parent`='$pro_parent',`pro_supervisa`='$pro_supervisa',`pro_life`='$pro_life',`pro_fields`='$prod_fields',`pro_sort`='$sort_orders',`pro_travel_destination`='$pro_travel_destination',`pro_url`='$pro_url', `redirect_from_url`='$redirect_from_url' WHERE `pro_id`='$request->id'");
+            DB::statement("UPDATE `wp_dh_products` SET `stylish_price_layout`='$request->stylish_price_layout' , `stylish_form_layout`='$request->stylish_form_layout',`quotation_form_on_stylish_page`='$request->quotation_form_on_stylish_page',`description`='$request->description',`category_id`='$category_id',`pro_name`='$pro_name',`pro_parent`='$pro_parent',`pro_supervisa`='$pro_supervisa',`pro_life`='$pro_life',`pro_fields`='$prod_fields',`pro_sort`='$sort_orders',`pro_travel_destination`='$pro_travel_destination',`pro_url`='$pro_url', `redirect_from_url`='$redirect_from_url' WHERE `pro_id`='$request->id'");
         }
 
         return redirect()->back()->with('message', 'Product Updated Successfully');
@@ -242,7 +242,7 @@ class AdminController extends Controller
 
     public function allproducts()
     {
-        $data = DB::table('wp_dh_products')->where('website' , 'visitorinsure')->where('status' , 1)->orderby('pro_name' , 'desc')->get();
+        $data = DB::table('wp_dh_products')->where('website' , 'visitorinsure')->where('status' , 1)->orderby('category_id', 'desc')->get();
         return view('admin.products.index')->with(array('data'=>$data));
     }
     public function allplans()
@@ -739,7 +739,7 @@ class AdminController extends Controller
     }
     public function allsale()
     {
-        $data = DB::table('sales')->where('website','visitorinsure')->orderby('id' , 'DESC')->paginate(10);
+        $data = DB::table('sales')->where('website','visitorinsure')->orderby('newstatus' , 'ASC')->paginate(10);
         return view('admin.sales.allsale')->with(array('data'=>$data));
     }
     public function editsale($id)

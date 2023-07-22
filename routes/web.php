@@ -185,6 +185,7 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
     });
     Route::name('website.')->prefix('website')->group(function(){
         Route::get('/settings','SettingsController@appearance');
+        Route::post('/updatelinks','SettingsController@updatelinks');
         Route::post('/settingsupdate','SettingsController@appearance_update');
         Route::post('/updatelogos','SettingsController@updatelogos');
     });

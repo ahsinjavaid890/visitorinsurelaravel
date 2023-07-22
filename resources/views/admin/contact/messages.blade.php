@@ -27,7 +27,7 @@
                                 <th>Email</th>
                                 
                                 <th>Mobile</th>
-                                <th>Subject</th>
+                         
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -43,9 +43,7 @@
                                     <td>
                                        {{ $r->mobile}}
                                     </td>
-                                    <td>
-                                        {{ $r->subject }}
-                                    </td>
+                                  
                                    <td>
                                        <a class="btn btn-primary btn-sm" href="{{ url('admin/contact/viewmessage') }}/{{ $r->id }}"><i class="fa fa-eye"></i> View Message</a>
                                        <a class="btn btn-danger btn-sm" href="{{ url('admin/contact/deletemessage') }}/{{ $r->id }}"><i class="fa fa-trash"></i> Delete Message</a>

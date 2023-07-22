@@ -56,7 +56,7 @@
         </div>
     </div>
 </section>
-
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <section class="contact-form-wrap section">
     <div class="container">
         @if(session()->has('message'))
@@ -107,6 +107,21 @@
                         <textarea required name="message" id="message" class="form-control" rows="6" placeholder="Your Message"></textarea>
                     </div>
 
+                    <style type="text/css">
+                        .g-recaptcha{
+                            
+                            margin-bottom: 20px;
+                        }
+                    </style>
+                    
+
+                    <div class="form-group-2 mb-4">
+                        <div class="g-recaptcha" data-sitekey="6LcLmD0nAAAAAAP-ii32Dj_8xD8sR8iNyumzv-fQ"></div>
+                        
+                    </div>
+
+                    
+                    
                     <div class="text-center">
                         <input class="btn btn-main btn-block" name="submit" type="submit" value="Send Messege">
                         <p class="mt-3 font-weight-bold">Or Use</p>

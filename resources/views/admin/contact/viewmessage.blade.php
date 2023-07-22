@@ -25,6 +25,9 @@
                     <b>Subject</b> : {{$data->subject}}<br>
                     <b>Description</b> : {{$data->description}}<br>
                 </div>
+                <div class="card-footer">
+                    <a href="{{url('admin/contact/messages')}}" class="btn btn-primary btn-sm">Back</a>
+                </div>
             </div>
             <!--end::Card-->
         </div>
