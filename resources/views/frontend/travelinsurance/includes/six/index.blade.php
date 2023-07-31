@@ -445,7 +445,7 @@ if($show == '1' && $total_price > 0){
                     <div class="coverage-amt col-md-12 coverage-amt-<?php echo $sum_insured; ?>"
                         style="<?php echo $request->sum_insured2 == $sum_insured ? '' : 'display:none;'; ?> padding-right:0; min-height: auto !important; ">
                         <div class="row plan-details   deductable-<?php echo $deductible; ?>"
-                            style="border:1px solid #c0c0c0; margin-bottom: 5px !important; padding:10px;  display: <?php if ($deductible == '1000') {
+                            style="align-items:center; border:1px solid #c0c0c0; margin-bottom: 5px !important; padding:10px;  display: <?php if ($deductible == '1000') {
                                 echo 'flex';
                             } elseif ($havethousand == 'no' && $deductible == '0') {
                                 echo 'flex';
@@ -458,8 +458,12 @@ if($show == '1' && $total_price > 0){
                                     onclick="showdetails(<?php echo $plan_id; ?>)" aria-hidden="true"><i
                                         style="color: #2b3481;font-size: 21px;" class="fa fa-info-circle"
                                         aria-hidden="true"></i></a>
+
+                                     
+
+
                             </div>
-                            <div class="col-md-3 col-xs-11 text-center">
+                            <div class="col-md-2 col-xs-11 text-center">
                                 <img src="{{ url('public/images') }}/<?php echo $comp_logo; ?>" class="img-responsive"
                                     style="max-height: 61px;" />
                             </div>
@@ -484,13 +488,15 @@ if($show == '1' && $total_price > 0){
                                 $<?php echo $deductible; ?> deductible
                             </div>
 
-                            <div class="col-md-2 col-xs-12 text-center" style="padding:0;">
+                            <div class="col-md-3 col-xs-12 text-center" style="padding:0;">
                                 <button style="background-color: #2b3481; display: none;" class="btn btn-primary"
                                     onclick="$('.buynow_<?php echo $deductible . $plan_id; ?>').fadeIn();">Buy Now</button>
                                 <button class="btn"
                                     style="background-color: #e84533 !important; background-image: linear-gradient(to bottom,#F25E30,#EB4733);  border: 1px solid #B0362B; color: #FFF;
 font-weight: bold;width: 100%; font-size: 16px; height: 42px;margin-top: 10px;"
                                     onclick="$('.buynow_<?php echo $deductible . $plan_id; ?>').fadeIn();">Buy Now</button>
+
+                                    <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"  style="cursor: pointer" class="mt-2 col-md-12 col-xs-5" id="compare"><i class="fa fa-database"></i> Compare</label>
                             </div>
 
                             <?php

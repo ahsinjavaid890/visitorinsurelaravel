@@ -442,11 +442,25 @@ if($show == '1' && $total_price > 0){
                             <button onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" class="btn submit-btn" data-value="<?php echo $plan_id; ?>"  name="buynow">Buy this plan</button>
                             <div class="compare">
                                 <div class="ui center aligned header">
-                                    <label  class="checkbox-inline">
-                                        <input data-productid="<?php echo $data->pro_id; ?>"  data-pid="<?php echo $plan_id; ?>" price="<?php echo str_replace(',', '', number_format($total_price));?>"  style=" width: 16px;
-                                            height: 26px;
-                                            text-align: left;
-                                            margin-left: -25px;margin-right:8px" type="checkbox" tabindex="0" class="hidden1" value="<?php echo str_replace(',', '', number_format($total_price));?>" onclick="comparetest()">Add to Compare</label>
+
+                                    <label  onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"  style="    border: 1px solid #ddd;
+    width: 100%;
+    height: 40px;
+    line-height: 32px;
+    text-align: center;
+    background: #F9F9F9;
+    font-size: 17px;
+    margin-top: 10px;
+    border-radius: 3px;
+    box-shadow: 0px 1px 2px 0px #ccc;
+    padding-top: 2px;
+    position: relative;
+    display: inline-block;
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-weight: 400;cursor: pointer" class="col-md-12 col-xs-5" id="compare"><i class="fa fa-database"></i> Compare</label>
+
+                                    
 
                                 </div>
                             </div>

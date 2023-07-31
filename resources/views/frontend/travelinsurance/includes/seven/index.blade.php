@@ -434,7 +434,7 @@ if($show == '1' && $total_price > 0){
                             } else {
                                 echo 'none';
                             } ?>;">
-                            <div class="col-md-5 col-xs-12 logogd">
+                            <div class="col-md-4 col-xs-12 logogd">
                                 <div class="col-md-12 col-xs-12 text-center"
                                     style="border: 0px solid #000;padding: 5px 0 10px;text-align: center;background: #EEE;border-radius: 10px;">
                                     <img style="max-height:60px; width:auto;"
@@ -489,20 +489,15 @@ if($show == '1' && $total_price > 0){
 
                             </div>
 
-                            <div class="col-md-1 col-sm-6 hidden-xs" style="padding-top: 20px;padding-left: 0;">
+                            <div class="col-md-2 col-sm-6 hidden-xs" style="padding-top: 20px;padding-left: 0;">
                                 <div class="compare center aligned middle aligned column">
                                     <div class="ui center aligned header">
                                         <div class="field">
                                             <div class="text-center">
-                                                <input data-productid="<?php echo $data->pro_id; ?>"
-                                                    data-pid="<?php echo $plan_id; ?>" price="<?php echo str_replace(',', '', number_format($total_price, 2)); ?>"
-                                                    style="width: 20px; height:auto !important;" type="checkbox"
-                                                    tabindex="0" class="hidden1" value="<?php echo str_replace(',', '', number_format($total_price, 2)); ?>"
-                                                    onclick="comparetest()">
-                                                <label></label>
+                                                <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"  style="cursor: pointer" class="col-md-12 col-xs-5" id="compare"><i class="fa fa-database"></i>  Compare</label>
                                             </div>
                                         </div>
-                                        <div class="sub header" style="font-size: 11px;">Compare</div>
+                                       
                                         <div style="display: none;">
                                             <p>Rate: <?= $total_price ?></p>
                                             <p>Deductible: <?= $deductible ?></p>

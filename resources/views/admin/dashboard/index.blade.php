@@ -6,36 +6,8 @@
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
         <div class=" container-fluid ">
-        	<div class="row">
-        		<div class="col-md-4">
-        			<div class="card">
-        				<div class="card-body">
-        					<h3>Number of Companies</h3>
-        					<br>
-	        				asdsad
-	        			</div>
-        			</div>
-        		</div>
-        		<div class="col-md-4">
-        			<div class="card">
-        				<div class="card-body">
-        					<h3>Insurance Products</h3>
-        					<br>
-	        				asdsad
-	        			</div>
-        			</div>
-        		</div>
-        		<div class="col-md-4">
-        			<div class="card">
-        				<div class="card-body">
-        					<h3>Insurance Plans</h3>
-        					<br>
-	        				asdsad
-	        			</div>
-        			</div>
-        		</div>
-        	</div>
-        	<br>
+        	
+        	
         	<div class="row">
         		<div class="col-md-4">
         			<div class="card">

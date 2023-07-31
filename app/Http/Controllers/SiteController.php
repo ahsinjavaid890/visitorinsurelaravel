@@ -381,11 +381,19 @@ class SiteController extends Controller
         $data = wp_dh_products::where('url', 'super-visa-insurance')->where('website', 'lifeadvice')->first();
         if ($visitorinsureproduct) {
             $fields = unserialize($visitorinsureproduct->pro_fields);
+
             $sortfields = unserialize($visitorinsureproduct->pro_sort);
+
             $dataforfield = wp_dh_products::where('url', 'super-visa-insurance')->where('website', 'lifeadvice')->first();
+
             $wp_dh_insurance_plans = wp_dh_insurance_plans::select('wp_dh_insurance_plans.id')->where('product', $dataforfield->pro_id)->get();
+
             $sum_insured = wp_dh_insurance_plans_rates::select('wp_dh_insurance_plans_rates.sum_insured')->whereIn('plan_id', $wp_dh_insurance_plans)->groupby('sum_insured')->get();
+
+           
+
             return view('frontend.travelinsurance.super-visa')->with(array('visitorinsureproduct' => $visitorinsureproduct,'data' => $data,'orderdata' => $sortfields, 'fields' => $fields, 'sum_insured' => $sum_insured));
+            
         } else {
             return response()->view('frontend.errors.404', [], 404);
         }
@@ -416,12 +424,23 @@ class SiteController extends Controller
     }
     public function visitorinsurance()
     {
-        $data = wp_dh_products::where('url', 'visitor-insurance')->first();
+
+         $data = wp_dh_products::where('url', 'visitor-insurance')->where('website', 'visitorinsure')->first();     
+
         if ($data) {
+
             $fields = unserialize($data->pro_fields);
+
+            $sortfields = unserialize($data->pro_sort);
+
             $wp_dh_insurance_plans = wp_dh_insurance_plans::select('wp_dh_insurance_plans.id')->where('product', $data->pro_id)->get();
+
             $sum_insured = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM `wp_dh_insurance_plans` WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
-            return view('frontend.companypages.visitorinsurance')->with(array('data' => $data, 'fields' => $fields, 'sum_insured' => $sum_insured));
+
+           
+
+            return view('frontend.travelinsurance.visitorinsurance')->with(array('data' => $data, 'fields' => $fields,'orderdata' => $sortfields, 'sum_insured' => $sum_insured));
+
         } else {
             return response()->view('frontend.errors.404', [], 404);
         }
