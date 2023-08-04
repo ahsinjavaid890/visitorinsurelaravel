@@ -424,18 +424,48 @@ class SiteController extends Controller
     }
     public function visitorinsurance()
     {
+        
 
-         $data = wp_dh_products::where('url', 'visitor-insurance')->where('website', 'visitorinsure')->first();     
+
+
+        $data = wp_dh_products::where('url', 'visitor-insurance')->first();
+
+        //  $data = wp_dh_products::where('url', 'visitor-insurance')->where('website', 'visitorinsure')->first();     
 
         if ($data) {
+
+            echo"<pre>";
+            print_r($data->toArray());
+            die;
+            
+
+            // echo $data->pro_id;
+            // die;
+
 
             $fields = unserialize($data->pro_fields);
 
             $sortfields = unserialize($data->pro_sort);
 
+
             $wp_dh_insurance_plans = wp_dh_insurance_plans::select('wp_dh_insurance_plans.id')->where('product', $data->pro_id)->get();
 
+            // echo"<pre>";
+            // print_r($data->toArray());
+            // print_r($wp_dh_insurance_plans);
+            // die;
+
+
             $sum_insured = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM `wp_dh_insurance_plans` WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
+
+            // $sum_insured = wp_dh_insurance_plans_rates::select('wp_dh_insurance_plans_rates.sum_insured')->whereIn('plan_id', $wp_dh_insurance_plans)->groupby('sum_insured')->get();
+
+            echo"<pre>";
+            print_r($sum_insured);
+            die;
+
+
+            // $sum_insured = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM `wp_dh_insurance_plans` WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
 
            
 

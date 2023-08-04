@@ -12,7 +12,12 @@ class LoginController extends Controller
     //
     public function agentlogin()
     {
-        return view('admin/auth/login');
+        if(Auth::check())
+        {
+            return redirect()->route('admin.dashboard');
+        }else{
+            return view('admin.auth.login');
+        }
     }
     public function login(){
         if(Auth::check())
@@ -53,7 +58,7 @@ class LoginController extends Controller
     public function logout()
     {
       Auth::logout();
-      return redirect()->route('admin.login')->with('success','Admin has been logged out!');
+      return redirect()->route('agentlogin')->with('success','Admin has been logged out!');
     }
 
     /**
