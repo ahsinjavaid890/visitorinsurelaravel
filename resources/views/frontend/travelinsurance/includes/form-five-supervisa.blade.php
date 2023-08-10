@@ -7,7 +7,7 @@
 </style>
 <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                 @csrf
-                  <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
+                  <input type="hidden" name="product_id" value="{{ $dataforsuminsure->pro_id }}">
                   <div class="row">
                      @for($orderi=1;$orderi<=17;$orderi++)
                      @if(array_search("id_1",$orderdata) == $orderi)

@@ -12,7 +12,7 @@
                 @csrf
 <div class=" birthdate card  mb-5 box-style" >
           
-<input type="hidden" name="product_id" value="{{ $data->pro_id }}">
+<input type="hidden" name="product_id" value="{{ $dataforsuminsure->pro_id }}">
 @for($orderi=1;$orderi<=17;$orderi++)
    <div class="row">
       @if(array_search("id_12",$orderdata) == $orderi)

@@ -12,7 +12,7 @@
          <div class="row">
             <div class="col-md-12">
                
-                  <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
+                  <input type="hidden" name="product_id" value="{{ $dataforsuminsure->pro_id }}">
                   <div class="row">
                      @if(isset($fields['traveller']) && $fields['traveller'] == "on" )
                      @php

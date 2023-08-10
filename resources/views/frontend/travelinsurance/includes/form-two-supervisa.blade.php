@@ -9,13 +9,16 @@
 }
 </style>
 <section class="firstsection">
+
+
+
    <div class="container-homepage">
       <div class="row birthdate">
          <div class="col-md-2 hidden-xs"></div>
          <div class="col-md-8 visa-insurance new-visa">
             <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                 @csrf
-                  <input type="hidden" name="product_id" value="{{ $data->pro_id }}">  
+                  <input type="hidden" name="product_id" value="{{ $dataforsuminsure->pro_id }}">  
 
                   <div class="row">
                      @for($orderi=1;$orderi<=17;$orderi++)
@@ -80,10 +83,16 @@
 
                               <div class="col-md-6">
                                  <label class="input-label"> Start Date</label>
+
+
                                  <input readonly style="padding-left: 40px;" id="departure_date" autocomplete="off" inputmode="numeric" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
+
+
                                  <span class="hidden-xs emailicon" style="color:#1BBC9B;">
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                  </span>
+
+                                 
                                  <script>
                                     $('#departure_date').datepicker({
                                     format: 'yyyy-mm-dd',
@@ -204,8 +213,11 @@
                
 
                @php
-                  $sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
-                  $min = min($sum);
+                  $sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$dataforsuminsure->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
+                   $min = min($sum);
+
+                  
+                  
 
                   $firstsuminsured = $min->sum_insured;
                @endphp
@@ -215,7 +227,7 @@
                <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
                <script>
                   @php
-                  $sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
+                  $sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$dataforsuminsure->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
                   @endphp
                   var SliderValues = [0,<?php
                    $s = 0;

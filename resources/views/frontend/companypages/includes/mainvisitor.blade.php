@@ -19,39 +19,13 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
       $mobile = 'no';
    @endphp
 @endif
-<div class="health-inssurance-hero-banners super-hero ahmSupperBanner">
-   <div class="container-homepage">
-      <div class="row mb-3">
-         <div class="col-md-6 hero-texts">
-            <div class="herrotext super-hero-text">
-               <h2 class="wow fadeInUp text-responsive" data-wow-delay=".4s">{!! $firstsection->main_heading !!}</h2>
-               <h5 class="wow fadeInUp  text-justify super-text" data-wow-delay=".6s"><span class="text-white">{{ $firstsection->sub_heading }}</span></h5>
-               @if($firstsection->main_button_text)
-               <div class="btns d-flex">
-                  <div class="details">
-                     <a href="{{ $firstsection->main_button_link }}" class=" btn-lg">{{ $firstsection->main_button_text }}</a>
-                  </div>
-               </div>
-               @endif
-            </div>
-         </div>
-         <div class="col-md-6 hero-images">
-            <div class="hero-image super-images" style=" background-image: url('{{ url('') }}/public/images/{{ $firstsection->main_image  }}');
-               background-position: 50% 70%;
-               background-size: 100%;
-               background-repeat: no-repeat;">
-            </div>
-         </div>
-      </div>
-  </div>
-</div>
       @if($firstsection->form == 1)
       @php
          $prosupervisa = $data->pro_supervisa;
          if($prosupervisa == '1'){
-         $supervisa = 'yes';
+            $supervisa = 'yes';
          } else {
-         $supervisa = 'no';
+            $supervisa = 'no';
          }
       @endphp
       <div class="row card-section ahm-form-wrap">
@@ -71,8 +45,8 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         <div  class="grid-row grid-row--bar">
                            <div  class="d-grid generator-bar-row-wrap">
                               <label data-toggle="modal" data-target="#myModal1"  class="form-input input-destination has-arrow">
-                                 <input  type="text" placeholder="@if(isset($_GET['sum_insured2'])) ${{ $_GET['sum_insured2'] }}  @else Coverage Ammount @endif" required="required" id="coverageprice" class="input-field" disabled>
-                                 <span  class="label-text">@if(isset($_GET['sum_insured2'])) {{ $_GET['sum_insured2'] }}  @else Coverage Ammount @endif</span>
+                                 <input  type="text" placeholder="@if(isset($_GET['sum_insured2'])) ${{ $_GET['sum_insured2'] }}  @else Coverage Amount @endif" required="required" id="coverageprice" class="input-field" disabled>
+                                 <span  class="label-text">@if(isset($_GET['sum_insured2'])) {{ $_GET['sum_insured2'] }}  @else Coverage Amount @endif</span>
                                  <div  class="dest-value"></div>
                               </label>
                               <label  data-toggle="modal" data-target="#myModal2"  class="form-input input-traveler-info has-arrow">
@@ -559,14 +533,23 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                      </div>
                      <div class="modal-footer">
                         <div class="nextbtns">
+
                          <span class="btn btn-default btn-prev">Prev</span>
+
                          <span class="btn btn-default " id="donefake"  onclick="thirdone()">Done</span>
+
+
                          <span class="btn btn-default btn-next" style="display: none;" id="doneoriginal"  onclick="formdone()">Done</span>
+
+
                       <script type="text/javascript">
                         function formdone() {
+
+                           // console.log("hello");
                            $("#getqoutesubmitbutton").click();
                         }
                       </script>
+
                       </div>
                      </div>
                   </div>

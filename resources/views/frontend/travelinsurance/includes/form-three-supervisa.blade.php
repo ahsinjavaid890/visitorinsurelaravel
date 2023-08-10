@@ -15,7 +15,7 @@
          <div class="clearfix"></div>
          <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                 @csrf
-            <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
+            <input type="hidden" name="product_id" value="{{ $dataforsuminsure->pro_id }}">
             <div id="listprices_">
                <div class="page_1">
                   <div class="row">

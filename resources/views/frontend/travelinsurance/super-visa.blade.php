@@ -37,6 +37,9 @@
             </div>
         </div>
     </div>
+
+   
+
     @if ($visitorinsureproduct->quotation_form_on_stylish_page == 1)
         @if ($visitorinsureproduct->stylish_form_layout == 'layout_1')
             @include('frontend.travelinsurance.includes.form-one-supervisa')

@@ -25,7 +25,7 @@
 
             <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                 @csrf
-                <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
+                <input type="hidden" name="product_id" value="{{ $data->dataforsuminsure }}">
                 @php
                     $date = date('Y-m-d');
                     $todate =  date('Y-m-d', strtotime($date. ' + 364 days'));
@@ -248,22 +248,38 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal zoom-in ahModelStyle" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+                <div class="modal zoom-in ahModelStyle" id="myModal3" tabindex="-1" role="dialog"
+                    aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
                     <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="close-btn">
-                                    <button onclick="enddateinsupervisainsurance()" type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <button onclick="enddateinsupervisainsurance()" type="button" class="close"
+                                        data-dismiss="modal">&times;</button>
                                 </div>
                                 <div class="card card-for-mobile-device modal-card lg-wizard-card border-0">
-                                    <h2 class="heading-3 card-heading">Start Date Of Coverage and Some Other Details</h2>
+                                    <h2 class="heading-3 card-heading">Start Date Of Coverage and Some Other Details
+                                    </h2>
                                     <div class="date_picker_wrapper" id="date_picker_1">
                                         <div class="card-content d-flex">
                                             <p class="card-info">Please Select Date When You Start Coverage</p>
                                             <div class="date_picker_header">
-                                                <h2 @if(isset($_GET['departure_date']))  @else  style="display:none;" @endif class="date_picker_month_day">@if(isset($_GET['departure_date'])) {{ $_GET['departure_date'] }} @else 12 June 2023 @endif</h2>
-                                                <h2  @if(isset($_GET['departure_date']))  @else  style="display:none;margin-left:10px;" @endif class="linebar">-</h2>
-                                                <h2 @if(isset($_GET['return_date']))  @else  style="display:none;" @endif class="date_picker_year ml-2">@if(isset($_GET['return_date'])) {{ $_GET['return_date'] }} @else 12 June 2023 @endif</h2>
+                                                <h2 @if (isset($_GET['departure_date'])) @else  style="display:none;" @endif
+                                                    class="date_picker_month_day">
+                                                    @if (isset($_GET['departure_date']))
+                                                        {{ $_GET['departure_date'] }}
+                                                    @else
+                                                        12 June 2023 @endif
+                                                </h2>
+                                                <h2 @if (isset($_GET['departure_date'])) @else  style="display:none;margin-left:10px;" @endif
+                                                    class="linebar">-</h2>
+                                                <h2 @if (isset($_GET['return_date'])) @else  style="display:none;" @endif
+                                                    class="date_picker_year ml-2">
+                                                    @if (isset($_GET['return_date']))
+                                                        {{ $_GET['return_date'] }}
+                                                    @else
+                                                        12 June 2023 @endif
+                                                </h2>
                                             </div>
                                         </div>
                                         <div class="row userdate-coverage">
@@ -289,12 +305,17 @@
                                                     </ul>
                                                 </div>
                                             </div>
-                                            @if(isset($fields['email']))
-                                                @if($fields['email'] == "on" )
+                                            @if (isset($fields['email']))
+                                                @if ($fields['email'] == 'on')
                                                     <div class="col-md-6 userdata-card mt-3 mobile-device-email-input">
                                                         <div class="custom-form-control positionrelative">
-                                                            <label class="selectlabeldateofbirth">Enter Your Email</label>
-                                                            <input onkeyup="checkemailcorection(this.value)" @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif class="input" type="text"  name="savers_email" placeholder="Please Enter Your Email" required id="savers_email" class="input">
+                                                            <label class="selectlabeldateofbirth">Enter Your
+                                                                Email</label>
+                                                            <input onkeyup="checkemailcorection(this.value)"
+                                                                @if (isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif
+                                                                class="input" type="text" name="savers_email"
+                                                                placeholder="Please Enter Your Email" required
+                                                                id="savers_email" class="input">
                                                         </div>
                                                         <div class="text-danger mt-1" id="savers_emailerror"></div>
                                                     </div>
@@ -307,8 +328,9 @@
                             <div class="modal-footer">
                                 <div class="nextbtns">
                                     <span class="btn btn-default btn-prev">Prev</span>
-                                    <span class="btn btn-default " id="donefake"  onclick="thirdone()">Done</span>
-                                    <span class="btn btn-default btn-next" style="display: none;" id="doneoriginal"  onclick="formdone()">Done</span>
+                                    <span class="btn btn-default " id="donefake" onclick="thirdone()">Done</span>
+                                    <span class="btn btn-default btn-next" style="display: none;" id="doneoriginal"
+                                        onclick="formdone()">Done</span>
                                     <script type="text/javascript">
                                         function formdone() {
                                             $("#getqoutesubmitbutton").click();

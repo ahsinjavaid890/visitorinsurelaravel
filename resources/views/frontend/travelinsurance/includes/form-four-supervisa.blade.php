@@ -22,7 +22,7 @@
       <div class="col-md-8 visa-insurance" style="padding: 0;">
          <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                 @csrf
-            <input type="hidden" name="product_id" value="{{ $data->pro_id }}">               
+            <input type="hidden" name="product_id" value="{{ $dataforsuminsure->pro_id }}">               
                
             <div class="row" style="margin-bottom:0px;">
                @for($orderi=1;$orderi<=17;$orderi++)
@@ -53,7 +53,7 @@
                      @if(isset($fields['sum_insured']))
                      @if($fields['sum_insured'] == 'on')
                      @php
-                        $sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
+                        $sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$dataforsuminsure->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
                         $min = min($sum);
 
                         $firstsuminsured = $min->sum_insured;
@@ -62,7 +62,7 @@
                      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
                      <script>
                         @php
-                        $sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
+                        $sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$dataforsuminsure->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
                         @endphp
                         var SliderValues = [0,<?php
                          $s = 0;
@@ -183,29 +183,32 @@
                      <div class="col-md-6 col-sm-6 col-xs-12 control-input">
                         <label class="input-label"> Start Date</label>
    
-                     <input style="padding-left: 40px !important;" id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
-                     <span class="hidden-xs calendericon" style="color:#01a281;">
-         
-                           <i class="fa fa-calendar" aria-hidden="true" ></i>
-                        </span> 
-                     <script>
-                           $('#departure_date').datepicker({
-                           format: 'yyyy-mm-dd',
-                           todayHighlight:'TRUE',
-                           autoclose: true,
-                            minDate: 0,
-                           });
-                        </script>
+                        <input  style="padding-left: 40px;" id="departure_date" autocomplete="off" inputmode="numeric" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
+
+
+<span class="hidden-xs emailicon" style="color:#1BBC9B;">
+   <i class="fa fa-calendar" aria-hidden="true"></i>
+</span>
+
+
+<script>
+   $('#departure_date').datepicker({
+   format: 'yyyy-mm-dd',
+   todayHighlight:'TRUE',
+   autoclose: true,
+   minDate: 0,
+   });
+</script>
                          </div>
                          <div class="col-md-6">
-                              <label for="return_date" class="">End Date of Coverage</label>
-                              <div class="custom-form-control">
-                                 <input style="padding-left: 40px !important;" id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly type="date" @endif >
-                                 <span class="hidden-xs calendericon" style="color:#01a281;">
-                            <i class="fa fa-calendar" aria-hidden="true" ></i>
-                           </span>
-                     </div>
-                           </div>
+                                    <label class="input-label">End Date of Coverage</label>
+                                    <div class="custom-form-control">
+                                       <input style="padding-left: 40px;" id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly @endif >
+                                       <span class="hidden-xs emailicon" style="color:#1BBC9B;">
+                                          <i class="fa fa-calendar" aria-hidden="true"></i>
+                                       </span>
+                                    </div>
+                                 </div>
                            @if($data->pro_supervisa != 1)
                            <script>
                               $('#return_date').datepicker({

@@ -49,6 +49,9 @@ class AdminController extends Controller
     }
     public function updateproducts(Request $request)
     {
+        
+
+
         $category_id = $request->category_id;
         $pro_name = $request->pro_name;
         $pro_parent = $request->pro_parent;
