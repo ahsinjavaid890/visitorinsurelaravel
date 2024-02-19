@@ -1,9 +1,4 @@
-<link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
-<style type="text/css">
-    .ui-slider .ui-slider-handle{
-        top: -2px !important;
-    }
-</style>
+<link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutnine.css') }}">
 <script>
 <?php
 $ded = DB::select("SELECT `deductible1` FROM wp_dh_insurance_plans_deductibles WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `deductible1` ORDER BY `deductible1`");
@@ -44,7 +39,6 @@ $(function () {
             }
             $('.deductable-'+Slider_Values[ui.value]).css('display' , 'flex');
             $( "#coverage_deductible" ).val( "$" + Slider_Values[ui.value] );
-
             var uniqueClasses = {};
             $('#listprices .pricearray').each(function () {
                 var currentClass = $(this).attr('class');
@@ -80,15 +74,14 @@ $(function () {
         step: 1,
         value: iValue,
         slide: function (event, ui) {
-            $('#coverage_amount_for_pricelayoutfour').text(SliderValues[ui.value]);
+            $('#coverage_amount').text(SliderValues[ui.value]);
             //alert(SliderValues.length);
             for (i = 0; i < SliderValues.length; i++) {
                 var group = SliderValues[i];
                 $('.coverage-amt-'+group).hide();
             }
             $('.coverage-amt-'+SliderValues[ui.value]).show();
-            $( "#coverage_amount_for_pricelayoutfour" ).val( "$" + SliderValues[ui.value] );
-
+            $( "#coverage_amount" ).val( "$" + SliderValues[ui.value] );
             var uniqueClasses = {};
             $('#listprices .pricearray').each(function () {
                 var currentClass = $(this).attr('class');
@@ -104,7 +97,7 @@ $(function () {
 });
 </script>
 <div class="dh-listings container" id="dh-get-quote">
-    <?php
+<?php
 //  error_reporting(E_ERROR);
 $startdate = $request->departure_date;
 $enddate = $request->return_date;
@@ -169,7 +162,6 @@ $supervisa = 'no';
         $number_travelers = 1;
     }
 
-
 if($request->familyplan_temp == 'yes'){
     if($number_travelers >= 2 && ($elder_age >= 21 && $elder_age <=58) && ($younger_age <=21)){
         $family_plan = 'yes';
@@ -185,76 +177,95 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
  //echo "<script>window.location='?action=not_eligible';</script>";
 }
 ?>
-<div class="row filterdiv hidden-xs" style="border: 1px solid #ddd;background: #F9F9F9;text-align: center;padding-top: 10px;border-top: 1px solid #DDD;margin-top: 10px;">   
-    <div class="col-md-2 hidden-xs" style="padding:10px; font-size:21px; font-weight:bold; color:#444;padding-top: 25px;">
-    <i class="fa fa-filter"></i> Filter Results
-    </div>
-    <div class="col-md-3 adjust-quoto" style="border:none;">
-        <h4 class="deductible" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible" value="$<?php if($havethousand == 'no'){ echo '0'; } else {echo '1000'; } ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;"></h4>
-        
-        <div id="slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
-    </div>
-    <div class="col-md-3 adjust-quoto coverage-mobile-view" style="border-top:0px; ">
-         <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverage_amount_for_pricelayoutfour" name="coverage_amount" value="$<?php echo $request->sum_insured2;?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 115px;"></h4>
-        <div id="sum_slider_for_coverage" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
-    </div>
-    <div class="col-md-3 quote_reference mobile-deisply-none" style="font-size:15px;">
-        <h3 style="font-weight:bold; margin:0; padding:0;">Quote Reference</h3> 
-        <span style="color:#C00;"><?php echo $quoteNumber; ?></span><br/>
-        <small style="font-size: 100%;font-weight: 600;"><i class="fa fa-calendar"></i> <?php echo $request->departure_date . "-" . $request->return_date; ?></small>
-    </div>
-</div>
+<div class="row" style="padding-top: 30px;">
+    <div class="col-md-4">
+        <div class="card qoute-price-card mb-3 left_qoute_card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12 display-none-on-mobile display-none-on-tablet">
+                        <h4 style="font-size: 20px;" class="d-flex">Quote Reference : <span style="color: #2b3481;"><?php echo $quoteNumber; ?></span></h4>
+                    </div>
+                    <div class="col-md-12 adjust-quoto" style="border:none;">
+                        <h4 class="deductible"
+                            style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">
+                            Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible"
+                                value="$<?php if ($havethousand == 'no') {
+                                    echo '0';
+                                } else {
+                                    echo '1000';
+                                } ?>"
+                                style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;">
+                        </h4>
 
-@if (in_array('yes', $request->pre_existing))
-    @include('frontend.travelinsurance.includes.three.yes')
-@else
-    @include('frontend.travelinsurance.includes.three.yes')
-    @include('frontend.travelinsurance.includes.three.no')
-@endif
-</div>
+                        <div class="mt-4" id="slider"
+                            style="border: 1px solid #c5c5c5;padding: 0px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;">
+                        </div>
+                    </div>
+                    <div class="col-md-12 adjust-quoto coverage-mobile-view" style="border-top:0px; ">
+                        <h4 class="coverage"
+                            style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">
+                            Coverage: <input type="text" id="coverage_amount" name="coverage_amount"
+                                value="$<?php echo $request->sum_insured2; ?>"
+                                style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;">
+                        </h4>
+                        <div class="mt-4" id="sum_slider_for_coverage"
+                            style="border: 1px solid #c5c5c5;padding: 0px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pricegurrantee  qoute-price-card mb-3 pricegurrantecard display-none-on-tablet display-none-on-mobile">
+            <div class="card-widget card-widget-price-match">
+                <div class="card-header">
+                    <div class="icon icon-price-match"></div>
+                    <div class="card-header__label">Price <br data-v-59a9f311="">Guarantee</div>
+                </div>
+                <div class="card-body">
+                    <p class="text-secondary-color body-text-5"> Insurance rates are regulated by law. You can't find
+                        the same insurance plan for a lower price anywhere else. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8" id="listprices">
+        @if (in_array('yes', $request->pre_existing))
+            @include('frontend.travelinsurance.includes.nine.yes')
+        @else
+            @include('frontend.travelinsurance.includes.nine.yes')
+            @include('frontend.travelinsurance.includes.nine.no')
+        @endif
+    </div>
+    
+
+
+ </div>
 <script>
-function showdetails(id)
-{
-    $('.dh-toggle-show-hide-'+id).slideToggle();
-}
 jQuery(function($) {
     var divList = $(".listing-item");
     divList.sort(function(a, b){ return $(a).data("listing-price")-$(b).data("listing-price")});
     $("#listprices").html(divList);
 })
-var buynow_selected = "";
-var info_box = "";
-jQuery(".dh-toggle").click(function () {
-    if (info_box != "") {
-        jQuery(".dh-toggle-show-hide-" + info_box).slideToggle();
-    }
-    if (jQuery(this).data('value') == info_box) {
-        info_box = "";
-        return false;
-    }
-    if (buynow_selected != "") {
-        jQuery(".buynow-btn-" + buynow_selected).slideToggle();
-        buynow_selected = "";
-    }
-    var id = jQuery(this).data('value');
-    info_box = id;
-    jQuery(".dh-toggle-show-hide-" + id).slideToggle();
-    console.log(".dh-toggle-show-hide-" + id);
-});
-
-
+function showdetails(id)
+{
+    $('.dh-toggle-show-hide-'+id).slideToggle();
+}
 jQuery(".buynow-btn").click(function () {
     if (buynow_selected != "") {
         jQuery(".buynow-btn-" + buynow_selected).slideToggle();
     }
+
     if (jQuery(this).data('value') == buynow_selected) {
         buynow_selected = "";
         return false;
     }
+
     if (info_box != "") {
         jQuery(".dh-toggle-show-hide-" + info_box).slideToggle();
         info_box = "";
     }
+
     var id = jQuery(this).data('value');
     buynow_selected = id;
     jQuery(".buynow-btn-" + id).slideToggle();
@@ -271,3 +282,4 @@ $(document).ready(function () {
     });
 });
 </script>
+</div>

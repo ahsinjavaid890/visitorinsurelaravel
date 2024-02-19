@@ -1,13 +1,25 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public\front\tabs\formlayoutfive.css')}}">
-<div class="container-homepage birthdate new-visa mb-5  mt-3" style="padding: 20px; background: var(--color-light);">
+<div style="background-color: #f4f7fa;">
+   <div class="container birthdate new-visa pt-5 form-fivecontainer">
+
 <style type="text/css">
    #quoteform{
       background-color: white !important;
    }
 </style>
 <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
+               <div class="col-md-12 mb-4">
+                  <div class="text-center">
+                      <h3 class="content-title no-bm">Enter Your Trip Details</h3>
+                      <div class="grey font-12">
+                          <i class="fa fa-lock fa-lg"></i>
+                          <span>Your information is secure and will not be sold.</span>
+                      </div>
+                  </div>
+              </div>
                 @csrf
-                  <input type="hidden" name="product_id" value="{{ $dataforsuminsure->pro_id }}">
+                <input type="hidden"  name="sendemail" @if(isset($_GET['primary_destination'])) value="no" @else value="yes" @endif>
+                  <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
                   <div class="row">
                      @for($orderi=1;$orderi<=17;$orderi++)
                      @if(array_search("id_1",$orderdata) == $orderi)
@@ -40,24 +52,14 @@
                      @if(isset($fields['email']))
                         @if($fields['email'] == "on" )
                            <div class="col-md-6 text-md-right" >
-                              <label for="savers_email" class="input-label">Email Address <span onclick="slidequestion('email')"><i class="fa fa-question-circle"></i></span> </label>
+                              <label for="savers_email" class="input-label">Email Address</label>
                            </div>
                            <div class="col-md-6 ">
                               <div class="custom-form-control">
-                                 <input style="padding-left:40px;" type="text" name="savers_email" placeholder="Email" required id="savers_email" class="form-input">
+                                 <input  @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif style="padding-left:40px;" type="text" name="savers_email" placeholder="Email" required id="savers_email" class="form-input">
                                  <span class="hidden-xs emailicon" style="color:#1BBC9B;">
                                     <i class="fa fa-envelope" aria-hidden="true"></i>
                                  </span>
-                              </div>
-                           </div>
-                           <div id="slide_email" class="form-group tooltip-box">
-                              <div class="p-20px">
-                                 <span onclick="slidequestion('email')" class="tooltip-close fa fa-times"></span>
-                                 <div class="tooltip-content"><b>Your Email Address</b><br><br>
-                                    In addition to providing your insurance quotes immediately, we will also email you a link to your quotes. That way, if you are not ready today to apply online or call us, you can easily access your quotes and proceed at a later, more convenient date.
-                                    <br><br>
-                                    We value your privacy. We will not trade or sell your name to third parties except when required to fulfill services you request. For details, please click on the Privacy link at the bottom of this page.
-                                 </div>
                               </div>
                            </div>
                         @endif
@@ -71,26 +73,12 @@
                      </div>
                      <div class="col-md-6 ">
                         <div class="custom-form-control">
-                           <input inputmode="numeric" style="padding-left:40px;" id="phonenumbermask" placeholder="000-000-0000" data-placeholder="000-000-0000" onkeyup="validatephone()" type="text" name="phone" required id="phone" class="form-input">
+                           <input inputmode="numeric" style="padding-left:40px;" id="phonenumbermask" placeholder="000-000-0000" data-placeholder="000-000-0000" type="text" name="phone" required id="phone" class="form-input">
                            <span class="hidden-xs emailicon" style="color:#1BBC9B;">
                               <i class="fa fa-phone" aria-hidden="true"></i>
                            </span>
                         </div>
                      </div>
-                     <script>
-                        
-                        function validatephone(){
-                           var checkphone = document.getElementById('phone').value;
-                           document.getElementById('phone').value = checkphone.replace(/\D/g,'');
-                           if (checkphone.length < 10) {
-                           document.getElementById('phone_error').innerHTML = '<small>(Must be 10 digits)</small>';
-                           document.getElementById('getquote').disabled = true;  
-                           } else {
-                           document.getElementById('getquote').disabled = false; 
-                           document.getElementById('phone_error').innerHTML = '';
-                           }
-                           }
-                     </script>
                      @endif
                      @endif
                      @endif
@@ -105,19 +93,20 @@
                            <select required class="form-input" name="sum_insured2" id="coverageammount">
                               <option value="">Coverage Amount</option>
                               @foreach($sum_insured as $key=> $r)
-                              <option value="{{ $r->sum_insured }}" @if($key == 0) selected
-                              @endif>${{ $r->sum_insured }}</option>
+                              <option @if(isset($_GET['sum_insured2'])) @if($_GET['sum_insured2']==$r->sum_insured)
+                                selected @endif @endif value="{{ $r->sum_insured }}" @if($data->url == 'visitor-insurance')  @if($r->sum_insured == 50000) selected @endif  @else @if ($key == 0) selected @endif @endif >${{
+                                $r->sum_insured }}</option>
                               @endforeach
                            </select>
                         </div>
                      </div>
-                     <div id="slide_coverage" class="form-group tooltip-box">
-                        <div class="p-20px">
-                           <span onclick="slidequestion('coverage')" class="tooltip-close fa fa-times"></span>
-                           <div class="tooltip-content"><b>Your Email Address</b><br><br>
-                              In addition to providing your insurance quotes immediately, we will also email you a link to your quotes. That way, if you are not ready today to apply online or call us, you can easily access your quotes and proceed at a later, more convenient date.
-                              <br><br>
-                              We value your privacy. We will not trade or sell your name to third parties except when required to fulfill services you request. For details, please click on the Privacy link at the bottom of this page.
+                     <div class="col-md-12">
+                        <div id="slide_coverage" class="tooltip-box">
+                           <div class="p-20px">
+                              <span onclick="slidequestion('coverage')" class="tooltip-close fa fa-times"></span>
+                              <div class="tooltip-content"><b>What is Coverage Amount?</b><br><br>
+                                 The term "Coverage Amount" typically refers to the sum of money that an insurance policy will pay out in the event of a covered loss or claim. It is also known as the "coverage limit" or "policy limit."
+                              </div>
                            </div>
                         </div>
                      </div>
@@ -128,55 +117,34 @@
                      @if(isset($fields['Country']))
                         @if($fields['Country'] == "on" )
                            @if($data->pro_travel_destination == 'worldwide')
-                            <script>
-                              function CountryState(id) {
-                                  if(id=="Canada")
-                                  {
-                                      $('#canadastate').fadeIn();
-                                      $('#country').removeClass('col-md-12')
-                                      $('#country').addClass('col-md-6')
-                                  }else 
-                                  {
-                                      $('#canadastate').hide();
-                                      $('#country').removeClass('col-md-6')
-                                      $('#country').addClass('col-md-6')
-                                      
-                                 }
-                              }
-                           </script>
-                              <div class="col-md-6 text-md-right">
-                                 <label for="primary_destination" class="input-label">Primary Destination</label>
+                           <div class="col-md-6 text-md-right">
+                              <label for="primary_destination" class="input-label">Select Country</label>
+                           </div>
+                           <div class="col-md-6" >
+                              <div class="custom-form-control">
+                                 <select onchange="countryState(this.value)" required class="form-input" name="primary_destination" id="primary_destination">
+                                     <option value="">Select Country</option>
+                                     @foreach (DB::table('countries')->get() as $r)
+                                     <option value='{{ $r->id }}'>{{ $r->name }}</option>
+                                     @endforeach
+                                 </select>
                               </div>
-                              <div id="country" class="col-md-6 ">
-                                 <div class="custom-form-control">
-                                    <select onchange="CountryState(this.value)" required class="form-input" name="primary_destination" id="primary_destination">
-                                       <option value="">Select Country</option>
-                                       @foreach(DB::table('countries')->get() as $r)
-                                          <option value='{{ $r->name }}'  data-imagecss="flag {{ $r->data_imagecss }}" data-title="{{ $r->name }}">{{ $r->name }}</option>
-                                       @endforeach
-                                    </select>
-                                 </div>
-                              </div>
-                           <div class="col-md-12 " id="canadastate" style="display:none; padding-right:0px !important; padding-left:0px !important;">
-                              <div class="row">
-                                 <div class="col-md-6 text-md-right">
-                                    <label for="primary_destination" class="input-label">States In Canda</label>
-                                 </div>
-                                 <div class="form-group col-md-6 custom-form-control  mb-0" >
-                                    <select required class="form-control selecttwo form-input" name="primary_destination" id="primary_destination">
-                                       <option value="">Primary destination in Canada</option>
-                                       @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                          <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
-                                       @endforeach
-                                    </select>
-                                 </div>
+                           </div>
+                           <div class="col-md-6 text-md-right">
+                              <label for="primary_destination" class="input-label">Select State</label>
+                           </div>
+                           <div class="col-md-6" >
+                              <div class="custom-form-control">
+                                 <select required class="form-input" name="primary_destination" id="statestoshow">
+                                     <option value="">Select State</option>
+                                 </select>
                               </div>
                            </div>
                            @else
                            <div class="col-md-6 text-md-right">
-                              <label for="primary_destination" class="input-label">States In Canda</label>
+                              <label for="primary_destination" class="input-label">Primary destination in Canada</label>
                            </div>
-                           <div class="col-md-6 " >
+                           <div class="col-md-6" >
                               <div class="custom-form-control">
                                  <select required class="form-input" name="primary_destination" id="primary_destination">
                                     <option value="">Primary destination in Canada</option>
@@ -206,13 +174,51 @@
                            <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers">
                               <option value="">Number of Travellers</option>
                               @for($i=1;$i<=$number_of_travel;$i++)
-                              <option value="{{ $i }}">{{ $i }}</option>
+                              <option @if(isset($_GET['number_travelers'])) @if($_GET['number_travelers']==$i) selected @endif @else  @if($i == 1) selected @endif @endif value="{{ $i }}">{{ $i }}
+                                </option>
                               @endfor
                            </select>
                         </div>
                         </div>
 
-
+                        @if(isset($_GET['years']))
+                                        @foreach($_GET['years'] as $key=> $year)
+                                            @if($year)
+                                            @php
+                                                    $ordinal_words = ['oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth'];
+                                                    $c = 0;
+                                                @endphp
+                                             <div id="traveler{{ $i }}" class="no_of_travelers col-md-12" >
+                                             <div class="row">
+                                                <div class="col-md-6 text-md-right">
+                                                   <label for="day{{$i}}" class="input-label" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important">Birth date of the <?php echo $ordinal_words[$i];?> Traveller</label>
+                                                </div>
+                                                   <div class="custom-form-control col-md-6 " >
+                                                      <input value="{{ $year }}" id="dateofbirthfull{{ $i }}" class="form-input" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                                   </div>
+                                                   <div class="col-md-6 text-md-right">
+                                                      <label for="year{{$i}}" class="input-label">Pre Existing of <?php echo $ordinal_words[$i];?><span onclick="slidequestion('preexisting{{ $i }}')"><i class="fa fa-question-circle"></i></span></label>
+                                                   </div>
+                                                   <div class="custom-form-control col-md-6 ">
+                                                      <select name="pre_existing[]" class="form-input">
+                                                         <option value="">Select Pre Existing of <?php echo $ordinal_words[$i];?></option>
+                                                         <option  @if($_GET['pre_existing'][$key] == 'yes') selected @endif value="yes">Yes</option>
+                                                         <option @if($_GET['pre_existing'][$key] == 'no') selected @endif value="no">No</option>
+                                                      </select>
+                                                   </div>
+                                                   <div id="slide_preexisting{{ $i }}" style="margin-top: 10px;" class="form-group tooltip-box">
+                                                      <div class="p-20px">
+                                                         <span onclick="slidequestion('preexisting{{ $i }}')" class="tooltip-close fa fa-times"></span>
+                                                         <div class="tooltip-content"><b>Pre-Existing Medical Conditions</b><br><br>
+                                                            A pre-existing medical condition is an illness or injury that you know you already have (e.g. asthma, heart condition). Even if you are showing symptoms of an illness and have not yet seen a doctor, this is considered a "pre-existing" condition (e.g. you have felt chest pains but didn't seek any treatment).
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                           @endif
+                                        @endforeach
+                                    @else
                         @if(isset($fields['dob']) && $fields['dob'] == "on" )
 
                            @php
@@ -221,37 +227,41 @@
                            @endphp
 
                            @for($i=1;$i<=$number_of_travel;$i++)
-                           <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12" >
+                           <div @if($i == 1) @else style="display: none;" @endif id="traveler{{ $i }}" class="no_of_travelers col-md-12" >
                               <div class="row">
-                                 <div class="col-md-6 text-md-right">
+                                 <div class="col-md-6 text-md-right padding-right-zero-on-mobile padding-left-zero-on-mobile">
                                     <label for="day{{$i}}" class="input-label" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important">Birth date of the <?php echo $ordinal_words[$i];?> Traveller</label>
                                  </div>
-                                    <div class="custom-form-control col-md-6 " >
-                                       <input id="dateofbirthfull{{ $i }}" class="form-input" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                    <div style=" padding-left: 20px; padding-right: 0; " class="padding-zero-onmobile-lef-side custom-form-control col-md-6 " >
+                                       <input  id="dateofbirthfull{{ $i }}" class="form-input" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                     </div>
-                                    <div class="col-md-6 text-md-right">
+                                    <div class="col-md-6 text-md-right padding-zero-onmobile-lef-side">
                                        <label for="year{{$i}}" class="input-label">Pre Existing of <?php echo $ordinal_words[$i];?><span onclick="slidequestion('preexisting{{ $i }}')"><i class="fa fa-question-circle"></i></span></label>
                                     </div>
-                                    <div class="custom-form-control col-md-6 ">
+                                    <div style=" padding-left: 20px; padding-right: 0; " class="padding-zero-onmobile-lef-side custom-form-control col-md-6 ">
                                        <select name="pre_existing[]" class="form-input">
                                           <option value="">Select Pre Existing of <?php echo $ordinal_words[$i];?></option>
                                           <option value="yes">Yes</option>
-                                          <option value="no">No</option>
+                                          <option selected value="no">No</option>
                                        </select>
                                     </div>
-                                    <div id="slide_preexisting{{ $i }}" style="margin-top: 10px;" class="form-group tooltip-box">
-                                       <div class="p-20px">
-                                          <span onclick="slidequestion('preexisting{{ $i }}')" class="tooltip-close fa fa-times"></span>
-                                          <div class="tooltip-content"><b>Pre-Existing Medical Conditions</b><br><br>
-                                             A pre-existing medical condition is an illness or injury that you know you already have (e.g. asthma, heart condition). Even if you are showing symptoms of an illness and have not yet seen a doctor, this is considered a "pre-existing" condition (e.g. you have felt chest pains but didn't seek any treatment).
+                                    <div class="">
+                                       <div id="slide_preexisting{{ $i }}" style="margin-top: 10px;" class="tooltip-box">
+                                          <div class="p-20px">
+                                             <span onclick="slidequestion('preexisting{{ $i }}')" class="tooltip-close fa fa-times"></span>
+                                             <div class="tooltip-content"><b>Pre-Existing Medical Conditions</b><br><br>
+                                                A pre-existing medical condition is an illness or injury that you know you already have (e.g. asthma, heart condition). Even if you are showing symptoms of an illness and have not yet seen a doctor, this is considered a "pre-existing" condition (e.g. you have felt chest pains but didn't seek any treatment).
+                                             </div>
                                           </div>
                                        </div>
                                     </div>
+                                    
                                  </div>
                               </div>
                               
                         
                            @endfor
+                        @endif
                         @endif
                         @endif
                      @endif
@@ -260,23 +270,21 @@
                      @if(isset($fields['sdate']) && $fields['sdate'] == "on" && isset($fields['edate']) && $fields['edate'] == "on")
                      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
                      <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
                         <div class="col-md-6 text-md-right">
                            <label for="departure_date" class="input-label">Start Date of Coverage</label>
-                       
                         </div>
                         <div class="col-md-6 ">
                              <div class="custom-form-control">
-                              <input style="padding-left:40px;" id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
+                              <input style="padding-left: 40px;" required @if(isset($_GET['departure_date'])) value="{{ $_GET['departure_date'] }}" @endif readonly inputmode="numeric" id="departure_date" autocomplete="off" name="departure_date" value="" class="form-control dateinput" type="text" placeholder="Start Date" <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()"<?php } ?>>
                               <span class="hidden-xs emailicon" style="color:#1BBC9B;">
                                  <i class="fa fa-calendar" aria-hidden="true"></i>
                               </span>
                               <script>
                            $('#departure_date').datepicker({
-                           format: 'yyyy-mm-dd',
-                           todayHighlight:'TRUE',
-                           autoclose: true,
-                           minDate: 0,
+                              changeMonth: true,
+                              changeYear: true,
+                              yearRange: "-100:+6",
+                              minDate: new Date(),
                            });
                         </script>
                            </div>
@@ -286,16 +294,17 @@
                         </div>
                         <div class="col-md-6 ">
                            <div class="custom-form-control">
-                              <input style="padding-left:40px;" id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly type="date" @endif >
+                              <input @if(isset($_GET['return_date'])) value="{{ $_GET['return_date'] }}" @endif style="padding-left:40px;" id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly type="date" @endif >
                               <span class="hidden-xs emailicon" style="color:#1BBC9B;">
                                  <i class="fa fa-calendar" aria-hidden="true"></i>
                               </span>
                               @if($data->pro_supervisa != 1)
                               <script>
                                  $('#return_date').datepicker({
-                                 format: 'yyyy-mm-dd',
-                                 todayHighlight:'TRUE',
-                                 autoclose: true,
+                                    changeMonth: true,
+                                    changeYear: true,
+                                    yearRange: "-100:+6",
+                                    minDate: new Date(), 
                                  });
                               </script>  
                               @endif
@@ -308,12 +317,15 @@
                         <div class="col-md-6 text-md-right">
                            <label for="gender"  class="input-label">Primary Applicant`s Gender</label>
                         </div>
-                        <div class="custom-form-control col-md-6 ">
-                           <select class="form-input" name="gender" id="gender">
-                              <option value="">Select Gender</option>
-                                <option value="male" >Male</option>
-                                <option value="female" >Female</option>
-                           </select>
+                        <div class="col-md-6 ">
+                           <div class="d-flex">
+                                 <label for="genderyes" class="oneradioinput">
+                                    <input type="radio" value="male" id="genderyes" name="gender">  Male
+                                 </label>
+                                 <label for="genderno" class="oneradioinput secondradioinput">
+                                    <input type="radio" value="female" id="genderno" name="gender"> Female
+                                 </label>
+                           </div>
                         </div>
                      @endif
                      @endif
@@ -331,19 +343,20 @@
                         </div>
                      @endif
                      @endif
-                     @if(array_search("id_12",$orderdata) == $orderi)
+                     @if(array_search("id_15",$orderdata) == $orderi)
                         @if(isset($fields['fplan']))
                            @if($fields['fplan'] == 'on')
-                             <div class="col-md-6 text-right">
+                             <div class="col-md-6 text-md-right">
                                 <label for="" class="">Do you require Family Plan ? <span onclick="slidequestion('family')"><i class="fa fa-question-circle"></i></span> </label>
                              </div>
                              <div class="col-md-6 ">
-                                 <div class="custom-form-control">
-                                    <select onchange="changefamilyyes(this.value)" required class="form-input" name="fplan" id="selectfamilyplan">
-                                       <option value="">--- Please Choose ---</option>
-                                         <option value="yes">Yes</option>
-                                         <option value="no">No</option>
-                                    </select>
+                                 <div class="d-flex">
+                                       <label for="familyyes" class="oneradioinput">
+                                          <input onchange="changefamilyyes(this.value)" type="radio" value="yes" id="familyyes" name="fplan">  Yes
+                                       </label>
+                                       <label for="familyno" class="oneradioinput secondradioinput">
+                                          <input checked onchange="changefamilyyes(this.value)" type="radio" value="no" id="familyno" name="fplan"> No
+                                       </label>
                                  </div>
                               </div>
                               <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
@@ -359,16 +372,19 @@
                                     }
                                  }
                               </script>
-                              <div id="slide_family" class="form-group tooltip-box">
-                                 <div class="p-20px">
-                                    <span onclick="slidequestion('family')" class="tooltip-close fa fa-times"></span>
-                                    <div class="tooltip-content"><b>Your Email Address</b><br><br>
-                                       In addition to providing your insurance quotes immediately, we will also email you a link to your quotes. That way, if you are not ready today to apply online or call us, you can easily access your quotes and proceed at a later, more convenient date.
-                                       <br><br>
-                                       We value your privacy. We will not trade or sell your name to third parties except when required to fulfill services you request. For details, please click on the Privacy link at the bottom of this page.
+                              <div class="col-md-12">
+                                 <div id="slide_family" class="tooltip-box">
+                                    <div class="p-20px">
+                                       <span onclick="slidequestion('family')" class="tooltip-close fa fa-times"></span>
+                                       <div class="tooltip-content"><b>What is family Plan?</b><br><br>
+                                          In addition to providing your insurance quotes immediately, we will also email you a link to your quotes. That way, if you are not ready today to apply online or call us, you can easily access your quotes and proceed at a later, more convenient date.
+                                          <br><br>
+                                          We value your privacy. We will not trade or sell your name to third parties except when required to fulfill services you request. For details, please click on the Privacy link at the bottom of this page.
+                                       </div>
                                     </div>
                                  </div>
                               </div>
+                              
                            @endif
                         @endif
                         @endif
@@ -376,26 +392,28 @@
                         @if(array_search("id_5",$orderdata) == $orderi)
                            @if(isset($fields['Smoke12']))
                            @if($fields['Smoke12'] == 'on')
-                              <div class="col-md-6  text-md-right">
-                                 <label for="" class="  text-md-right" id="">Do you Smoke in last 12 months? <span onclick="slidequestion('smoke')"><i class="fa fa-question-circle"></i></span></label>
+                              <div class="col-md-6 text-md-right">
+                                 <label for="" class="text-md-right" id="">Do you Smoke in last 12 months? <span onclick="slidequestion('smoke')"><i class="fa fa-question-circle"></i></span></label>
                               </div>
                               <div class="col-md-6 ">
-                                 <label for="" class="d-sm-none">Do you Smoke in last 12 months?</label>
-                                 <div class="custom-form-control">
-                                    <select required class="form-input" name="Smoke12" id="">
-                                       <option value="">--- Please Choose ---</option>
-                                         <option value="yes" >Yes</option>
-                                         <option value="no" >No</option>
-                                    </select>
+                                 <div class="d-flex">
+                                       <label for="smokeyes" class="oneradioinput">
+                                          <input type="radio" value="yes" id="smokeyes" name="Smoke12">  Yes
+                                       </label>
+                                       <label for="smokeno" class="oneradioinput secondradioinput">
+                                          <input checked type="radio" value="no" id="smokeno" name="Smoke12"> No
+                                       </label>
                                  </div>
                               </div>
-                              <div id="slide_smoke" class="form-group tooltip-box">
-                                 <div class="p-20px">
-                                    <span onclick="slidequestion('smoke')" class="tooltip-close fa fa-times"></span>
-                                    <div class="tooltip-content"><b>Your Email Address</b><br><br>
-                                       In addition to providing your insurance quotes immediately, we will also email you a link to your quotes. That way, if you are not ready today to apply online or call us, you can easily access your quotes and proceed at a later, more convenient date.
-                                       <br><br>
-                                       We value your privacy. We will not trade or sell your name to third parties except when required to fulfill services you request. For details, please click on the Privacy link at the bottom of this page.
+                              <div class="col-md-12">
+                                 <div id="slide_smoke" class="tooltip-box">
+                                    <div class="p-20px">
+                                       <span onclick="slidequestion('smoke')" class="tooltip-close fa fa-times"></span>
+                                       <div class="tooltip-content"><b>What Efects do you Smoke on your Policy?</b><br><br>
+                                          In addition to providing your insurance quotes immediately, we will also email you a link to your quotes. That way, if you are not ready today to apply online or call us, you can easily access your quotes and proceed at a later, more convenient date.
+                                          <br><br>
+                                          We value your privacy. We will not trade or sell your name to third parties except when required to fulfill services you request. For details, please click on the Privacy link at the bottom of this page.
+                                       </div>
                                     </div>
                                  </div>
                               </div>
@@ -408,15 +426,17 @@
                      @endfor
                      <div class="col-md-6">
                      </div>
-
-
                      <div class="col-md-6 d-flex justify-content-between " style="margin-top: 12px; ">
-                        <span id="family_error" style="display: none; font-size: 15px;font-weight: bold;text-align: right;padding: 20px;" class="text-danger"><i class="fa fa-warning"></i> </span>
+                        <span id="family_error" style="display: none;font-weight: bold;" class="text-danger">
+                           <i class="fa fa-warning"></i> 
+                        </span>
                         <button type="submit" name="GET QUOTES" id="getqoutesubmitbutton" class="btn  get_qout">Get a Quote <i class="fa fa-list-ul"></i> </button>
                      </div>
                   </div>
                </form>
 </div>
+</div>
+
 <script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
 <script type="text/javascript">
    function slidequestion(id) {
@@ -606,6 +626,11 @@
        }
        
    }
+   @if(isset($_GET['sum_insured2']))
+    $( document ).ready(function() {
+        $('#getqoutesubmitbutton').click();
+    });
+    @endif
    $('#quoteform').on('submit',(function(e) {
         $('#getqoutesubmitbutton').html('<i class="fa fa-spin fa-spinner"></i>');
         e.preventDefault();
@@ -621,6 +646,10 @@
                 // console.log(data.html)
                 $('#getqoutesubmitbutton').html('Get Quotes');
                 $('.quotationscards').html(data.html);
+
+                $('html, body').animate({
+                    scrollTop: $(".quotationscards").offset().top
+                }, 2000);
             }
         });
     }));

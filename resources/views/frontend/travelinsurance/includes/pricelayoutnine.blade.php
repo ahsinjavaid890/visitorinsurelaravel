@@ -137,7 +137,7 @@
                 </div>
             </div>
         </div>
-        <div class="card  qoute-price-card mb-3 pricegurrantecard display-none-on-tablet display-none-on-mobile">
+        <div class="card pricegurrantee qoute-price-card mb-3 pricegurrantecard display-none-on-tablet display-none-on-mobile">
             <div class="card-widget card-widget-price-match">
                 <div class="card-header">
                     <div class="icon icon-price-match"></div>
@@ -163,73 +163,21 @@
     $rand = rand(100000000, 20000000);
 @endphp
 <script>
-    $(document).ready(function() {
-        var divList = $(".listing-item");
-        divList.sort(function(a, b) {
-            return $(a).data("listing-price") - $(b).data("listing-price")
-        });
-        $("#main").html(divList);
+$(document).ready(function() {
+    var divList = $(".listing-item");
+    divList.sort(function(a, b) {
+        return $(a).data("listing-price") - $(b).data("listing-price")
     });
+    $("#main").html(divList);
+});
 
-    function slideadditionaltravelers(id) {
-        var text = $('#changeshowtoless' + id).text();
-        if (text == ' Show Details') {
-            $('#changeshowtoless' + id).html('<i class="fa fa-minus-circle colorblue"></i> Hide Details');
-        } else {
-            $('#changeshowtoless' + id).html('<i class="fa fa-plus-circle colorblue"></i> Show Details');
-        }
-        $(".hoverdetails_" + id).slideToggle();
+function slideadditionaltravelers(id) {
+    var text = $('#changeshowtoless' + id).text();
+    if (text == ' Show Details') {
+        $('#changeshowtoless' + id).html('<i class="fa fa-minus-circle colorblue"></i> Hide Details');
+    } else {
+        $('#changeshowtoless' + id).html('<i class="fa fa-plus-circle colorblue"></i> Show Details');
     }
-
-    function savecompareplans(plan_id, product_id, coverage_ammount, deductibles, price) {
-        var $checkboxes = jQuery('.compare input[type="checkbox"]');
-        $checkboxes.change(function(e) {
-            $checkboxes.attr("disabled", false);
-            var countCheckedCheckboxes = $checkboxes.filter(':checked').length;
-            if (countCheckedCheckboxes == 1) {
-                jQuery('.two_select').hide();
-                jQuery('.one_select').show();
-            } else if (countCheckedCheckboxes == 2) {
-                jQuery('.compare_header_top').show();
-                jQuery('.two_select').show();
-                jQuery('.one_select').hide();
-            } else if (countCheckedCheckboxes >= 3) {
-                jQuery('.compare_header_top').show();
-                jQuery('.two_select').show();
-                jQuery('.one_select').hide();
-                $checkboxes.attr("disabled", true);
-                $checkboxes.filter(':checked').attr("disabled", false);
-            } else {
-                jQuery('.compare_header_top').hide();
-            }
-        });
-        $.ajax({
-            type: 'GET',
-            url: '{{ url('savecompareplans') }}/' + {{ $rand }} + '/' + plan_id + '/' + product_id +
-                '/' + coverage_ammount + '/' + deductibles + '/' + price,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function(data) {
-                $('.compare_header_top').show();
-                $('.compare_header_top').html(data);
-            }
-        });
-    }
-
-    function removecomarecard(id) {
-        var $checkboxes = jQuery('.compare input[type="checkbox"]');
-        $checkboxes.attr("disabled", false);
-        $.ajax({
-            type: 'GET',
-            url: '{{ url('removecomarecard') }}/' + id,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function(data) {
-                $('.compare_header_top').show();
-                $('.compare_header_top').html(data);
-            }
-        });
-    }
+    $(".hoverdetails_" + id).slideToggle();
+}
 </script>
