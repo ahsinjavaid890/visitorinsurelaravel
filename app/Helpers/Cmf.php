@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
 class Cmf
 {
+    public static function getwebsite()
+    {
+        $data =  DB::table('select_websites')->where('id' ,2)->first();
+        return DB::table('site_settings')->where('smallname' ,$data->name)->first();
+    }
     public static function checkallrates($ages_array , $rates_table_name , $deduct_plan_id , $sumamt)
     {
         $items = array();

@@ -187,9 +187,18 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
     });
     Route::name('website.')->prefix('website')->group(function(){
         Route::get('/settings','SettingsController@appearance');
-        Route::post('/updatelinks','SettingsController@updatelinks');
-        Route::post('/settingsupdate','SettingsController@appearance_update');
+        Route::get('/server-info','SettingsController@serverinfo');
+        Route::get('/clearcache','SettingsController@clearcache');
+        Route::POST('/clearcache','SettingsController@cacheclear');
+        Route::post('/settingsupdate','SettingsController@settingsupdate');
         Route::post('/updatelogos','SettingsController@updatelogos');
+        Route::post('/updatelinks','SettingsController@updatelinks');
+        Route::get('/emailsettings','SettingsController@emailsettings');
+        Route::post('/emailsettingsupdate','SettingsController@emailsettingsupdate');
+        Route::post('/emailtemplateupdate','SettingsController@emailtemplateupdate');
+        Route::get('/userpanelsettings','SettingsController@userpanelsettings');
+        Route::post('/userpanelsettingupdate','SettingsController@userpanelsettingupdate');
+        
     });
     Route::name('companies.')->prefix('companies')->group(function(){
         Route::get('/allcompanies','AdminController@allcompanies');

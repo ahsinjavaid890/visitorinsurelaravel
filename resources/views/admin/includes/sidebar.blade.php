@@ -140,10 +140,48 @@
                     </a>
                 </li>
                 <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                    <a href="{{ url('admin/website/settings') }}" class="menu-link menu-toggle">
+                    <a href="javascript:;" class="menu-link menu-toggle">
                         <span class="material-symbols-outlined">settings</span>
-                        <span class="menu-text">Website Settings</span>
+                        <span class="menu-text">Settings</span><i class="menu-arrow"></i>
                     </a>
+                    <div class="menu-submenu">
+                        <i class="menu-arrow"></i>
+                        <ul class="menu-subnav">
+                            <li class="menu-item menu-item-parent" aria-haspopup="true">
+                                <span class="menu-link"><span class="menu-text">Settings</span></span>
+                            </li>
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{ url('admin/website/settings') }}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                                        class="menu-text">Appearance</span>
+                                </a>
+                            </li>
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{ url('admin/website/emailsettings') }}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                                        class="menu-text">Email Settings</span>
+                                </a>
+                            </li>
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{ url('admin/website/userpanelsettings') }}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">User
+                                        Panel & Buy Now</span>
+                                </a>
+                            </li>
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{ url('admin/website/clearcache') }}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                                        class="menu-text">Clear Cache</span>
+                                </a>
+                            </li>
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{ url('admin/website/server-info') }}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                                        class="menu-text">Server</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="menu-section">
                     <h4 class="menu-text">Profile</h4>
