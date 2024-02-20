@@ -1,13 +1,14 @@
 @extends('frontend.layouts.main')
 @section('tittle')
     <title>Customer Portal</title>
+    <link rel="canonical" href="{{Request::url()}}">
 @endsection
 @section('content')
     <style type="text/css">
         body {
             background-color: rgb(246 248 251);
         }
-        
+
         .card {
             background: #fff;
             border: 1px solid #cfd9e8;
@@ -146,11 +147,14 @@
         .activenav:hover{
             color: white;
         }
+        a{
+            color: black;
+        }
     </style>
 
 
     <div class="container">
-        <div class="row mt-2">
+        <div class="row" style="margin-top: 100px">
             <div class="col-md-12">
                 <div class="heading-wrapper ">
                     <h1 style="font-size: 35px;margin-bottom:20px" class="heading-2 text-md-left">My Account</h1>

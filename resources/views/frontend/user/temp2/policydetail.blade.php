@@ -1,6 +1,7 @@
 @extends('frontend.layouts.main')
 @section('tittle')
 <title>User Dashboard – Get Tips, Online Quotes for Life Insurance</title>
+<link rel="canonical" href="{{Request::url()}}">
 @endsection
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -155,14 +156,17 @@
    .nav-tabs {
             border-bottom: none
         }
+   a{
+            color: black;
+            }
 </style>
 
 
 <div class="container" >
-   <div class="row mt-2">
+   <div class="row" style="margin-top: 100px">
        <div class="col-md-12">
            <div class="heading-wrapper">
-               <h3  style="font-size: 35px;margin-bottom:20px" class="heading-2 text-md-start">Policy Detail</h3>
+               <h3  style="font-size: 35px;margin-bottom:10px" class="heading-2 text-md-start">Policy Detail</h3>
            </div>
        </div>
 
@@ -334,7 +338,7 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Policy Number</label>
-                     <input type="text" class="form-control" name="policy_number" required>
+                     <input type="text" class="form-control"  value="{{ $data->policy_number }} name="policy_number" required>
                   </div>
                </div>
             </div>

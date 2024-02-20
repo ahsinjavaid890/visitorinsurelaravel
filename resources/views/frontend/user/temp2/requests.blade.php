@@ -1,6 +1,7 @@
 @extends('frontend.layouts.main')
 @section('tittle')
     <title>Customer Portal</title>
+    <link rel="canonical" href="{{Request::url()}}">
 @endsection
 @section('content')
     <style type="text/css">
@@ -346,7 +347,7 @@
         @media (min-width: 768px) {
 
             body {
-                font-size: 1.125rem;
+                font-size: 0.9rem;
             }
 
             .material-icons {
@@ -446,15 +447,21 @@
         .nav-tabs {
             border-bottom: none
         }
+        .activenav:hover{
+            color: white;
+        }
+        a{
+            color: black;
+        }
     </style>
 
 
 
 <div class="container" >
-    <div class="row mt-2">
+    <div class="row" style="margin-top: 100px">
         <div class="col-md-12">
             <div class="heading-wrapper">
-                <h3  style="font-size: 35px;margin-bottom:20px" class="heading-2 text-md-start">All Requests</h3>
+                <h3  style="font-size: 30px;margin-bottom:20px" class="heading-2 text-md-start">All Requests</h3>
             </div>
         </div>
 
@@ -533,7 +540,7 @@
                                                                     <div class="col-md-6">
                                                                         <label>Request Status</label><br>
                                                                         <a class="badge badge-success"
-                                                                            href="javascript:void(0)">Pending</a>
+                                                                            href="javascript:void(0)">{{ $r->request_status }}</a>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <label>Reffrence Number</label>
@@ -586,7 +593,7 @@
                                                                     <div class="col-md-6">
                                                                         <label>Request Status</label><br>
                                                                         <a class="badge badge-success"
-                                                                            href="javascript:void(0)">Pending</a>
+                                                                            href="javascript:void(0)">{{ $r->request_status }}</a>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <label>Reffrence Number</label>

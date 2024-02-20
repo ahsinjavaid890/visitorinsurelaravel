@@ -1,6 +1,7 @@
 @extends('frontend.layouts.main')
 @section('tittle')
 <title>User Dashboard – Get Tips, Online Quotes for Life Insurance</title>
+<link rel="canonical" href="{{Request::url()}}">
 @endsection
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -263,6 +264,12 @@
                      <h3 style="color: #2b3481!important">Claim form</h3>                      
                      <p>Our dedicated claims team is always available to provide guidance and assistance throughout the process, ensuring that your claim is handled swiftly and sympathetically.</p>
                      <p>At Life Advice Insurance Inc, we're more than just an insurance provider; we're here to support you every step of the way.</p>
+
+
+
+                     <a href=""><i class="fa fa-download"></i> Download Claim Form</a>
+
+
                   </div>
                </div>
       </div>
@@ -318,7 +325,7 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Policy Number</label>
-                     <input type="text" class="form-control" name="policy_number" required>
+                     <input type="text" readonly class="form-control" value="{{ $data->policy_number }}" name="policy_number" required>
                   </div>
                </div>
             </div>
@@ -428,7 +435,7 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Policy Number</label>
-                     <input type="text" class="form-control" name="policy_number" required>
+                     <input type="text" readonly class="form-control"  value="{{ $data->policy_number }}" name="policy_number" required>
                   </div>
                </div>
             </div>
@@ -497,7 +504,7 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Policy Number</label>
-                     <input required placeholder="Enter Policy Number" type="text" class="form-control" name="policy_number">
+                     <input required readonly placeholder="Enter Policy Number"  value="{{ $data->policy_number }}" type="text" class="form-control" name="policy_number">
                   </div>
                </div>
             </div>
