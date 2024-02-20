@@ -34,7 +34,7 @@
                            <span class="green_text">Insurance</span>
                         </div>
                         <p class="mb-4">Super Visa Insurance is needed when you apply for a Super Visa for your family, parents or grand-parents.</p>
-                        <a href="{{ url('product/super-visa-insurance') }}" class="btn btn-main btn-round-full">Get a Quote &nbsp;<strong>&rarr;</strong></a>
+                        <a href="{{ url('super-visa-insurance') }}" class="btn btn-main btn-round-full">Get a Quote &nbsp;<strong>&rarr;</strong></a>
                      </div>
                   </div>
                   <div class="row premium_listing">
@@ -47,13 +47,13 @@
                            <span class="green_text">Insurance</span>
                         </div>
                         <p class="mb-4">Visitor Insurance benefits you throughout journey and protect your bags and possessions while traveling.</p>
-                        <a href="{{ url('product/visitor-insurance') }}" class="btn btn-main btn-round-full">Get a Quote &nbsp;<strong>&rarr;</strong></a>
+                        <a href="{{ url('visitor-insurance') }}" class="btn btn-main btn-round-full">Get a Quote &nbsp;<strong>&rarr;</strong></a>
                      </div>
                   </div>
 
-                  <div class="title_h2 text-center mt-2">
+                  <!-- <div class="title_h2 text-center mt-2">
                      <a href="{{ url('product') }}" class="title_h3"><span class="blue_text"><u>See All</u></span></a>
-                  </div>
+                  </div> -->
 
                </div>
 
