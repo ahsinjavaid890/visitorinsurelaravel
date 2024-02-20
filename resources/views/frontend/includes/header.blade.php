@@ -29,7 +29,7 @@
                         <li><a class="dropdown-item" href="{{ url('super-visa-insurance') }}">Super Visa Insurance</a></li>
                         <li><a class="dropdown-item" href="{{ url('visitor-insurance') }}">Visitor Insurance</a></li>
                         <li><a class="dropdown-item" href="{{ url('student-insurance') }}">Student Insurance</a></li>
-                        <li><a class="dropdown-item" href="{{ url('single-trip-insurance') }}">Single Trip Insurance</a></li>
+                        <li><a class="dropdown-item" href="{{ url('travel-insurance') }}">Travel Insurance</a></li>
                     </ul>
                 </li>
                 <li class="nav-item @if($url == 'product') active @endif"><a class="nav-link" href="{{ url('product') }}">Products</a></li>

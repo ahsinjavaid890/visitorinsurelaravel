@@ -53,7 +53,7 @@
                      <p>
                         Super Visa Insurance is needed when you apply for a Super Visa for your family, parents or grand-parents.
                      </p>
-                     <a href="supervisa-insurance.php" class="btn btn-main btn-round-full product-page-btns-green">Learn More</a>
+                     <a href="{{ url('super-visa-insurance') }}" class="btn btn-main btn-round-full product-page-btns-green">Learn More</a>
 
                     </div>
                     
@@ -70,7 +70,7 @@
                      <p>
                         Visitors Insurance travel insurance offers flexible, affordable emergency medical coverage to visitor.
                      </p>
-                     <a href="visitor-insurance.php" class="btn btn-main btn-round-full product-page-btns-green">Learn More</a>
+                     <a href="{{ url('visitor-insurance') }}" class="btn btn-main btn-round-full product-page-btns-green">Learn More</a>
 
                     </div>
                     
@@ -87,7 +87,7 @@
                      <p>
                         Student Insurance is for students who are studying abroad or international students coming to study in Canada. &nbsp&nbsp&nbsp&nbsp
                      </p>
-                     <a href="student-insurance.php" class="btn btn-main btn-round-full product-page-btns-green">Learn More</a>
+                     <a href="{{ url('student-insurance') }}" class="btn btn-main btn-round-full product-page-btns-green">Learn More</a>
 
                     </div>
                     
@@ -104,7 +104,7 @@
                      <p>
                         Travel Insurance protects you and your luggage against many perils you may come across while traveling abroad.
                      </p>
-                     <a href="travel-insurance.php" class="btn btn-main btn-round-full product-page-btns-green">Learn More</a>
+                     <a href="{{ url('travel-insurance') }}" class="btn btn-main btn-round-full product-page-btns-green">Learn More</a>
 
                     </div>
                     
@@ -124,7 +124,7 @@
 
 
 
-<section class=" products-page-container">
+<!-- <section class=" products-page-container">
    <div class="container">
 
       <div class="row mb-5 mb-5">
@@ -246,5 +246,5 @@
       </div>
 
    </div>
-</section>
+</section> -->
 @endsection
