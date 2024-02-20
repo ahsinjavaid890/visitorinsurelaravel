@@ -52,13 +52,23 @@ class CustomLoginController extends Controller
         }
         
     }
-
+    public function random_strings($length_of_string)
+    {
+     
+        // String of all alphanumeric character
+        $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+     
+        // Shuffle the $str_result and returns substring
+        // of specified length
+        return substr(str_shuffle($str_result), 
+                           0, $length_of_string);
+    }
     public function sendsecurelink(Request $request)
     {
         $this->validate($request, [
             'email' => 'required|max:255|email|exists:users',
         ]);
-        $hash = Hash::make($request->email);
+        $hash = $this->random_strings(15);
         $newsecure = new secure_links();
         $newsecure->email = $request->email;
         $newsecure->secure_link = $hash;
@@ -69,7 +79,7 @@ class CustomLoginController extends Controller
         $securelinkgtempalte = 'email.template' . $temp . '.securelink';
         Mail::send($securelinkgtempalte, array('link'=>$link), function($message) use ($request) {
             $message->to($request->email)->subject('Secure link sign in');
-            $message->from('compare@lifeadvice.ca','LIFEADVICE');
+            $message->from('compare@lifeadvice.ca','VISITOR INSURE');
         });
         return redirect()->back()->with('message', 'We have sent a Secure Link to your email. Click on the link provided to sign in.');
     }
