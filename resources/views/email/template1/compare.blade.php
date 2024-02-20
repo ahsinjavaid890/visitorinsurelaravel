@@ -59,7 +59,7 @@
                                                                   <div>
                                                                      <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;line-height:28px"><span style="color:#67778f;font-size:16px;font-weight:600">Dear Traveler,</span></div>
                                                                      <div style="font-family:inherit;text-align:inherit"><br></div>
-                                                                     <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;line-height:28px"><span style="color:#67778f;font-weight:600;font-size:16px">Thank you for taking the first step towards safeguarding your journeys with Life Advice Insurance Inc. We're delighted you've chosen us to explore insurance options tailored to your unique travel style! With just a click, you can revisit your plan comparison and secure your policy in under 5 minutes.</span></div>
+                                                                     <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;line-height:28px"><span style="color:#67778f;font-weight:600;font-size:16px">Thank you for taking the first step towards safeguarding your journeys with Visitor Insure Insurance Inc. We're delighted you've chosen us to explore insurance options tailored to your unique travel style! With just a click, you can revisit your plan comparison and secure your policy in under 5 minutes.</span></div>
                                                                      <div></div>
                                                                   </div>
                                                                </td>
@@ -111,7 +111,7 @@
                                                                      <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;font-size:16px;line-height:28px"><span style="font-size:16px;font-weight:600">Your safety and peace of mind are our top priorities,</span></div>
                                                                      <div style="font-family:inherit;text-align:inherit"><br></div>
                                                                      <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;font-size:16px;line-height:28px"><span style="font-size:16px;font-weight:600">Warm regards,<br>
-                                                                        The Customer Success Team<br>Life Advice</span></div>
+                                                                        The Customer Success Team<br>Visitor Insure</span></div>
                                                                      <div></div>
                                                                   </div>
                                                                </td>

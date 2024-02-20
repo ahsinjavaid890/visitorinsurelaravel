@@ -1,3 +1,7 @@
+@php
+    $url = request()->segment(count(request()->segments()));
+    $settings = DB::table('site_settings')->where('smallname' , 'visitorinsure')->first();
+@endphp
 <footer class="footer section gray-bg">
     <div class="container">
         <div class="row">
@@ -10,9 +14,7 @@
                         <ul class="list-unstyled footer-menu lh-35">
                             <li><a href="{{ url('') }}">Home</a></li>
                             <li><a href="{{ url('blogs') }}">Blog</a></li>
-                            <li><a href="{{ url('claim') }}">Claims </a></li>
                             <li><a href="{{ url('privacypolicy') }}">Privacy Policy</a></li>
-                            <li><a href="{{ url('become-a-partner') }}">Become a Partner</a></li>
                             <li><a href="{{ url('contactus') }}">Contact Us</a></li>
                         </ul>
                     </div>
@@ -24,15 +26,13 @@
                     <div class="mb-4"><img src="{{ url('public/front/visitorinsure/images/divider.png') }}" class="divider_line"></div>
 
                     <ul class="list-unstyled footer-menu lh-35">
-                        <li><a target="_blank" href="{{ url('') }}">
-                                <img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon1.png') }}"> SuperVisa
+                        <li><a href="{{ url('super-visa-insurance') }}">
+                                <img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon1.png') }}"> Super Visa Insurance
                             </a>
                         </li>
-                        <li><a target="_blank" href="{{ url('') }}"><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon2.png') }}"> Student</a></li>
-                        <li><a target="_blank" href="{{ url('') }}"><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon3.png') }}"> Travellers</a></li>
-                        <li><a target="_blank" href="{{ url('') }}"><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon4.png') }}"> Baggage </a></li>
-                        <li><a target="_blank" href="{{ url('') }}"><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon5.png') }}"> Multi Trip</a></li>
-                        <li><a target="_blank" href="{{ url('') }}"><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon6.png') }}"> Single Trip</a></li>
+                        <li><a href="{{ url('visitor-insurance') }}"><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon2.png') }}"> Visitor Insurance</a></li>
+                        <li><a href="{{ url('student-insurance') }}"><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon3.png') }}"> Student Insurance</a></li>
+                        <li><a href="{{ url('single-trip-insurance') }}"><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon4.png') }}"> Single Trip Insurance </a></li>
                     </ul>
                 </div>
             </div>
@@ -54,12 +54,9 @@
                     <div class="mb-4"><img src="{{ url('public/front/visitorinsure/images/divider.png') }}" class="divider_line"></div>
                     
                     <ul class="list-unstyled footer-menu lh-35">
-                        <li><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon10.png') }}"> 
-                            Direct: 519-404-5041<br>
-                            <span class="footer_new_line_text_space">Tolfree: 1855-500-5041</span></li>
-                        <li><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon12.png') }}"> 912 Isaiah Place, Kitchener ON <br><span class="footer_new_line_text_space">N2E 0B6, Canada</span></li>
-                        <li><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon11.png') }}"> Fax: 1855-222-7444</li>
-                        <li><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon13.png') }}"> info@visitorguard.ca</li>
+                        <li><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon10.png') }}">{{ $settings->site_phonenumber }}</li>
+                        <li><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon12.png') }}">{{ $settings->site_address }}</li>
+                        <li><img class="icon" src="{{ url('public/front/visitorinsure/images/footer/icon13.png') }}">{{ $settings->site_email }}</li>
                     </ul>
                 </div>
             </div>

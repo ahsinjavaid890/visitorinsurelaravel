@@ -1308,9 +1308,9 @@
                                 style="color: #ffffff; line-height: 170%; text-align: center; word-wrap: break-word;">
 
 
-                                <p style="font-size: 14px; line-height: 170%;">Life Advice Insurance Inc, 912 Isaiah
+                                <p style="font-size: 14px; line-height: 170%;">Visitor Insure Insurance Inc, 912 Isaiah
                                   Place, Kitchener, ON, N2E0B6
-                                  Life Advice Inc®. All Rights Reserved.</p>
+                                  Visitor Insure Inc®. All Rights Reserved.</p>
                               </div>
 
                             </td>

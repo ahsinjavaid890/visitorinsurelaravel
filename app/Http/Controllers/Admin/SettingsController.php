@@ -36,20 +36,20 @@ class SettingsController extends Controller
     public function updatelogos(Request $request)
     {
         $settings = Settings::where('smallname' , 'visitorinsure')->first();
-        $upadate = Settings::find($settings->id);
+        $asdasdsad = Settings::find($settings->id);
         if($request->header_logo)
         {
-            $upadate->header_logo = Cmf::sendimagetodirectory($request->header_logo);
+            $asdasdsad->header_logo = Cmf::sendimagetodirectory($request->header_logo);
         }
         if($request->footer_logo)
         {
-            $upadate->footer_logo = Cmf::sendimagetodirectory($request->footer_logo);
+            $asdasdsad->footer_logo = Cmf::sendimagetodirectory($request->footer_logo);
         }
         if($request->favicon)
         {
-            $upadate->favicon = Cmf::sendimagetodirectory($request->favicon);
+            $asdasdsad->favicon = Cmf::sendimagetodirectory($request->favicon);
         }
-        $upadate->save();
+        $asdasdsad->save();
         return redirect()->back()->with('message', 'Logos Updated Successfully');
     }
     public function cacheclear()
