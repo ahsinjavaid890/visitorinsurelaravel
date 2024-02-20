@@ -51,9 +51,9 @@
                      </div>
                   </div>
 
-                  <!-- <div class="title_h2 text-center mt-2">
+                  <div class="title_h2 text-center mt-2">
                      <a href="{{ url('product') }}" class="title_h3"><span class="blue_text"><u>See All</u></span></a>
-                  </div> -->
+                  </div>
 
                </div>
 
@@ -127,7 +127,7 @@
       <div class="row insurance-plans mt-5">
          <div class="row premium_listing_slider text-center">
             <div class="col-lg-12 col-md-12 col-xl-12">
-               <a href="quote/tab_info.php?product_id=2">
+               <a href="{{ url('super-visa-insurance') }}">
                   <img src="{{ url('public/front/visitorinsure/images/insurance01.png') }}" class="img-fluid"><br>
                   <div class="title_h2 mt-3 mb-2">
                      <span class="blue_text">Super Visa </span>
@@ -139,7 +139,7 @@
          </div>
          <div class="row premium_listing_slider text-center">
             <div class="col-lg-12 col-md-12 col-xl-12">
-               <a href="quote/tab_info.php?product_id=2">
+               <a href="{{ url('visitor-insurance') }}">
                   <img src="{{ url('public/front/visitorinsure/images/insurance02.png') }}"><br>
                   <div class="title_h2 mt-3 mb-2">
                      <span class="blue_text">Visitors </span>
@@ -151,7 +151,7 @@
          </div>
          <div class="row premium_listing_slider text-center">
             <div class="col-lg-12 col-md-12 col-xl-12">
-               <a href="quote/tab_info.php?product_id=2">
+               <a href="{{ url('student-insurance') }}">
                   <img src="{{ url('public/front/visitorinsure/images/insurance03.png') }}"><br>
                   <div class="title_h2 mt-3 mb-2">
                      <span class="blue_text">Student </span>
@@ -163,7 +163,7 @@
          </div>
          <div class="row premium_listing_slider text-center">
             <div class="col-lg-12 col-md-12 col-xl-12">
-               <a href="quote/tab_info.php?product_id=2">
+               <a href="{{ url('travel-insurance') }}">
                   <img src="{{ url('public/front/visitorinsure/images/insurance04.png') }}"><br>
                   <div class="title_h2 mt-3 mb-2">
                      <span class="blue_text">Travel </span>
@@ -173,7 +173,7 @@
                </a>
             </div>
          </div>
-         <div class="row premium_listing_slider text-center">
+         <!-- <div class="row premium_listing_slider text-center">
             <div class="col-lg-12 col-md-12 col-xl-12">
                <a href="quote/tab_info.php?product_id=6">
                   <img src="{{ url('public/front/visitorinsure/images/insurance06.png') }}"><br>
@@ -184,8 +184,8 @@
                   <p class="mb-4">Travel Insurance protects you and your luggage against many perils you may come across while traveling abroad.</p>
                </a>
             </div>
-         </div>
-         <div class="row premium_listing_slider text-center">
+         </div> -->
+         <!-- <div class="row premium_listing_slider text-center">
             <div class="col-lg-12 col-md-12 col-xl-12">
                <a href="quote/tab_info.php?product_id=9">
                   <img src="{{ url('public/front/visitorinsure/images/insurance05.png') }}"><br>
@@ -196,7 +196,7 @@
                   <p class="mb-4">Travel Insurance protects you and your luggage against many perils you may come across while traveling abroad.</p>
                </a>
             </div>
-         </div>
+         </div> -->
       </div>
    </div>
 </section>
@@ -215,7 +215,7 @@
 
          <div class="col-6 col-md-6 col-xl-6">
             <div class="premium_listing_slider text-center">
-                  <a href="quote/tab_info.php?product_id=2">
+                  <a href="{{ url('super-visa-insurance') }}">
                      <img src="{{ url('public/front/visitorinsure/images/insurance01.png') }}" class="img-fluid"><br>
                      <div class="title_h2 mt-3 mb-2">
                         <span class="blue_text">Super Visa </span>
@@ -226,7 +226,7 @@
          </div>
          <div class="col-6 col-md-6 col-xl-6">
             <div class="premium_listing_slider text-center">
-               <a href="quote/tab_info.php?product_id=2">
+               <a href="{{ url('visitor-insurance') }}">
                   <img src="{{ url('public/front/visitorinsure/images/insurance02.png') }}"><br>
                   <div class="title_h2 mt-3 mb-2">
                      <span class="blue_text">Visitors </span>
@@ -237,7 +237,7 @@
          </div>
          <div class="col-6 col-md-6 col-xl-6">
             <div class="premium_listing_slider text-center">
-               <a href="quote/tab_info.php?product_id=2">
+               <a href="{{ url('student-insurance') }}">
                   <img src="{{ url('public/front/visitorinsure/images/insurance03.png') }}"><br>
                   <div class="title_h2 mt-3 mb-2">
                      <span class="blue_text">Student </span>
@@ -248,7 +248,7 @@
          </div>
          <div class="col-6 col-md-6 col-xl-6">
             <div class="premium_listing_slider text-center">
-               <a href="quote/tab_info.php?product_id=2">
+               <a href="{{ url('travel-insurance') }}">
                   <img src="{{ url('public/front/visitorinsure/images/insurance04.png') }}"><br>
                   <div class="title_h2 mt-3 mb-2">
                      <span class="blue_text">Travel </span>
@@ -257,7 +257,7 @@
                </a>
             </div>
          </div>
-         <div class="col-6 col-md-6 col-xl-6">
+         <!-- <div class="col-6 col-md-6 col-xl-6">
             <div class="premium_listing_slider text-center">
                <a href="quote/tab_info.php?product_id=6">
                   <img src="{{ url('public/front/visitorinsure/images/insurance06.png') }}"><br>
@@ -278,7 +278,7 @@
                   </div>
                </a>
             </div>
-         </div>
+         </div> -->
       </div>
 
    </div>
@@ -362,7 +362,7 @@
       </span></h1>
 
 
-      @foreach(DB::table('blogs')->limit(1)->orderby('id' , 'asc')->get() as $r)
+      @foreach(DB::table('blogs')->limit(1)->where('website' , 'visitorinsure')->orderby('id' , 'asc')->get() as $r)
       <div class="row">
          <div class="col-lg-6 col-md-12 pr-5">
             <div class="block pt-5  text-center">
@@ -390,7 +390,7 @@
          </div>
       </div>
       @endforeach
-      @foreach(DB::table('blogs')->limit(1)->orderby('id' , 'desc')->get() as $r)
+      @foreach(DB::table('blogs')->limit(1)->where('website' , 'visitorinsure')->orderby('id' , 'desc')->get() as $r)
       <div class="row mt-4 pt-4">
 
          <div class="col-lg-6 col-md-12 pr-5 d-lg-none">
