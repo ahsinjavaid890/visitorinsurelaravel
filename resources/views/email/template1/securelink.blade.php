@@ -1,3 +1,6 @@
+@php
+    $settings = DB::table('site_settings')->where('smallname' , 'visitorinsure')->first();
+@endphp
 <center>
    <div>
       <table bgcolor="#f4f7fa" border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -28,7 +31,7 @@
                                                       <table border="0" cellpadding="0" cellspacing="0" role="module" style="table-layout:fixed" width="100%">
                                                          <tbody>
                                                             <tr>
-                                                               <td align="left" style="font-size:6px;line-height:10px;padding:12px 0px 14px 15px" valign="top"><img alt="" border="0" height="41" src="https://lifeadvice.ca/public/images/118135255.png" style="display:block;color:#000000;text-decoration:none;font-family:Helvetica,arial,sans-serif;font-size:16px" width="200" class="CToWUd" data-bit="iit"></td>
+                                                               <td align="left" style="font-size:6px;line-height:10px;padding:12px 0px 14px 15px" valign="top"><img alt="" border="0" height="41" src="{{ url('public/images') }}/{{ $settings->header_logo }}" style="display:block;color:#000000;text-decoration:none;font-family:Helvetica,arial,sans-serif;font-size:16px" width="200" class="CToWUd" data-bit="iit"></td>
                                                             </tr>
                                                          </tbody>
                                                       </table>

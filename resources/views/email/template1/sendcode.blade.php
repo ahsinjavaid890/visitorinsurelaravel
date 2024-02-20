@@ -1,3 +1,6 @@
+@php
+    $settings = DB::table('site_settings')->where('smallname' , 'visitorinsure')->first();
+@endphp
 <!DOCTYPE html>
 <html>
 <head>
@@ -115,7 +118,7 @@
           <tr>
             <td align="center" valign="top" style="padding: 36px 24px;">
               <a href="https://sendgrid.com" target="_blank" style="display: inline-block;">
-                <img src="https://lifeadvice.ca/public/images/118135255.png" alt="Logo" border="0" width="48" style="display: block;/* width: 48px; *//* max-width: 48px; */width: 100%;/* min-width: 48px; */">
+                <img src="{{ url('public/images') }}/{{ $settings->header_logo }}" alt="Logo" border="0" width="48" style="display: block;/* width: 48px; *//* max-width: 48px; */width: 100%;/* min-width: 48px; */">
               </a>
             </td>
           </tr>

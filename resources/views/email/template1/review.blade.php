@@ -1,3 +1,6 @@
+@php
+    $settings = DB::table('site_settings')->where('smallname' , 'visitorinsure')->first();
+@endphp
 <center>
    <div>
       <table bgcolor="#f4f7fa" border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -28,7 +31,7 @@
                                                       <table border="0" cellpadding="0" cellspacing="0" role="module" style="table-layout:fixed" width="100%">
                                                          <tbody>
                                                             <tr>
-                                                               <td align="left" style="font-size:6px;line-height:10px;padding:12px 0px 14px 15px" valign="top"><img alt="" border="0" height="41" src="https://lifeadvice.ca/public/images/118135255.png" style="display:block;color:#000000;text-decoration:none;font-family:Helvetica,arial,sans-serif;font-size:16px" width="200" class="CToWUd" data-bit="iit"></td>
+                                                               <td align="left" style="font-size:6px;line-height:10px;padding:12px 0px 14px 15px" valign="top"><img alt="" border="0" height="41" src="{{ url('public/images') }}/{{ $settings->header_logo }}" style="display:block;color:#000000;text-decoration:none;font-family:Helvetica,arial,sans-serif;font-size:16px" width="200" class="CToWUd" data-bit="iit"></td>
                                                             </tr>
                                                          </tbody>
                                                       </table>
@@ -70,8 +73,8 @@
                                                          <tbody>
                                                             <tr>
                                                                <td height="100%" role="module-content" valign="top">
-                                                                  <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;padding-right:35px;padding-left:36px"><span style="font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:600;letter-spacing:0.053px;text-align:start;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;background-color:rgb(255,255,255);text-decoration-style:initial;text-decoration-color:initial;float:none;display:inline;font-size:16px;color:#67778f;line-height:28px">Thank you for your recent purchase from <a href="http://lifeadvice.ca" target="_blank">lifeadvice.ca</a>.</span></div>
-                                                                  <div style="font-family:inherit;text-align:inherit;padding-right:35px;padding-left:36px;padding-top:25px"><span style="font-family:&quot;Open Sans&quot;,sans-serif;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:600;letter-spacing:normal;text-align:start;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;background-color:rgb(255,255,255);text-decoration-style:initial;text-decoration-color:initial;float:none;display:inline;font-size:16px;color:#67778f;line-height:28px"><a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="text-decoration:none;color:#1b8fe4" target="_blank">How would you rate lifeadvice.ca?</a>&nbsp;</span></div>
+                                                                  <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;padding-right:35px;padding-left:36px"><span style="font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:600;letter-spacing:0.053px;text-align:start;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;background-color:rgb(255,255,255);text-decoration-style:initial;text-decoration-color:initial;float:none;display:inline;font-size:16px;color:#67778f;line-height:28px">Thank you for your recent purchase from <a href="http://visitorinsure.ca" target="_blank">{{ $settings->site_name }}</a>.</span></div>
+                                                                  <div style="font-family:inherit;text-align:inherit;padding-right:35px;padding-left:36px;padding-top:25px"><span style="font-family:&quot;Open Sans&quot;,sans-serif;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:600;letter-spacing:normal;text-align:start;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;background-color:rgb(255,255,255);text-decoration-style:initial;text-decoration-color:initial;float:none;display:inline;font-size:16px;color:#67778f;line-height:28px"><a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="text-decoration:none;color:#1b8fe4" target="_blank">How would you rate {{ $settings->site_name }}?</a>&nbsp;</span></div>
                                                                </td>
                                                             </tr>
                                                          </tbody>

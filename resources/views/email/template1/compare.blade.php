@@ -1,3 +1,6 @@
+@php
+    $settings = DB::table('site_settings')->where('smallname' , 'visitorinsure')->first();
+@endphp
 <center class="m_-2565051330621453805wrapper">
    <div>
       <table cellpadding="0" cellspacing="0" border="0" width="100%" class="m_-2565051330621453805wrapper" bgcolor="#F4F7FA">
@@ -29,7 +32,7 @@
                                                          <tbody>
                                                             <tr>
                                                                <td style="font-size:6px;line-height:10px;padding:12px 0px 16px 16px" valign="top" align="left">
-                                                                  <img class="m_-2565051330621453805max-width CToWUd" border="0" style="display:block;color:#000000;text-decoration:none;font-family:Helvetica,arial,sans-serif;font-size:16px" width="200" alt="" src="https://lifeadvice.ca/public/images/118135255.png" height="41" data-bit="iit">
+                                                                  <img class="m_-2565051330621453805max-width CToWUd" border="0" style="display:block;color:#000000;text-decoration:none;font-family:Helvetica,arial,sans-serif;font-size:16px" width="200" alt="" src="{{ url('public/images') }}/{{ $settings->header_logo }}" height="41" data-bit="iit">
                                                                </td>
                                                             </tr>
                                                          </tbody>
@@ -106,7 +109,7 @@
                                                             <tr>
                                                                <td class="m_-2565051330621453805mobile-hide-padding" style="padding:18px 30px 18px 30px;line-height:28px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
                                                                   <div>
-                                                                     <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;font-size:16px;line-height:28px"><span style="font-size:16px;font-weight:600">Understanding the intricacies of insurance selection can be daunting. Fear not! Our team of seasoned experts is readily available to guide you through every step of the process. Reach out to us at</span><a href="tel:+1-855-500-8999" target="_blank"><span style="font-size:16px;font-weight:600;color:#1b8fe4"><strong>+1-855-500-8999</strong></span></a><span style="font-size:16px;font-weight:600">or drop us a line at </span><a href="mailto:info@lifeadvice.ca" target="_blank"><span style="font-size:16px;font-weight:600;color:#1b8fe4"><strong>info@lifeadvice.ca</strong></span></a><span style="font-weight:600;font-size:16px"> for personalized assistance.</span></div>
+                                                                     <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;font-size:16px;line-height:28px"><span style="font-size:16px;font-weight:600">Understanding the intricacies of insurance selection can be daunting. Fear not! Our team of seasoned experts is readily available to guide you through every step of the process. Reach out to us at</span><a href="tel:{{ $settings->site_phonenumber }}" target="_blank"><span style="font-size:16px;font-weight:600;color:#1b8fe4"><strong>{{ $settings->site_phonenumber }}</strong></span></a><span style="font-size:16px;font-weight:600">or drop us a line at </span><a href="mailto:{{ $settings->site_email }}" target="_blank"><span style="font-size:16px;font-weight:600;color:#1b8fe4"><strong>{{ $settings->site_email }}</strong></span></a><span style="font-weight:600;font-size:16px"> for personalized assistance.</span></div>
                                                                      <div style="font-family:inherit;text-align:inherit"><br></div>
                                                                      <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;font-size:16px;line-height:28px"><span style="font-size:16px;font-weight:600">Your safety and peace of mind are our top priorities,</span></div>
                                                                      <div style="font-family:inherit;text-align:inherit"><br></div>
