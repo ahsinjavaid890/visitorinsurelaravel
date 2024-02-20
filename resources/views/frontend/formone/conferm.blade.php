@@ -31,7 +31,11 @@ svg {
 <div class="container-homepage main-div-login p-5">
    <div class="row justify-content-center">
              <div class="col-xl-5 col-md-10">
-                 <div class="login_wrap">
+                 <div class="login_wrap" style="
+    box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+    border-radius: 15px;
+    padding: 8%;
+">
                      <div class="padding_eight_all bg-white login-page">
                          <svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
 						  <g stroke="currentColor" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
@@ -40,7 +44,7 @@ svg {
 						  </g>
 						</svg>
 						<h2 style="margin-top:20px;">Your Quote Submited Successfully</h2>
-                        <a style="margin-top:20px;" href="{{ url('login') }}">Login To See Your Policy Details</a>
+                        <a style="margin-top:20px;color: #31abfc;" href="{{ url('login') }}">Login To See Your Policy Details</a>
                      </div>
                  </div>
              </div>

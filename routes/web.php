@@ -57,7 +57,7 @@ Route::get('/travel-insurance', [SiteController::class, 'travel']);
 Route::get('/single-trip-insurance', [SiteController::class, 'singletripinsurance']);
 Route::get('/visitor-insurance', [SiteController::class, 'visitorinsurance']);
 Route::get('/student-insurance', [SiteController::class, 'studentinsurance']);
-Route::get('/sendcompareemail', [SiteController::class, 'sendcompareemail']);
+Route::POST('/sendcompareemail', [SiteController::class, 'sendcompareemail']);
 Route::get('/terms-and-condition', [SiteController::class, 'termsandcondition']);
 Route::get('/term-life-insurance', [SiteController::class, 'termlifeinsurance']);
 
@@ -95,7 +95,9 @@ Route::get('/compareplans/{id}', [SiteController::class, 'compareplans']);
 Route::get('/removecomarecard/{id}', [SiteController::class, 'removecomarecard']);
 
 
-Route::get('/savecompareplans/{rand}/{plan_id}/{product_id}/{coverage_ammount}/{deductibles}/{price}', [SiteController::class, 'savecompareplans']);
+Route::POST('/savecompareplans', [SiteController::class, 'savecompareplans']);
+
+
 Route::POST('/apply', [SiteController::class, 'applyplan']);
 Route::POST('/applyqoute', [SiteController::class, 'applyqoute']);
 Route::get('/conferm', [SiteController::class, 'confermquote']);

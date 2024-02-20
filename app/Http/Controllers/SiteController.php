@@ -45,67 +45,79 @@ class SiteController extends Controller
     {
         return view('frontend.companypages.becomeapartner');
     }
-    public function savecompareplans($rand, $plan_id, $product_id, $coverage_ammount, $deductibles, $price)
+    public function savecompareplans(Request $request)
     {
-        $check = DB::table('compare_plans')->where('comparenumber', $rand)->where('plan_id', $plan_id)->where('product_id', $product_id)->where('coverage_ammount', $coverage_ammount)->where('deductibles', $deductibles)->where('price', $price);
+        $data = unserialize($request->savetoplan);
+        $check = DB::table('compare_plans')->where('comparenumber', $request->rand)->where('plan_id', $data['plan_id'])->where('product_id', $data['pro_id'])->where('coverage_ammount', $data['sum_insured'])->where('deductibles', $data['deductible'])->where('price', $data['total_price']);
 
         if ($check->count() > 0) {
             $check->delete();
         } else {
             $compare = new compare_plans();
-            $compare->comparenumber = $rand;
-            $compare->plan_id = $plan_id;
-            $compare->product_id = $product_id;
-            $compare->coverage_ammount = $coverage_ammount;
-            $compare->deductibles = $deductibles;
-            $compare->price = $price;
+            $compare->savetoplan = $request->savetoplan;
+            $compare->comparenumber = $request->rand;
+            $compare->plan_id = $data['plan_id'];
+            $compare->product_id = $data['pro_id'];
+            $compare->coverage_ammount = $data['sum_insured'];
+            $compare->deductibles = $data['deductible'];
+            $compare->price = $data['total_price'];
             $compare->save();
         }
-        $data = DB::table('compare_plans')->where('comparenumber', $rand)->get();
+        $data = DB::table('compare_plans')->where('comparenumber', $request->rand)->get();
 
-        echo '<div class="container">
-                <div class="d-flex showcomparediv">';
-        foreach ($data as $r) {
-            $plan = DB::table('wp_dh_insurance_plans')->where('id', $r->plan_id)->first();
+        if($data->count()){
+            echo '<div class="container">
+            <i onclick="removecomparecard()" style="right: 31px;
+    background-color: #67778f;
+    border-radius: 50%;" class="icon icon-remove-card"></i>
+            <div class="d-flex showcomparediv">';
+    foreach ($data as $r) {
 
 
-            if ($plan->plan_name) {
-                $words = explode(" ", $plan->plan_name);
-                $acronym = "";
-                foreach ($words as $w) {
-                    $acronym .= mb_substr($w, 0, 1);
-                }
+        $unserialize = unserialize($r->savetoplan);
 
-                $planname = $acronym;
-            } else {
-                $planname = 'PL';
+        $plan = DB::table('wp_dh_insurance_plans')->where('id', $unserialize['plan_id'])->first();
+
+
+        if ($plan->plan_name) {
+            $words = explode(" ", $plan->plan_name);
+            $acronym = "";
+            foreach ($words as $w) {
+                $acronym .= mb_substr($w, 0, 1);
             }
 
-
-
-            echo '<div class="card-plan-compare">
-                                    <span  class="card-plan-compare-title">
-                                        <span  class="card-plan-compare-title-full">';
-            if ($plan->plan_name) {
-                echo $plan->plan_name;
-            } else {
-                echo 'Plan ' . $data->count();
-            }
-            echo '</span>
-                                        <span class="card-plan-compare-title-abbr">' . $planname . '</span>
-                                    </span>
-                                    <i onclick="removecomarecard(' . $r->id . ')" class="icon icon-remove-card"></i>
-                                </div>';
-        }
-        echo '<p class="text-secondary-color compare-bar__count"><span>' . $data->count() . '</span>/3 Selected</p>';
-        if ($data->count() > 1) {
-            echo '<a target="_blank" class="button button-primary get-quotes-button" style="color:white;" href="' . url('compareplans') . '/' . $rand . '">Compare</a>';
+            $planname = $acronym;
         } else {
-            echo '<a class="button button-default get-quotes-button" style="color:white;" href="javascript:void(0)" disabled>Compare</a>';
+            $planname = 'PL';
         }
 
-        echo '</div>  
-            </div>';
+        echo '<div class="card-plan-compare">
+                                <span  class="card-plan-compare-title">
+                                    <span  class="card-plan-compare-title-full">';
+        if ($plan->plan_name) {
+            echo $plan->plan_name;
+        } else {
+            echo 'Plan ' . $data->count();
+        }
+        echo '</span>
+                                    <span class="card-plan-compare-title-abbr">' . $planname . '</span>
+                                </span>
+                                <i onclick="removecomarecard(' . $r->id . ')" class="icon icon-remove-card"></i>
+                            </div>';
+    }
+    echo '<p class="text-secondary-color compare-bar__count"><span>' . $data->count() . '</span>/3 Selected</p>';
+    if ($data->count() > 1) {
+        echo '<a target="_blank" class="button button-primary get-quotes-button" style="color:white;" href="' . url('compareplans') . '/' . $request->rand . '">Compare</a>';
+    } else {
+        echo '<a class="button button-default get-quotes-button" style="color:white;" href="javascript:void(0)" disabled>Compare</a>';
+    }
+
+    echo '</div>  
+        </div>';
+        }
+
+
+       
     }
     public function removecomarecard($id)
     {
@@ -143,9 +155,16 @@ class SiteController extends Controller
     }
     public function sendcompareemail(Request $request)
     {
-        Mail::send('email.compare', array('request' => $request), function ($message) use ($request) {
-            $message->to($request->email)->subject('Comparisons of Insurance Plans');
-            $message->from('compare@lifeadvice.ca', 'LIFEADVICE');
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email'
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()->all()]);
+        }
+        $subject = 'Your Saved Plan Comparison';
+        Mail::send('email.template1.compare', ['compareid' => $request->compareid], function ($message) use ($request, $subject) {
+            $message->to($request->email);
+            $message->subject($subject);
         });
         return redirect()->back()->with('message', 'success');
     }
@@ -250,8 +269,8 @@ class SiteController extends Controller
         $reffrence_number = $policytype . $policy_number_temp;
 
         $newsale = new sales();
-        $newsale->website = 'visitorinsure';
         $newsale->reffrence_number = $reffrence_number;
+        $newsale->website = 'visitorinsure';
         $newsale->sponsersname = $request->sponsersname;
         $newsale->sponsersemail = $request->sponsersemail;
         $newsale->email = $request->email;
@@ -322,17 +341,21 @@ class SiteController extends Controller
             $newuser->status = 'active';
             $newuser->save();
         }
-        $subject = 'Thank you for Applying for ' . $request->producttype . ' | ' . $reffrence_number;
-        Mail::send('email.purchasepolicy', ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
+
+        $subject = 'Your Life Advice Policy Confirmation | ' . $reffrence_number;
+        $temp = DB::table('site_settings')->where('smallname', 'visitorinsure')->first()->email_template;
+        $purchasepolicyemailview = 'email.template' . $temp . '.purchasepolicy';
+        $reviewemailview = 'email.template' . $temp . '.review';
+        Mail::send($purchasepolicyemailview, ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
             $message->to($request->email);
             $message->subject($subject);
         });
-        Mail::send('email.review', ['request' => $request, 'sale' => $newsale], function ($message) use ($request, $subject) {
+        Mail::send($reviewemailview, ['request' => $request, 'sale' => $newsale], function ($message) use ($request, $subject) {
             $message->to($request->email);
             $message->subject('Tell Us How We Did?');
         });
         $subject = 'New Sale | Reffrence Number =  ' . $reffrence_number;
-        Mail::send('email.purchasepolicy', ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
+        Mail::send($purchasepolicyemailview, ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
             $message->to('admin@lifeadvice.ca');
             $message->subject($subject);
         });
@@ -389,22 +412,14 @@ class SiteController extends Controller
     }
     public function supervisa()
     {
-
         $visitorinsureproduct = wp_dh_products::where('url', 'super-visa-insurance')->where('website', 'visitorinsure')->first();
         $data = wp_dh_products::where('url', 'super-visa-insurance')->where('website', 'lifeadvice')->first();
         if ($visitorinsureproduct) {
             $fields = unserialize($visitorinsureproduct->pro_fields);
-
             $sortfields = unserialize($visitorinsureproduct->pro_sort);
-
             $dataforsuminsure = wp_dh_products::where('url', 'super-visa-insurance')->where('website', 'lifeadvice')->first();
-
             $wp_dh_insurance_plans = wp_dh_insurance_plans::select('wp_dh_insurance_plans.id')->where('product', $dataforsuminsure->pro_id)->get();
-
             $sum_insured = wp_dh_insurance_plans_rates::select('wp_dh_insurance_plans_rates.sum_insured')->whereIn('plan_id', $wp_dh_insurance_plans)->groupby('sum_insured')->get();
-
-           
-
             return view('frontend.travelinsurance.super-visa')->with(array('dataforsuminsure'=>$dataforsuminsure,'visitorinsureproduct' => $visitorinsureproduct,'data' => $data,'orderdata' => $sortfields, 'fields' => $fields, 'sum_insured' => $sum_insured));
             
         } else {

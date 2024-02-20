@@ -781,15 +781,15 @@ class AdminController extends Controller
     }
     public function sendcode($id)
     {
-        $rand = rand(1234 , 4321);
-        $data = sales_cards::where('sale_id' , $id)->first();
+        $rand = rand(1234, 4321);
+        $data = sales_cards::where('sale_id', $id)->first();
         $addcode = sales_cards::find($data->id);
         $addcode->code = $rand;
         $addcode->save();
         $subject = 'Verfication Code For Customer Card Information';
-        Mail::send('email.sendcode', ['code' => $rand], function($message) use($subject){
-              $message->to('admin@lifeadvice.ca');
-              $message->subject($subject);
+        Mail::send('email.template1.sendcode', ['code' => $rand], function ($message) use ($subject) {
+            $message->to('admin@lifeadvice.ca');
+            $message->subject($subject);
         });
     }
     public function showdetailsbutton($id , $code)
