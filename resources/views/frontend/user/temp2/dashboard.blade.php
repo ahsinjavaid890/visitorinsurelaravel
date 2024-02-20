@@ -206,8 +206,7 @@
                     <div class="box">
                         <div class="d-flex">
 
-                            <h3>{{ DB::Table('traveler_sale_informations')->where('id', $r->id)->first()->f_name }}
-                                {{ DB::Table('traveler_sale_informations')->where('id', $r->id)->first()->l_name }}</h3>
+                            
                             @if ($r->status == 'pending')
                                 <span class="badge badge-warning">{{ $r->status }}</span>
                             @endif
