@@ -482,7 +482,7 @@ class SiteController extends Controller
             $sum_insured = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM `wp_dh_insurance_plans` WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
 
 
-            return view('frontend.travelinsurance.visitorinsurance')->with(array('data' => $data, 'orderdata' => $sortfields, 'fields' => $fields, 'sum_insured' => $sum_insured));
+            return view('frontend.travelinsurance.visitorinsurance')->with(array('data' => $data, 'orderdata' => $sortfields, 'fields' => $fields, 'datavisitorinsure' => $datavisitorinsure, 'sum_insured' => $sum_insured));
         } else {
             return response()->view('frontend.errors.404', [], 404);
         }
