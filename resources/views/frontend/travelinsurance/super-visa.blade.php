@@ -5,9 +5,10 @@
     @php
         $url = request()->segment(count(request()->segments()));
         $firstsection = DB::table('travelpages')
-            ->where('url', $url)
+            ->where('url', $url)->where('showsection_one','yes')
             ->first();
     @endphp
+    @if ($firstsection)
     <div class="health-inssurance-hero-banners super-hero ahmSupperBanner">
         <div class="container-homepage">
             <div class="row mb-3">
@@ -37,11 +38,10 @@
             </div>
         </div>
     </div>
-
-   
-
-    @if ($visitorinsureproduct->quotation_form_on_stylish_page == 1)
-        @if ($visitorinsureproduct->stylish_form_layout == 'layout_1')
+    @endif
+    
+    @if ($data->quotation_form_on_stylish_page == 1)
+        @if ($data->stylish_form_layout == 'layout_1')
             @include('frontend.travelinsurance.includes.form-one-supervisa')
             <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
             <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -52,9 +52,8 @@
                 </div>
             </div>
         @endif
-        @if ($visitorinsureproduct->stylish_form_layout == 'layout_2')
+        @if ($data->stylish_form_layout == 'layout_2')
             @include('frontend.travelinsurance.includes.form-two-supervisa')
-            <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
             <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
             <div style="background-color:#f4f7fa" class="container-homepage">
@@ -63,7 +62,7 @@
                 </div>
             </div>
         @endif
-        @if ($visitorinsureproduct->stylish_form_layout == 'layout_3')
+        @if ($data->stylish_form_layout == 'layout_3')
             @include('frontend.travelinsurance.includes.form-three-supervisa')
             <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
             <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -74,9 +73,8 @@
                 </div>
             </div>
         @endif
-        @if ($visitorinsureproduct->stylish_form_layout == 'layout_4')
+        @if ($data->stylish_form_layout == 'layout_4')
             @include('frontend.travelinsurance.includes.form-four-supervisa')
-            <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
             <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
             <div style="background-color:#f4f7fa" class="container-homepage">
@@ -85,7 +83,7 @@
                 </div>
             </div>
         @endif
-        @if ($visitorinsureproduct->stylish_form_layout == 'layout_5')
+        @if ($data->stylish_form_layout == 'layout_5')
             @include('frontend.travelinsurance.includes.form-five-supervisa')
             <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
             <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -96,9 +94,8 @@
                 </div>
             </div>
         @endif
-        @if ($visitorinsureproduct->stylish_form_layout == 'layout_6')
+        @if ($data->stylish_form_layout == 'layout_6')
             @include('frontend.travelinsurance.includes.form-six-supervisa')
-            <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
             <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
             <div style="background-color:#f4f7fa" class="container-homepage">
@@ -107,7 +104,7 @@
                 </div>
             </div>
         @endif
-        @if ($visitorinsureproduct->stylish_form_layout == 'layout_7')
+        @if ($data->stylish_form_layout == 'layout_7')
             @include('frontend.travelinsurance.includes.form-seven-supervisa')
             <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
             <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -118,9 +115,8 @@
                 </div>
             </div>
         @endif
-        @if ($visitorinsureproduct->stylish_form_layout == 'layout_8')
+        @if ($data->stylish_form_layout == 'layout_8')
             @include('frontend.travelinsurance.includes.form-eight-supervisa')
-            <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
             <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
             <div style="background-color:#f4f7fa" class="container-homepage">
@@ -129,8 +125,8 @@
                 </div>
             </div>
         @endif
-        @if ($visitorinsureproduct->stylish_form_layout == 'layout_9')
-            @include('frontend.companypages.includes.mainlayouttwo')
+        @if ($data->stylish_form_layout == 'layout_9')
+            @include('frontend.travelinsurance.includes.form-ten-supervisa')
             <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
             <div style="background-color:#f4f7fa" class="container-homepage">
@@ -147,73 +143,28 @@
     @include('frontend.companypages.includes.sectionfour')
     @include('frontend.companypages.includes.faqsection')
     @include('frontend.companypages.includes.productsection')
-    
+
     @php
-    $rand = rand(100000000 , 20000000);
-@endphp
-@endsection
-
-
-@section('script')
-    <link href="{{ url('public/front/css/select2.min.css') }}" rel="stylesheet" />
-    <script src="{{ url('public/front/js/select2.min.js') }}"></script>
-    <script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#dateofbirthfull').mask('00/00/0000');
-            $('.dateofbirthfull2').mask('00/00/0000');
-            $('.dateofbirthfull3').mask('00/00/0000');
-            $('.dateofbirthfull4').mask('00/00/0000');
-            $('.dateofbirthfull5').mask('00/00/0000');
-            $('.dateofbirthfull6').mask('00/00/0000');
+        $rand = rand(100000000 , 20000000);
+    @endphp
+<script>
+    $( document ).ready(function() {
+        var divList = $(".listing-item");
+        divList.sort(function(a, b){
+            return $(a).data("listing-price")-$(b).data("listing-price")
         });
-    </script>
-    <script>
-        $(".sum_insured2").select2({
-            minimumResultsForSearch: -1,
-            placeholder: "Select Coverage Amount",
-            allowClear: false
-        });
-        $(".primarydestination").select2({
-            minimumResultsForSearch: -1,
-            placeholder: "Select Primary Destination",
-            allowClear: false
-        });
-
-
-        $(".pre_existing_condition1").select2({
-            minimumResultsForSearch: -1,
-            placeholder: "Pre Existing",
-            allowClear: false
-        });
-        $(".pre_existing_condition2").select2({
-            minimumResultsForSearch: -1,
-            placeholder: "Pre Existing",
-            allowClear: false
-        });
-        $(".pre_existing_condition3").select2({
-            minimumResultsForSearch: -1,
-            placeholder: "Pre Existing",
-            allowClear: false
-        });
-        $(".pre_existing_condition4").select2({
-            minimumResultsForSearch: -1,
-            placeholder: "Pre Existing",
-            allowClear: false
-        });
-        $(".pre_existing_condition5").select2({
-            minimumResultsForSearch: -1,
-            placeholder: "Pre Existing",
-            allowClear: false
-        });
-        $(".pre_existing_condition6").select2({
-            minimumResultsForSearch: -1,
-            placeholder: "Pre Existing",
-            allowClear: false
-        });
-
-
-        
+        $("#main").html(divList);
+    });
+    function slideadditionaltravelers(id) {
+        var text = $('#changeshowtoless'+id).text();
+        if(text == ' Show Details')
+        {
+            $('#changeshowtoless'+id).html('<i class="fa fa-minus-circle colorblue"></i> Hide Details');
+        }else{
+            $('#changeshowtoless'+id).html('<i class="fa fa-plus-circle colorblue"></i> Show Details');
+        }
+        $(".hoverdetails_"+id).slideToggle();
+    }
     function savecompareplans(savetoplan) 
     {
         var $checkboxes = jQuery('.compare input[type="checkbox"]');
@@ -277,6 +228,65 @@
             }
         });
     }
+</script>
+@endsection
 
-    </script>
+
+@section('script')
+<link href="{{ url('public/front/css/select2.min.css') }}" rel="stylesheet" />
+<script src="{{ url('public/front/js/select2.min.js') }}"></script>
+<script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {               
+        $('#dateofbirthfull1').mask('00/00/0000');
+        $('#dateofbirthfull2').mask('00/00/0000');
+        $('#dateofbirthfull3').mask('00/00/0000');
+        $('#dateofbirthfull4').mask('00/00/0000');
+        $('#dateofbirthfull5').mask('00/00/0000');
+        $('#dateofbirthfull6').mask('00/00/0000');
+        $('#phonenumbermask').mask('000-000-0000');
+    });
+</script>
+<script>
+    $(".sum_insured2").select2({
+        minimumResultsForSearch: -1,
+        placeholder: "Select Coverage Amount",
+        allowClear: false
+    });
+    $(".primarydestination").select2({
+        minimumResultsForSearch: -1,
+        placeholder: "Select Primary Destination",
+        allowClear: false
+    });
+    $(".pre_existing_condition1").select2({
+        minimumResultsForSearch: -1,
+        placeholder: "Pre Existing",
+        allowClear: false
+    });
+    $(".pre_existing_condition2").select2({
+        minimumResultsForSearch: -1,
+        placeholder: "Pre Existing",
+        allowClear: false
+    });
+    $(".pre_existing_condition3").select2({
+        minimumResultsForSearch: -1,
+        placeholder: "Pre Existing",
+        allowClear: false
+    });
+    $(".pre_existing_condition4").select2({
+        minimumResultsForSearch: -1,
+        placeholder: "Pre Existing",
+        allowClear: false
+    });
+    $(".pre_existing_condition5").select2({
+        minimumResultsForSearch: -1,
+        placeholder: "Pre Existing",
+        allowClear: false
+    });
+    $(".pre_existing_condition6").select2({
+        minimumResultsForSearch: -1,
+        placeholder: "Pre Existing",
+        allowClear: false
+    });
+</script>
 @endsection
