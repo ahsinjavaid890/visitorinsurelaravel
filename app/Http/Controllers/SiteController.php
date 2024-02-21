@@ -367,7 +367,36 @@ class SiteController extends Controller
     }
     public function applyplan(Request $request)
     {
-        return view('frontend.formone.apply')->with(array('request' => $request));
+        $temp = DB::table('site_settings')->where('smallname', 'visitorinsure')->first()->buynow_form;
+        if($temp == 2)
+        {   
+            if(temproary_sales::where('temp_id' , $request->temproary_sale)->count() == 0)
+            {
+                $sale = new temproary_sales();
+                $sale->formdata = serialize($request->all());
+                $sale->temp_id= $request->temproary_sale;
+                $sale->website= 'lifeadvice';
+                $sale->step= 1;
+                $sale->save();
+                $url = url('step-one').'/'.$request->temproary_sale;
+                return Redirect::to($url);
+            }else
+            {
+                $tempr = temproary_sales::where('temp_id' , $request->temproary_sale)->first();
+                $sale = temproary_sales::find($tempr->id);
+                $sale->formdata = serialize($request->all());
+                $sale->temp_id= $request->temproary_sale;
+                $sale->website= 'lifeadvice';    
+                $sale->step= 1;
+                $sale->save();
+                $url = url('step-one').'/'.$request->temproary_sale;
+                return Redirect::to($url);
+            }
+        }
+        if($temp == 1)
+        {
+            return view('frontend.apply.templateone')->with(array('request' => $request));
+        }
     }
     public function compareplans($id)
     {
