@@ -541,7 +541,7 @@
                   <tr>
                      <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
                         <div>
-                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $r->gender }}</span></div>
+                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">@if($r->gender) {{ $r->gender }} @else Not Selected @endif</span></div>
                            <div></div>
                         </div>
                      </td>

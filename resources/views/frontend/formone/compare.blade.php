@@ -300,7 +300,7 @@
                            <h2 style="    color: #2b3481; font-size: 22px; margin-bottom: 20px;">{{ $plan->plan_name }}</h2>
                         </div>
                         <div style="text-align: center" class="compareimagelogo">
-                           <img  style="width:180px !important;height:80px;" src="{{ url('public/images') }}/{{ $company->comp_logo }}">
+                           <img  style="width:180px !important;height:80px;" src="https://lifeadvice.ca/public/images//{{ $company->comp_logo }}">
                         </div>
                         <div style="display: flex;" class="coverageanddeductibles mt-3">
                            <div style="width: 50%;" class="coverageammount">
@@ -386,7 +386,7 @@
                           <h5 class="mb-0">
                               <span style="font-size: 20px; line-height: 28px; margin-bottom: 3px; color: #2b3481!important; width: 100%; text-align: left; outline: 0!important; display: flex; align-items: center; font-weight: 800;" class="btn headingcard" data-toggle="collapse" data-target="#collapse{{ $r->id }}" aria-expanded="true" aria-controls="collapse{{ $r->id }}">
                                  @if($r->icon)
-                                 <img style="width: 40px;margin-right: 15px;" src="{{ url('public/images') }}/{{ $r->icon }}" alt="{{ $r->name }}">
+                                 <img style="width: 40px;margin-right: 15px;" src="https://lifeadvice.ca/public/images/{{ $r->icon }}" alt="{{ $r->name }}">
                                  @endif
                                   {{ $r->name }}
                               </span>
