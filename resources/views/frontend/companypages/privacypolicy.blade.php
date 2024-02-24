@@ -29,7 +29,7 @@
                 </p>
                 <p class="mb-4 text-justify mb-5">
                     Effective on july , 2015<br>
-                    This privacy statement describes how Life Advice insurance inc collects and uses the personal information you provide on our Web site: www.Visitorguard.ca . It also describes the choices available to you regarding our use of your personal information and how you can access and update this information.
+                    This privacy statement describes how Visitor Insure insurance inc collects and uses the personal information you provide on our Web site: www.Visitorguard.ca . It also describes the choices available to you regarding our use of your personal information and how you can access and update this information.
                 
                 </p>
             
@@ -84,7 +84,7 @@
                 </span>
 
                 <p class="mb-4 text-justify mt-4">
-                We will share your personal information with third parties only in the ways that are described in this privacy statement. We do not sell your personal information to third parties. We may also disclose your personal information as required by law such as to comply with a subpoena, or similar legal process when we believe in good faith that disclosure is necessary to protect our rights, protect your safety or the safety of others, investigate fraud, or respond to a government request, if life Advice insurance inc is involved in a merger, acquisition, or sale of all or a portion of its assets, you will be notified via email and/or a prominent notice on our Web site of any change in ownership or uses of your personal information, as well as any choices you may have regarding your personal information,to any other third party with your prior consent to do so.
+                We will share your personal information with third parties only in the ways that are described in this privacy statement. We do not sell your personal information to third parties. We may also disclose your personal information as required by law such as to comply with a subpoena, or similar legal process when we believe in good faith that disclosure is necessary to protect our rights, protect your safety or the safety of others, investigate fraud, or respond to a government request, if Visitor Insure insurance inc is involved in a merger, acquisition, or sale of all or a portion of its assets, you will be notified via email and/or a prominent notice on our Web site of any change in ownership or uses of your personal information, as well as any choices you may have regarding your personal information,to any other third party with your prior consent to do so.
                 </p>
 
 

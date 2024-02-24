@@ -8,8 +8,8 @@
     <div class="container-homepage">
         <div class="about_main_text">
             <h1 class="main_heading_about">About Us</h1>
-            <h6 class="main_subheading_about">What Makes Life Advice Extra Smart?</h6>
-            <p class="main_description_about">Life Advice Insurance Inc. has been providing superior insurance throughout Ontario for over a century</p>
+            <h6 class="main_subheading_about">What Makes Visitor Insure Extra Smart?</h6>
+            <p class="main_description_about">Visitor Insure Insurance Inc. has been providing superior insurance throughout Ontario for over a century</p>
         </div>
     </div>
 </section>

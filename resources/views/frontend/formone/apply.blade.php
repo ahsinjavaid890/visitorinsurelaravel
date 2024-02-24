@@ -566,7 +566,7 @@
 				<br>
 				Att : Manish Kumar Sharda (insurance broker)
 				<br>
-				<i class="fa fa-map-marker"></i> Life Advice Insurance Inc, 912 Isaiah Place, Kitchener, ON, N2E0B6
+				<i class="fa fa-map-marker"></i> Visitor Insure Insurance Inc, 912 Isaiah Place, Kitchener, ON, N2E0B6
 				<br>
 				<i class="fa fa-envelope"></i> contact@lifeadvice.ca
 				<br>
