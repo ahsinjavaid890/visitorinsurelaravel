@@ -20,8 +20,8 @@
     <style type="text/css">
         .customized-login-card {
             margin: auto;
-            max-width: 648px;
-            width: 40vw;
+            max-width: 530px;
+/*            width: 40vw;*/
             min-width: 0;
             word-wrap: break-word;
             background: #fff;
