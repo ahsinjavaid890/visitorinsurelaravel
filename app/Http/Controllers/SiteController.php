@@ -368,7 +368,7 @@ class SiteController extends Controller
     }
     public function applyplan(Request $request)
     {
-        $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->buynow_form;
+        $temp = DB::table('site_settings')->where('smallname', 'visitorinsure')->first()->buynow_form;
         if($temp == 2)
         {   
             if(temproary_sales::where('temp_id' , $request->temproary_sale)->count() == 0)
