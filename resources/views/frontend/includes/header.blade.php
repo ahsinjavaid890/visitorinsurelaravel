@@ -1,4 +1,3 @@
-
 @php
     $url = request()->segment(count(request()->segments()));
     $settings = DB::table('site_settings')->where('smallname' , 'visitorinsure')->first();

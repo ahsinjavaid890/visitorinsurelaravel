@@ -19,6 +19,7 @@ use App\Models\sales_cards;
 use App\Models\traveler_sale_informations;
 use App\Models\blogcategories;
 use App\Models\contactus_messages;
+use App\Models\temproary_sales;
 use App\Models\compare_plans;
 use App\Models\newsletter;
 use App\Models\temproaryquote;
