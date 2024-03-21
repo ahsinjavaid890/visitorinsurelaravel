@@ -807,13 +807,9 @@ class SiteController extends Controller
         if (Auth::check()) {
             return redirect()->route('user.dashboard');
         } else {
-
             $temp = DB::table('site_settings')->where('smallname', 'visitorinsure')->first()->userpanel_temp;
-
             if ( $temp == "1") {
-            
                 return view('auth.template1.login');
-
             } elseif($temp == "2"){
                 
                 return view('auth.template2.login');
