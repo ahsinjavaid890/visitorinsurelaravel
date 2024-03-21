@@ -8,7 +8,7 @@
 	$stepone = unserialize($data->steponedata);
 	$steptwo = unserialize($data->steptwodata);
 @endphp
-<link rel="stylesheet" type="text/css" href="{{ url('public/front/css/applyformtemplatetwo.css') }}">
+<link rel="stylesheet" type="text/css" href="http://lifeadvice.ca/public/front/css/applyformtemplatetwo.css">
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYUTCpyRfNY8Und6oYaKi5Vkqip7OIWEU&libraries=geometry,places&v=weekly"></script>
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/select2.min.css')}}">
