@@ -347,7 +347,7 @@ class SiteController extends Controller
             $newuser->save();
         }
 
-        $subject = 'Your Life Advice Policy Confirmation | ' . $reffrence_number;
+        $subject = 'Your Visitor Insure Policy Confirmation | ' . $reffrence_number;
         $temp = DB::table('site_settings')->where('smallname', 'visitorinsure')->first()->email_template;
         $purchasepolicyemailview = 'email.template' . $temp . '.purchasepolicy';
         $reviewemailview = 'email.template' . $temp . '.review';
@@ -376,7 +376,7 @@ class SiteController extends Controller
                 $sale = new temproary_sales();
                 $sale->formdata = serialize($request->all());
                 $sale->temp_id= $request->temproary_sale;
-                $sale->website= 'lifeadvice';
+                $sale->website= 'visitorinsure';
                 $sale->step= 1;
                 $sale->save();
                 $url = url('step-one').'/'.$request->temproary_sale;
@@ -387,7 +387,7 @@ class SiteController extends Controller
                 $sale = temproary_sales::find($tempr->id);
                 $sale->formdata = serialize($request->all());
                 $sale->temp_id= $request->temproary_sale;
-                $sale->website= 'lifeadvice';    
+                $sale->website= 'visitorinsure';    
                 $sale->step= 1;
                 $sale->save();
                 $url = url('step-one').'/'.$request->temproary_sale;
@@ -430,7 +430,7 @@ class SiteController extends Controller
         $reffrence_number = $policytype . $policy_number_temp;
         $newsale = new sales();
         $newsale->reffrence_number = $reffrence_number;
-        $newsale->website = 'lifeadvice';
+        $newsale->website = 'visitorinsure';
         $newsale->sponsersname = $steptwo['sponsersname'];
         $newsale->sponsersemail = $steptwo['sponsersemail'];
         $newsale->email = $stepone['email'];
@@ -501,8 +501,8 @@ class SiteController extends Controller
             $newuser->save();
         }
 
-        $subject = 'Your Life Advice Policy Confirmation | ' . $reffrence_number;
-        $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
+        $subject = 'Your Visitor Insure Policy Confirmation | ' . $reffrence_number;
+        $temp = DB::table('site_settings')->where('smallname', 'visitorinsure')->first()->email_template;
         $purchasepolicyemailview = 'email.template' . $temp . '.purchasepolicy';
         $reviewemailview = 'email.template' . $temp . '.review';
         Mail::send($purchasepolicyemailview, ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($newsale, $subject) {
