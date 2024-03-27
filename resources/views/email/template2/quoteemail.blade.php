@@ -1,3 +1,6 @@
+@php
+    $settings = DB::table('site_settings')->where('smallname' , 'visitorinsure')->first();
+@endphp
 <center>
    <div>
       <table bgcolor="#f4f7fa" border="0" cellpadding="0" cellspacing="0" width="100%">
