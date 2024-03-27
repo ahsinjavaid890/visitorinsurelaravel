@@ -45,6 +45,8 @@ Route::get('step-three/{id}', [SiteController::class, 'stepthreetoshow']);
 Route::get('backonestep/{id}', [SiteController::class, 'backonestep']);
 Route::POST('completeandpurchase', [SiteController::class, 'completeandpurchase']);
 
+Route::POST('send-quote-email', [SiteController::class, 'sendquoteemail']);
+
 // Site Routes
 Route::get('/', [SiteController::class, 'index']);
 Route::get('/profile', [HomeController::class, 'dashboard'])->name('userprofile');
@@ -96,6 +98,7 @@ Route::get('/login', [SiteController::class, 'login']);
 Route::post('/expertip',[SiteController::class , 'newsletter'])->name('news_letter');
 Route::get('/all/newsletters',[SiteController::class , 'viewLetters'])->name('view_news');
 Route::get('/delete/letters/{id}',[SiteController::class , 'deleteLetters'])->name('deletenews');
+Route::get('logout', [SiteController::class, 'logout']);
 Route::get('/blog/{id}', [SiteController::class, 'blogdetail']);
 Route::get('/category/{id}', [SiteController::class, 'blogbycategory']);
 Route::get('/compareplans/{id}', [SiteController::class, 'compareplans']);

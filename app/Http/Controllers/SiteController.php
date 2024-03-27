@@ -39,6 +39,17 @@ class SiteController extends Controller
     {
         return view('frontend.homepage.index');
     }
+
+    public function sendquoteemail(Request $request)
+    {
+        $subject = "Your Quote of ".$request->product_name. ' | Quote Number '.$request->quoteNumber;
+        $temp = DB::table('site_settings')->where('smallname', 'visitorinsure')->first()->email_template;
+        $emailview = 'email.template'.$temp.'.quoteemail';
+        Mail::send($emailview, array('quoteNumber'=>$request->quoteNumber,'deductibleArray0'=>$request->deductibleArray0,'deductibleArray250'=>$request->deductibleArray250,'deductibleArray500'=>$request->deductibleArray500,'deductibleArray1000'=>$request->deductibleArray1000), function($message) use ($request,$subject) {
+           $message->to($request->email)->subject($subject);
+           $message->from('quote@visitorinsure.ca','Visitor Insure');
+        });
+    }
     public function checkadditionaltravelers(Request $request)
     {
         foreach ($request->ages as $r) {
@@ -599,6 +610,12 @@ class SiteController extends Controller
         } else {
             return response()->view('frontend.errors.404', [], 404);
         }
+    }
+    public function logout()
+    {
+        Auth::logout();
+        $url = url('');
+        return Redirect::to($url);
     }
     public function quotes(Request $request)
     {
