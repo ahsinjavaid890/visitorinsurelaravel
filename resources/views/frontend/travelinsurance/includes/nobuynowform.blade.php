@@ -3,7 +3,7 @@
 <div style="display:none;" class="planproduct_email">{{ $second_product_name }}</div>
 <div style="display:none;" class="price_email">{{ $second_total_price }}</div>
 <div style="display:none;" class="quote_email">{{ $quoteNumber }}</div>
-<div style="display:none;" class="logo_email">{{ url('public/images') }}/{{ $second_comp_logo }}</div>
+<div style="display:none;" class="logo_email">https://lifeadvice.ca/public/images/{{ $second_comp_logo }}</div>
 <div class="buynowrow row buynow_{{ $second_deductible.$second_plan_id+13 }}">
     <form method="POST" action="{{ url('apply') }}">
         @csrf
